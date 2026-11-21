@@ -14,7 +14,7 @@
 <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
 <button class="flex items-center gap-2 text-left" onclick="switchPage('doha')">
 <span class="px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/40 text-sky-300 text-xs font-extrabold tracking-widest uppercase">UFC ANALYSIS</span>
-<span class="text-[11px] text-slate-400 hidden sm:inline">10,000-Run Monte Carlo • Track Record: <strong class="text-emerald-400">9–3–1 (75.0%)</strong></span>
+<span class="text-[11px] text-slate-400 hidden sm:inline">Engine v2 (1,000-Fight Round Sim) • Track Record: <strong class="text-emerald-400">9–3–1 (75.0%)</strong></span>
 </button>
 <div class="flex flex-wrap items-center gap-1">
 <button class="page-tab px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white" id="tab-doha" onclick="switchPage('doha')">This Week: UFC Doha</button>
@@ -28,7 +28,7 @@
 <header class="bg-slate-900 border-b border-slate-800 py-6 px-4">
 <div class="max-w-5xl mx-auto">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-300 text-xs font-extrabold tracking-widest uppercase mb-3">UFC ANALYSIS</div>
-<div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">FINAL POST-WEIGH-IN EDITION • Last Updated: Nov 20, 2026 (10:30 PM PT) • 10,000-Run Monte Carlo • 100u Bankroll</div>
+<div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">FINAL POST-WEIGH-IN EDITION • Last Updated: Nov 21, 2026 (Engine v2 Live) • Engine v2 (1,000-Fight Round Sim) • 100u Bankroll</div>
 <h1 class="text-2xl sm:text-3xl font-extrabold text-white">UFC Fight Night Doha: Procházka vs. Stirling</h1>
 <p class="text-sm text-slate-400 mt-1">Saturday, Nov 21, 2026 • ABHA Arena, Doha, Qatar • Prelims 10:00 AM ET / Main Card 1:00 PM ET • All 12 Bouts</p>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
@@ -71,7 +71,7 @@
 <div class="text-base font-extrabold text-amber-300">10.2u <span class="text-xs font-normal text-slate-400">/ 17.0u Fight Cap</span></div>
 </div>
 </div>
-<p class="text-xs text-slate-300 mb-3">Correlated 3-bet ladder on our highest-conviction finish profile: Stirling wins <strong>66/100</strong> simulations (<strong>5,422 by KO/TKO</strong>) against Procházka's 45% striking defense and 5.67 SApM, riding 3 straight UFC stoppages (R1, R2, R2).</p>
+<p class="text-xs text-slate-300 mb-3">Correlated 3-bet ladder on our highest-conviction finish profile: Stirling wins <strong>6,302/10,000 (63.0%)</strong> simulations (<strong>5,422 by KO/TKO</strong>) against Procházka's 45% striking defense and 5.67 SApM, riding 3 straight UFC stoppages (R1, R2, R2).</p>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 <div class="bg-slate-950/80 border border-emerald-500/30 rounded-xl p-3">
 <div class="text-[11px] font-bold uppercase text-emerald-400">Leg 1 • Core Anchor</div>
@@ -127,7 +127,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-1', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-1 space-y-4" id="bout-1-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-1', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-1', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-1 space-y-4" id="bout-1-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Classic chaos vs. City Kickboxing precision. Procházka absorbs 5.67 sig. strikes/min with 45% defense and has seen the scorecards just twice in 39 pro fights. Stirling absorbs just 2.56 SApM with 58% defense and trains alongside LHW champ Carlos Ulberg, who just KO'd Jiří in R1.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -172,13 +172,13 @@
 </div>
 </div></div><div class="bout-panel-bout-1 hidden" id="bout-1-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Jiri Prochazka 36.9% | Navajo Stirling 63.1% | 10k Sim ITD 85.7%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Jiri Prochazka 44.2%/55.8% | Blended Posterior: 40.2%/59.8% | Live Sim ITD: 81.0%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jiri Prochazka Wins</div><div class="text-sm font-bold text-emerald-300">3,698/10,000 (37.0%)</div><div class="text-[10px] text-slate-500">KO 2,847 · Sub 302 · Dec 549</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Navajo Stirling Wins</div><div class="text-sm font-bold text-rose-300">6,302/10,000 (63.0%)</div><div class="text-[10px] text-slate-500">KO 5,422 · Sub 0 · Dec 880</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 85.7%</div><div class="text-sm font-bold text-amber-300">Goes Decision 14.3%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jiri Prochazka Wins</div><div class="text-sm font-bold text-emerald-300">387/1,000 (38.7%)</div><div class="text-[10px] text-slate-500">KO 291 · Sub 39 · Dec 57</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Navajo Stirling Wins</div><div class="text-sm font-bold text-rose-300">613/1,000 (61.3%)</div><div class="text-[10px] text-slate-500">KO 480 · Sub 0 · Dec 133</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 42.0% | U2.5: 59.0%</div><div class="text-sm font-bold text-amber-300">Dec: 19.0% (R1:335 · R2:192 · R3:125 · R4:90 · R5:68)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">12%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -220,7 +220,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-2', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-2 space-y-4" id="bout-2-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-2', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-2 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-2', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-2 space-y-4" id="bout-2-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Pure grappler vs. power-striker clash. Sterling (37) logged 13:49 control time vs. Zalal and has gone the distance in 4 straight. Vallejos (24) brings 6.12 SLpM and 84% TDD; if he keeps it upright, his hands are lethal, otherwise Sterling rides out 29-28.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -265,13 +265,13 @@
 </div>
 </div></div><div class="bout-panel-bout-2 hidden" id="bout-2-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Aljamain Sterling 44.1% | Kevin Vallejos 55.9% | 10k Sim ITD 40.3%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Aljamain Sterling 60.0%/40.0% | Blended Posterior: 49.9%/50.1% | Live Sim ITD: 40.9%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Aljamain Sterling Wins</div><div class="text-sm font-bold text-emerald-300">4,413/10,000 (44.1%)</div><div class="text-[10px] text-slate-500">KO 460 · Sub 1,314 · Dec 2,639</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Kevin Vallejos Wins</div><div class="text-sm font-bold text-rose-300">5,587/10,000 (55.9%)</div><div class="text-[10px] text-slate-500">KO 1,934 · Sub 325 · Dec 3,328</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 40.3%</div><div class="text-sm font-bold text-amber-300">Goes Decision 59.7%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Aljamain Sterling Wins</div><div class="text-sm font-bold text-emerald-300">473/1,000 (47.3%)</div><div class="text-[10px] text-slate-500">KO 51 · Sub 142 · Dec 280</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Kevin Vallejos Wins</div><div class="text-sm font-bold text-rose-300">527/1,000 (52.7%)</div><div class="text-[10px] text-slate-500">KO 188 · Sub 28 · Dec 311</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 25.6% | U2.5: 35.8%</div><div class="text-sm font-bold text-amber-300">Dec: 59.1% (R1:196 · R2:114 · R3:99)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">68%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -313,7 +313,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-3', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-3 space-y-4" id="bout-3-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-3', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-3 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-3', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-3 space-y-4" id="bout-3-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Hooker holds a 6-inch reach advantage (75" vs 69"), 77% takedown defense, and higher striking output (5.03 vs 4.07 SLpM). Ortega absorbs a punishing 6.38 sig. strikes/min and averages just 0.93 TD/15 min.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -358,13 +358,13 @@
 </div>
 </div></div><div class="bout-panel-bout-3 hidden" id="bout-3-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Dan Hooker 65.5% | Brian Ortega 34.5% | 10k Sim ITD 62.5%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Dan Hooker 60.8%/39.2% | Blended Posterior: 62.6%/37.4% | Live Sim ITD: 57.0%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Dan Hooker Wins</div><div class="text-sm font-bold text-emerald-300">6,610/10,000 (66.1%)</div><div class="text-[10px] text-slate-500">KO 2,557 · Sub 1,625 · Dec 2,428</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Brian Ortega Wins</div><div class="text-sm font-bold text-rose-300">3,390/10,000 (33.9%)</div><div class="text-[10px] text-slate-500">KO 555 · Sub 1,514 · Dec 1,321</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 62.5%</div><div class="text-sm font-bold text-amber-300">Goes Decision 37.5%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Dan Hooker Wins</div><div class="text-sm font-bold text-emerald-300">596/1,000 (59.6%)</div><div class="text-[10px] text-slate-500">KO 226 · Sub 107 · Dec 263</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Brian Ortega Wins</div><div class="text-sm font-bold text-rose-300">404/1,000 (40.4%)</div><div class="text-[10px] text-slate-500">KO 62 · Sub 175 · Dec 167</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 36.1% | U2.5: 51.7%</div><div class="text-sm font-bold text-amber-300">Dec: 43.0% (R1:290 · R2:171 · R3:109)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">38%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -406,7 +406,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-4', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-4 space-y-4" id="bout-4-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-4', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-4 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-4', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-4 space-y-4" id="bout-4-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Classic striker vs. chain-wrestler. Horiguchi holds a crisp karate-blitz edge (3.64 SLpM, 64% Str. Def.) while Almabayev shoots relentlessly (4.45 TD/15m) against Horiguchi's 61% TDD. Betway's -200/+150 closely tracks Kalshi (-209/+165).</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -451,13 +451,13 @@
 </div>
 </div></div><div class="bout-panel-bout-4 hidden" id="bout-4-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Kyoji Horiguchi 61.6% | Asu Almabayev 38.4% | 10k Sim ITD 43.6%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Kyoji Horiguchi 46.5%/53.5% | Blended Posterior: 58.4%/41.6% | Live Sim ITD: 39.8%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Kyoji Horiguchi Wins</div><div class="text-sm font-bold text-emerald-300">6,208/10,000 (62.1%)</div><div class="text-[10px] text-slate-500">KO 2,024 · Sub 656 · Dec 3,528</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Asu Almabayev Wins</div><div class="text-sm font-bold text-rose-300">3,792/10,000 (37.9%)</div><div class="text-[10px] text-slate-500">KO 435 · Sub 1,246 · Dec 2,111</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 43.6%</div><div class="text-sm font-bold text-amber-300">Goes Decision 56.4%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Kyoji Horiguchi Wins</div><div class="text-sm font-bold text-emerald-300">577/1,000 (57.7%)</div><div class="text-[10px] text-slate-500">KO 160 · Sub 64 · Dec 353</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Asu Almabayev Wins</div><div class="text-sm font-bold text-rose-300">423/1,000 (42.3%)</div><div class="text-[10px] text-slate-500">KO 35 · Sub 139 · Dec 249</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 22.3% | U2.5: 34.2%</div><div class="text-sm font-bold text-amber-300">Dec: 60.2% (R1:177 · R2:109 · R3:112)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">53%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -499,7 +499,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-5', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-5 space-y-4" id="bout-5-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-5', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-5', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-5 space-y-4" id="bout-5-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Aliskerov is nine years younger, averages 3.35 takedowns per 15 minutes with 100% TDD, and faces a 42-year-old Cannonier who has lost 4 of 5. At -350 (1.29), the moneyline juice violates our -250 cap.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -544,13 +544,13 @@
 </div>
 </div></div><div class="bout-panel-bout-5 hidden" id="bout-5-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Ikram Aliskerov 77.0% | Jared Cannonier 23.0% | 10k Sim ITD 64.4%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Ikram Aliskerov 74.7%/25.3% | Blended Posterior: 73.5%/26.5% | Live Sim ITD: 64.5%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Ikram Aliskerov Wins</div><div class="text-sm font-bold text-emerald-300">7,685/10,000 (76.8%)</div><div class="text-[10px] text-slate-500">KO 2,858 · Sub 2,104 · Dec 2,723</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jared Cannonier Wins</div><div class="text-sm font-bold text-rose-300">2,315/10,000 (23.1%)</div><div class="text-[10px] text-slate-500">KO 1,247 · Sub 235 · Dec 833</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 64.4%</div><div class="text-sm font-bold text-amber-300">Goes Decision 35.6%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Ikram Aliskerov Wins</div><div class="text-sm font-bold text-emerald-300">745/1,000 (74.5%)</div><div class="text-[10px] text-slate-500">KO 274 · Sub 186 · Dec 285</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jared Cannonier Wins</div><div class="text-sm font-bold text-rose-300">255/1,000 (25.5%)</div><div class="text-[10px] text-slate-500">KO 161 · Sub 24 · Dec 70</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 42.1% | U2.5: 57.5%</div><div class="text-sm font-bold text-amber-300">Dec: 35.5% (R1:313 · R2:187 · R3:145)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">32%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -592,7 +592,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-6', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-6 space-y-4" id="bout-6-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-6', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-6 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-6', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-6 space-y-4" id="bout-6-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Topuria is sharp defensively (68% Str. Def.) and technically sound, but -275 (1.36) is steep after a year-long layoff against a 22-year-old wrestler who lands 71% of his takedowns.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -637,13 +637,13 @@
 </div>
 </div></div><div class="bout-panel-bout-6 hidden" id="bout-6-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Aleksandre Topuria 69.1% | Santiago Luna 30.9% | 10k Sim ITD 45.3%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Aleksandre Topuria 53.0%/47.0% | Blended Posterior: 65.5%/34.5% | Live Sim ITD: 44.9%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Aleksandre Topuria Wins</div><div class="text-sm font-bold text-emerald-300">6,933/10,000 (69.3%)</div><div class="text-[10px] text-slate-500">KO 1,790 · Sub 1,327 · Dec 3,816</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Santiago Luna Wins</div><div class="text-sm font-bold text-rose-300">3,067/10,000 (30.7%)</div><div class="text-[10px] text-slate-500">KO 694 · Sub 722 · Dec 1,651</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 45.3%</div><div class="text-sm font-bold text-amber-300">Goes Decision 54.7%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Aleksandre Topuria Wins</div><div class="text-sm font-bold text-emerald-300">629/1,000 (62.9%)</div><div class="text-[10px] text-slate-500">KO 170 · Sub 97 · Dec 362</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Santiago Luna Wins</div><div class="text-sm font-bold text-rose-300">371/1,000 (37.1%)</div><div class="text-[10px] text-slate-500">KO 91 · Sub 91 · Dec 189</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 28.7% | U2.5: 39.5%</div><div class="text-sm font-bold text-amber-300">Dec: 55.1% (R1:209 · R2:138 · R3:102)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">50%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -685,7 +685,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-7', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-7 space-y-4" id="bout-7-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-7', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-7 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-7', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-7 space-y-4" id="bout-7-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Pure heavyweight coin-flip violence. Both men absorb &gt;4.10 sig. strikes/min with &lt;49% defense, and 89% of our 100 Monte Carlo runs end Inside the Distance. Side is volatile, so target Under 1.5 Rounds.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -730,13 +730,13 @@
 </div>
 </div></div><div class="bout-panel-bout-7 hidden" id="bout-7-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Shamil Gaziev 61.4% | Tallison Teixeira 38.6% | 10k Sim ITD 88.2%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Shamil Gaziev 44.9%/55.1% | Blended Posterior: 57.5%/42.5% | Live Sim ITD: 81.9%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Shamil Gaziev Wins</div><div class="text-sm font-bold text-emerald-300">6,115/10,000 (61.1%)</div><div class="text-[10px] text-slate-500">KO 4,117 · Sub 1,259 · Dec 739</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Tallison Teixeira Wins</div><div class="text-sm font-bold text-rose-300">3,885/10,000 (38.9%)</div><div class="text-[10px] text-slate-500">KO 3,018 · Sub 429 · Dec 438</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 88.2%</div><div class="text-sm font-bold text-amber-300">Goes Decision 11.8%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Shamil Gaziev Wins</div><div class="text-sm font-bold text-emerald-300">546/1,000 (54.6%)</div><div class="text-[10px] text-slate-500">KO 340 · Sub 111 · Dec 95</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Tallison Teixeira Wins</div><div class="text-sm font-bold text-rose-300">454/1,000 (45.4%)</div><div class="text-[10px] text-slate-500">KO 312 · Sub 56 · Dec 86</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 59.2% | U2.5: 75.8%</div><div class="text-sm font-bold text-amber-300">Dec: 18.1% (R1:465 · R2:232 · R3:122)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">11%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -778,7 +778,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-8', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-8 space-y-4" id="bout-8-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-8', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-8 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-8', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-8 space-y-4" id="bout-8-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Rematch from Dec 2022 (Albazi won via R3 KO). Costa has surged with 3 straight finishes while Albazi has dropped two straight decisions. Market and model align closely (~55% Costa), leaving no ML edge at -150/+110.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -823,13 +823,13 @@
 </div>
 </div></div><div class="bout-panel-bout-8 hidden" id="bout-8-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Alessandro Costa 50.8% | Amir Albazi 49.2% | 10k Sim ITD 49.1%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Alessandro Costa 47.0%/53.0% | Blended Posterior: 48.7%/51.3% | Live Sim ITD: 44.4%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Alessandro Costa Wins</div><div class="text-sm font-bold text-emerald-300">5,041/10,000 (50.4%)</div><div class="text-[10px] text-slate-500">KO 1,268 · Sub 1,226 · Dec 2,547</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Amir Albazi Wins</div><div class="text-sm font-bold text-rose-300">4,959/10,000 (49.6%)</div><div class="text-[10px] text-slate-500">KO 840 · Sub 1,579 · Dec 2,540</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 49.1%</div><div class="text-sm font-bold text-amber-300">Goes Decision 50.9%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Alessandro Costa Wins</div><div class="text-sm font-bold text-emerald-300">504/1,000 (50.4%)</div><div class="text-[10px] text-slate-500">KO 116 · Sub 111 · Dec 277</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Amir Albazi Wins</div><div class="text-sm font-bold text-rose-300">496/1,000 (49.6%)</div><div class="text-[10px] text-slate-500">KO 57 · Sub 160 · Dec 279</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 26.3% | U2.5: 39.3%</div><div class="text-sm font-bold text-amber-300">Dec: 55.6% (R1:194 · R2:146 · R3:104)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">49%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -871,7 +871,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-9', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-9 space-y-4" id="bout-9-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-9', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-9 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-9', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-9 space-y-4" id="bout-9-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Weigh-In Alert: Abdullayev missed weight at 172 lbs (forfeits 20% purse to Matthews, 170 lbs); bout proceeds as scheduled. Matthews steamed to -275 on Betway (exceeds -250 cap). Matthews' 60% striking defense (vs 51%) and 20-fight UFC experience edge out Abdullayev's regional finishing rate.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -916,13 +916,13 @@
 </div>
 </div></div><div class="bout-panel-bout-9 hidden" id="bout-9-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Jake Matthews 72.5% | Tahir Abdullayev 27.5% | 10k Sim ITD 51.8%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Jake Matthews 63.7%/36.3% | Blended Posterior: 68.4%/31.6% | Live Sim ITD: 50.5%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jake Matthews Wins</div><div class="text-sm font-bold text-emerald-300">7,232/10,000 (72.3%)</div><div class="text-[10px] text-slate-500">KO 1,644 · Sub 2,156 · Dec 3,432</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Tahir Abdullayev Wins</div><div class="text-sm font-bold text-rose-300">2,768/10,000 (27.7%)</div><div class="text-[10px] text-slate-500">KO 911 · Sub 468 · Dec 1,389</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 51.8%</div><div class="text-sm font-bold text-amber-300">Goes Decision 48.2%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Jake Matthews Wins</div><div class="text-sm font-bold text-emerald-300">657/1,000 (65.7%)</div><div class="text-[10px] text-slate-500">KO 140 · Sub 177 · Dec 340</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Tahir Abdullayev Wins</div><div class="text-sm font-bold text-rose-300">343/1,000 (34.3%)</div><div class="text-[10px] text-slate-500">KO 130 · Sub 58 · Dec 155</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 33.2% | U2.5: 44.2%</div><div class="text-sm font-bold text-amber-300">Dec: 49.5% (R1:248 · R2:149 · R3:108)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">54%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -964,7 +964,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-10', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-10 space-y-4" id="bout-10-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-10', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-10 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-10', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-10 space-y-4" id="bout-10-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Mar Fan is 7 years younger (26 vs 33), holds a 5-inch reach edge (75" vs 70"), and faces a Motta who absorbs 5.28 sig. strikes/min off a 17-month layoff. Slight edge on Mar Fan if Betway hangs 1.67+.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -1009,13 +1009,13 @@
 </div>
 </div></div><div class="bout-panel-bout-10 hidden" id="bout-10-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Dom Mar Fan 63.9% | Nikolas Motta 36.1% | 10k Sim ITD 58.2%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Dom Mar Fan 53.4%/46.6% | Blended Posterior: 58.3%/41.7% | Live Sim ITD: 54.8%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Dom Mar Fan Wins</div><div class="text-sm font-bold text-emerald-300">6,413/10,000 (64.1%)</div><div class="text-[10px] text-slate-500">KO 2,472 · Sub 1,267 · Dec 2,674</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Nikolas Motta Wins</div><div class="text-sm font-bold text-rose-300">3,587/10,000 (35.9%)</div><div class="text-[10px] text-slate-500">KO 2,084 · Sub 0 · Dec 1,503</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 58.2%</div><div class="text-sm font-bold text-amber-300">Goes Decision 41.8%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Dom Mar Fan Wins</div><div class="text-sm font-bold text-emerald-300">570/1,000 (57.0%)</div><div class="text-[10px] text-slate-500">KO 189 · Sub 121 · Dec 260</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Nikolas Motta Wins</div><div class="text-sm font-bold text-rose-300">430/1,000 (43.0%)</div><div class="text-[10px] text-slate-500">KO 238 · Sub 0 · Dec 192</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 35.9% | U2.5: 49.0%</div><div class="text-sm font-bold text-amber-300">Dec: 45.2% (R1:283 · R2:148 · R3:117)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">42%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -1057,7 +1057,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-11', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-11 space-y-4" id="bout-11-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-11', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-11 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-11', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-11 space-y-4" id="bout-11-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Nurgozhay lands 61% of his significant strikes (5.19 SLpM) with 59% defense against a debuting Lorenz who was KO'd in 30 seconds in his first DWCS appearance before scoring a 30-second KO in his second. -265 violates our -250 cap.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -1102,13 +1102,13 @@
 </div>
 </div></div><div class="bout-panel-bout-11 hidden" id="bout-11-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: Diyar Nurgozhay 72.5% | Alik Lorenz 27.5% | 10k Sim ITD 78.5%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): Diyar Nurgozhay 63.7%/36.3% | Blended Posterior: 67.9%/32.1% | Live Sim ITD: 73.8%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Diyar Nurgozhay Wins</div><div class="text-sm font-bold text-emerald-300">7,255/10,000 (72.5%)</div><div class="text-[10px] text-slate-500">KO 4,428 · Sub 1,258 · Dec 1,569</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Alik Lorenz Wins</div><div class="text-sm font-bold text-rose-300">2,745/10,000 (27.4%)</div><div class="text-[10px] text-slate-500">KO 1,831 · Sub 330 · Dec 584</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 78.5%</div><div class="text-sm font-bold text-amber-300">Goes Decision 21.5%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Diyar Nurgozhay Wins</div><div class="text-sm font-bold text-emerald-300">647/1,000 (64.7%)</div><div class="text-[10px] text-slate-500">KO 360 · Sub 99 · Dec 188</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Alik Lorenz Wins</div><div class="text-sm font-bold text-rose-300">353/1,000 (35.3%)</div><div class="text-[10px] text-slate-500">KO 233 · Sub 46 · Dec 74</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 51.5% | U2.5: 68.1%</div><div class="text-sm font-bold text-amber-300">Dec: 26.2% (R1:426 · R2:192 · R3:120)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">28%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -1150,7 +1150,7 @@
 </div>
 </div>
 </div>
-<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-12', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'sim', this)">10k Sim &amp; 10 Scenarios</button></div><div class="bout-panel-bout-12 space-y-4" id="bout-12-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+<div class="flex flex-wrap gap-1.5 mb-4 pb-3 border-b border-slate-800/80"><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-sky-500 text-white" onclick="switchBoutTab('bout-12', 'overview', this)">Overview &amp; +EV</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'tape', this)">Tale of the Tape &amp; LoC</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'last5', this)">Last 5 Fights</button><button class="bout-tab-btn-bout-12 px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-800/90 text-slate-300 hover:bg-slate-700" onclick="switchBoutTab('bout-12', 'sim', this)">1,000-Fight Sim &amp; Scenarios</button></div><div class="bout-panel-bout-12 space-y-4" id="bout-12-tab-overview"><div class="mb-5 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">5. Tactical Matchup Analysis</h4>
 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Late-notice lightweight debuts added Nov 19. Mitchell brings PFL 3-round grappling durability (only 3 losses in 14 pro bouts), while Yousaf brings explosive Round 1 knockout momentum (3 straight R1 KOs). UFCStats metrics are 0.00/N/A for both newcomers.</p>
 </div><div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
@@ -1195,13 +1195,13 @@
 </div>
 </div></div><div class="bout-panel-bout-12 hidden" id="bout-12-tab-sim"><div class="mb-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
 <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. 10,000-Run Monte Carlo Simulation &amp; 10 Tactical Scenarios</h4>
-<span class="text-xs font-mono text-slate-300">Posterior: John Mitchell 58.2% | Shoaib Yousaf 41.8% | 10k Sim ITD 45.3%</span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400">6. Engine v2: 1,000-Fight Round-by-Round Sim &amp; 10 Tactical Scenarios</h4>
+<span class="text-xs font-mono text-slate-300">Pure Model (0% Mkt): John Mitchell 54.8%/45.2% | Blended Posterior: 56.5%/43.5% | Live Sim ITD: 48.0%</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-center">
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">John Mitchell Wins</div><div class="text-sm font-bold text-emerald-300">5,810/10,000 (58.1%)</div><div class="text-[10px] text-slate-500">KO 1,300 · Sub 1,313 · Dec 3,197</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Shoaib Yousaf Wins</div><div class="text-sm font-bold text-rose-300">4,190/10,000 (41.9%)</div><div class="text-[10px] text-slate-500">KO 1,688 · Sub 232 · Dec 2,270</div></div>
-<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Inside Distance 45.3%</div><div class="text-sm font-bold text-amber-300">Goes Decision 54.7%</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">John Mitchell Wins</div><div class="text-sm font-bold text-emerald-300">580/1,000 (58.0%)</div><div class="text-[10px] text-slate-500">KO 136 · Sub 143 · Dec 301</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Shoaib Yousaf Wins</div><div class="text-sm font-bold text-rose-300">420/1,000 (42.0%)</div><div class="text-[10px] text-slate-500">KO 172 · Sub 29 · Dec 219</div></div>
+<div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">U1.5: 30.3% | U2.5: 43.1%</div><div class="text-sm font-bold text-amber-300">Dec: 52.0% (R1:217 · R2:158 · R3:105)</div></div>
 <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-400">Goes Decision</div><div class="text-sm font-bold text-sky-300">44%</div></div>
 </div>
 <p class="text-[11px] text-slate-400 italic mb-2">Analytical simulation scenarios (not guaranteed outcomes):</p>
@@ -1441,7 +1441,7 @@
 <div class="text-slate-400">1–1: Costa won; Bilal Hasan lost a tight split decision to Luis Gurule.</div>
 </div>
 </div>
-</section>
+<div class="mt-4 p-3.5 rounded-xl bg-sky-950/40 border border-sky-500/30 text-xs text-sky-200">Engine v2 Out-of-Sample Backtest (UFC 334, 0% Market Odds): 10–2–1 (83.3% decided) | Brier Score 0.2057 (vs. v1 Baseline 9–3–1 / 75.0%, Brier 0.2167). Bayesian n/(n+4) smoothing caught both low-sample hype upsets (Bilal Hasan &amp; Samuel Sanches).</div></section>
 <!-- UFC 334 Graded Event -->
 <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
 <div class="p-4 sm:p-5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
@@ -6293,8 +6293,8 @@
 <p>Every fighter is evaluated using verified <a class="text-sky-400 underline" href="http://ufcstats.com" target="_blank">UFCStats</a> metrics (SLpM, Striking Defense, SApM, Takedown Avg/Defense, Submission Avg, Knockdown rate) alongside age and physical reach. Raw win percentages are discounted or upgraded using an explicit <strong>A+ to F Level of Competition</strong> grade, with an automatic sample-size penalty applied to prospects with fewer than 3 UFC bouts stepping up against ranked veterans.</p>
 </section>
 <section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-<h2 class="text-base font-extrabold text-white mb-2">3. 10,000-Iteration Monte Carlo Simulations</h2>
-<p>Each matchup is simulated <strong>10,000 times</strong> in Python using the calibrated posterior win probability, finish-rate priors, and historical KO/Sub/Decision method shares. Running 10,000 iterations keeps simulation sampling variance under ±0.5%, ensuring simulated win rates reconcile directly with model posteriors. Each bout also maps <strong>10 distinct tactical scenarios</strong> to highlight how different fight scripts can cash or bust.</p>
+<h2 class="text-base font-extrabold text-white mb-2">3. Engine v2: 1,000-Fight Round-by-Round Simulator &amp; Bayesian Smoothing</h2>
+<p>Every bout runs 1,000 live, unseeded round-by-round iterations (Rounds 1–3 or 1–5) modeling Round 1 burst KO variance, cardio decay for fighters over 32, and 10–9 scoring. Raw UFCStats are smoothed toward division priors via n/(n+4) shrinkage to prevent overfitting 0–2 fight UFC newcomers, and LoC grades map cleanly (A+ = +1.25 down to C = -0.85).</p>
 </section>
 <section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
 <h2 class="text-base font-extrabold text-white mb-2">4. Unit Sizing, Juice Caps &amp; High-Variance Mode</h2>
