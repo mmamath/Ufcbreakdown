@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Engine v5 Methodology | MMA Math Predictions</title>
+  <meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." name="description"/>
+  <meta content="Engine v5 Methodology | MMA Math Predictions" property="og:title"/>
+  <meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." property="og:description"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+<div class="bg-sky-950/70 border-b border-sky-500/30 text-[11px] text-sky-200 px-4 py-1.5 text-center">
+  <span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
+  <span id="riyadh-countdown" class="font-mono font-bold text-white">Loading countdown...</span> ·
+  <a href="next-card.html" class="underline text-amber-300 font-semibold ml-1">View 14-Bout Forecast →</a>
+</div>
+<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
+      <div>
+        <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
+        <div class="text-[10px] text-slate-400 font-mono">ROAD TO 100: 18–6–1 (75.0%)</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-1.5">
+      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Home</a><a href="next-card.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Next Card: Riyadh</a><a href="tools.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Quant Tools</a><a href="track-record.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Track Record</a><a href="archive.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Fight Archive</a><a href="methodology.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap">Engine v5</a><a href="vip.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap">VIP Access</a>
+    </nav>
+    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200">
+      Menu ☰
+    </button>
+  </div>
+  <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5">
+    <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Home</a><a href="next-card.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Next Card: Riyadh</a><a href="tools.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Quant Tools</a><a href="track-record.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Track Record</a><a href="archive.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Fight Archive</a><a href="methodology.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white">Engine v5</a><a href="vip.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">VIP Access</a>
+  </div>
+</header>
+<div class="page-view" id="page-methodology">
+<header class="bg-slate-900 border-b border-slate-800 py-6 px-4">
+<div class="max-w-4xl mx-auto">
+<div class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Engine v2 • Reproducible &amp; Auditable Architecture</div>
+<h1 class="text-2xl sm:text-3xl font-extrabold text-white">How the UFC ANALYSIS Engine v2 Works</h1>
+<p class="text-sm text-slate-400 mt-1">Pure 0%-market fighter evaluation, Bayesian sample-size smoothing, Empirical Bayes market shrinkage, and live 1,000-fight round-by-round simulations.</p>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-4 mt-6 space-y-5 text-sm text-slate-300 leading-relaxed"><section class="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-900 border border-sky-500/40 rounded-2xl p-5 space-y-2" id="v2-to-v3-upgrade">
+<div class="text-[10px] font-bold uppercase tracking-widest text-sky-300">Model Changelog • Nov 21, 2026</div>
+<h2 class="text-base font-extrabold text-white">Upgrade from Engine v2 to Engine v3 (Directional Finish Rates)</h2>
+<p class="text-xs text-slate-300"><strong>What v2 got wrong:</strong> Engine v2 used a single shared fight finish-rate parameter (<code>base_finish</code>) and career-long KO/Sub shares. In bouts like Hooker vs. Ortega, Hooker's recent stoppage <em>losses</em> inflated the fight's ITD rate even though Hooker hadn't finished an opponent since November 2022 and Ortega hadn't been cleanly finished since 2018.</p>
+<p class="text-xs text-slate-300"><strong>How v3 fixes it:</strong> Engine v3 splits finishing into two directional inputs per fighter—<strong>Recent Offensive Finish Rate</strong> and <strong>Recent Defensive Stoppage Vulnerability</strong>—weighted over recent 3-year form. That change correctly pushed Hooker vs. Ortega, Sterling vs. Vallejos, and Horiguchi vs. Almabayev toward Unanimous Decisions (3-for-3 at UFC Doha) while preserving early-finish upside for genuine finishers like Stirling and Nurgozhay.</p>
+</section>
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-x-auto">
+<h2 class="text-base font-extrabold text-white mb-3">Engine v2 Architecture Summary</h2>
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+<th class="py-2 px-3">Component</th>
+<th class="py-2 px-3">How It Works &amp; What Is Displayed</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800">
+<tr><td class="py-2.5 px-3 font-bold text-white">1. Pure Statistical Model (0% Market)</td><td class="py-2.5 px-3">Independent logistic probability using smoothed UFCStats striking/grappling differentials, non-linear age decline (&gt;33), and LoC ratings — zero betting odds used.</td></tr>
+<tr><td class="py-2.5 px-3 font-bold text-white">2. Market Comparison</td><td class="py-2.5 px-3">Power-devigged Kalshi/Polymarket exchange prices and Betway/BestFightOdds lines displayed separately as an external benchmark.</td></tr>
+<tr><td class="py-2.5 px-3 font-bold text-white">3. Blended Posterior Model</td><td class="py-2.5 px-3">Clearly labeled Empirical Bayes blend: <strong>35% Pure Stat/LoC Model + 50% Sharp Exchange Prior + 15% Sportsbook Fair Prior</strong> to prevent small-sample overfitting when pricing bets.</td></tr>
+<tr><td class="py-2.5 px-3 font-bold text-white">4. Sample-Size Adjustment</td><td class="py-2.5 px-3">Every raw UFCStat is smoothed toward division averages via <code>n / (n + 4)</code> based on each fighter's UFC bout count (e.g., 0–2 UFC fights shrink heavily toward weight-class priors).</td></tr>
+<tr><td class="py-2.5 px-3 font-bold text-white">5. Round-by-Round Simulator</td><td class="py-2.5 px-3">Runs <strong>1,000 live, unseeded round-by-round simulations</strong> per bout (Rounds 1–3 or 1–5) with R1 burst finish variance, cardio decay (&gt;32), and 10–9 scoring—reporting exact <code>X/1,000</code> counts, KO/Sub/Dec, and <code>R1–R5</code> totals.</td></tr>
+<tr><td class="py-2.5 px-3 font-bold text-white">6. Out-of-Sample Validation</td><td class="py-2.5 px-3">Evaluated on Brier Score &amp; accuracy: on UFC 334 (Nov 14, 2026), Engine v2 (0% market) scored <strong>10–2–1 (83.3%)</strong> with a <strong>0.2057 Brier Score</strong> (vs. v1's 9–3–1 / 0.2167).</td></tr>
+</tbody>
+</table>
+</section>
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+<h2 class="text-base font-extrabold text-white mb-2">Level of Competition (LoC) Scoring</h2>
+<p class="text-xs text-slate-300">Official <a class="text-sky-400 underline" href="http://ufcstats.com" target="_blank">UFCStats</a> metrics (retrieved Nov 20, 2026) are paired with proprietary LoC grades mapped directly into the logistic model: <strong>A+ (+1.25)</strong>, <strong>A (+1.00)</strong>, <strong>A- (+0.75)</strong>, <strong>B+ (+0.45)</strong>, <strong>B (+0.15)</strong>, <strong>B- (-0.15)</strong>, <strong>C+ (-0.50)</strong>, <strong>C (-0.85)</strong>.</p>
+</section>
+<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+<h2 class="text-base font-extrabold text-white mb-2">Unit Sizing &amp; High-Variance Risk Rules</h2>
+<ul class="list-disc pl-5 space-y-1 text-xs text-slate-300">
+<li><strong>100u Bankroll Standard:</strong> All stakes are published in units (<code>1u = 1%</code> of bankroll).</li>
+<li><strong>Conservative Half-Kelly (0.50x):</strong> Requires <code>+2.0%</code> post-shrinkage edge and <code>+3.0%</code> EV, capped at <code>13.5u</code> per bet, <code>17.0u</code> per fight, and a <code>-250</code> (1.40) favorite juice ceiling.</li>
+<li><strong>High-Variance Plays:</strong> Correlated parlays and round snipers are isolated at the bottom of the card with explicit Risk-of-Ruin disclosures (~78% bust risk).</li>
+</ul>
+</section>
+</main>
+</div>
+<footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div>
+      <div class="font-black text-white text-sm">MMA Math Predictions</div>
+      <p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
+      <div class="mt-3 font-mono text-[11px] text-emerald-400">Challenge Progress: 25 / 100 Fights Graded</div>
+    </div>
+    <div>
+      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
+      <ul class="space-y-1.5">
+        <li><a href="index.html" class="hover:text-white">Home Overview</a></li>
+        <li><a href="next-card.html" class="hover:text-white">Next Card: UFC Riyadh</a></li>
+        <li><a href="tools.html" class="hover:text-white">Kelly &amp; Parlay Tools</a></li>
+        <li><a href="vip.html" class="hover:text-amber-300 text-amber-300/90">VIP Early Access</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
+      <ul class="space-y-1.5">
+        <li><a href="track-record.html" class="hover:text-white">Road to 100 Ledger (18–6–1)</a></li>
+        <li><a href="archive.html" class="hover:text-white">Past Fight Archive (25 Bouts)</a></li>
+        <li><a href="methodology.html" class="hover:text-white">Engine v5 Methodology</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
+      <ul class="space-y-1.5">
+        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-sky-300">UFC.com Event Hub ↗</a></li>
+        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-sky-300">UFCStats Official Data ↗</a></li>
+        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-sky-300">BestFightOdds Lines ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
+    All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
+  </div>
+</footer>
+<script>window.RIYADH_DATA = [{"id": 1, "card": "Main", "weight": "Middleweight", "matchup": "Israel Adesanya vs. Shara Magomedov", "pick": "Israel Adesanya", "prob": 60.5, "pure_prob": 63.0, "retail_amer": -184, "sharp_amer": -138, "max_amer": -146, "retail_ev": -6.7, "sharp_ev": 4.3, "itd_pct": 51.4, "dec_pct": 48.6, "u25_pct": 31.1, "prop_lean": "Goes Dec 49%", "status": "POLY_EV", "status_label": "+EV ON POLYMARKET (+4.3%)", "script": "Adesanya range/kicks control at distance (60.5%) vs. Magomedov blitz & R1-R2 power."}, {"id": 2, "card": "Main", "weight": "Welterweight", "matchup": "Ian Machado Garry vs. Yaroslav Amosov", "pick": "Ian Machado Garry", "prob": 63.9, "pure_prob": 62.7, "retail_amer": -192, "sharp_amer": -186, "max_amer": -168, "retail_ev": -2.8, "sharp_ev": -1.7, "itd_pct": 43.4, "dec_pct": 56.6, "u25_pct": 27.0, "prop_lean": "Goes Dec 57%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Garry footwork & volume outpoint Amosov over 25 min; watch Amosov clinch/takedowns."}, {"id": 3, "card": "Main", "weight": "Heavyweight", "matchup": "Mario Pinto vs. Serghei Spivac", "pick": "Mario Pinto", "prob": 67.8, "pure_prob": 58.2, "retail_amer": -360, "sharp_amer": -317, "max_amer": -199, "retail_ev": -13.3, "sharp_ev": -10.8, "itd_pct": 68.2, "dec_pct": 31.8, "u25_pct": 61.5, "prop_lean": "ITD 68% / U2.5 62%", "status": "AVOID_JUICE", "status_label": "AVOID (-360 Juice Cap)", "script": "Pinto heavy hands & youth vs. Spivac takedown-to-GNP; high ITD finish volatility."}, {"id": 4, "card": "Main", "weight": "Welterweight", "matchup": "Islam Dulatov vs. Levan Chokheli", "pick": "Islam Dulatov", "prob": 62.3, "pure_prob": 58.9, "retail_amer": -245, "sharp_amer": -170, "max_amer": -157, "retail_ev": -12.3, "sharp_ev": -1.1, "itd_pct": 57.2, "dec_pct": 42.8, "u25_pct": 50.7, "prop_lean": "ITD 57% / U2.5 51%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Dulatov size & length edge vs. Chokheli pace; live KO/TKO threat in R1-R2."}, {"id": 5, "card": "Main", "weight": "Lightweight", "matchup": "Akbar Abdullaev vs. Mairon Santos", "pick": "Akbar Abdullaev", "prob": 66.0, "pure_prob": 52.9, "retail_amer": -330, "sharp_amer": -270, "max_amer": -183, "retail_ev": -14.0, "sharp_ev": -9.6, "itd_pct": 57.9, "dec_pct": 42.1, "u25_pct": 52.4, "prop_lean": "ITD 58% / U2.5 52%", "status": "AVOID_JUICE", "status_label": "AVOID (-330 Juice Cap)", "script": "Abdullaev undefeated pressure & grappling vs. Santos counter-striking."}, {"id": 6, "card": "Main", "weight": "Light Heavyweight", "matchup": "Magomed Tuchalov vs. Ion Cutelaba", "pick": "Magomed Tuchalov", "prob": 60.5, "pure_prob": 58.0, "retail_amer": -188, "sharp_amer": -213, "max_amer": -146, "retail_ev": -7.4, "sharp_ev": -11.1, "itd_pct": 69.2, "dec_pct": 30.8, "u25_pct": 63.2, "prop_lean": "ITD 69% / U2.5 63%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Tuchalov debut power vs. Cutelaba southpaw wrestling & chaos; high R1 finish rate."}, {"id": 7, "card": "Prelim", "weight": "Featherweight", "matchup": "Luke Riley vs. Gabriel Santos", "pick": "Luke Riley", "prob": 59.0, "pure_prob": 60.8, "retail_amer": -150, "sharp_amer": -150, "max_amer": -137, "retail_ev": -1.7, "sharp_ev": -1.7, "itd_pct": 47.9, "dec_pct": 52.1, "u25_pct": 42.0, "prop_lean": "Goes Dec 52%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Riley 6.67 SLpM striking pace vs. Santos 4.34 TD/15m grappling pressure."}, {"id": 8, "card": "Prelim", "weight": "Flyweight", "matchup": "Jafel Filho vs. Bruno Silva", "pick": "Jafel Filho", "prob": 61.1, "pure_prob": 64.6, "retail_amer": -162, "sharp_amer": -144, "max_amer": -150, "retail_ev": -1.1, "sharp_ev": 3.6, "itd_pct": 49.6, "dec_pct": 50.4, "u25_pct": 43.9, "prop_lean": "Goes Dec 50%", "status": "POLY_EV", "status_label": "+EV ON POLYMARKET (+3.6%)", "script": "Filho submission/control edge vs. Silva veteran flyweight durability."}, {"id": 9, "card": "Prelim", "weight": "Light Heavyweight", "matchup": "Ivan Gnizditskiy vs. Uran Satybaldiev", "pick": "Ivan Gnizditskiy", "prob": 54.9, "pure_prob": 56.8, "retail_amer": -150, "sharp_amer": -117, "max_amer": -117, "retail_ev": -8.5, "sharp_ev": 1.8, "itd_pct": 66.1, "dec_pct": 33.9, "u25_pct": 60.4, "prop_lean": "ITD 66% / U2.5 60%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Gnizditskiy debut striking power vs. Satybaldiev 79-inch reach & LHW size."}, {"id": 10, "card": "Prelim", "weight": "Middleweight", "matchup": "Marco Tulio vs. JunYong Park", "pick": "Marco Tulio", "prob": 63.8, "pure_prob": 62.2, "retail_amer": -188, "sharp_amer": -194, "max_amer": -167, "retail_ev": -2.3, "sharp_ev": -3.4, "itd_pct": 50.1, "dec_pct": 49.9, "u25_pct": 45.4, "prop_lean": "Goes Dec 50%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Tulio 6.02 SLpM volume vs. Park veteran durability & clinch wrestling."}, {"id": 11, "card": "Prelim", "weight": "Bantamweight", "matchup": "Pavel Andrusca vs. Mahammadali Osmanli", "pick": "Pavel Andrusca", "prob": 57.5, "pure_prob": 57.8, "retail_amer": -146, "sharp_amer": -138, "max_amer": -129, "retail_ev": -3.2, "sharp_ev": -0.9, "itd_pct": 47.1, "dec_pct": 52.9, "u25_pct": 41.3, "prop_lean": "Goes Dec 53%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Andrusca undefeated pressure vs. Osmanli tight bantamweight boxing."}, {"id": 12, "card": "Prelim", "weight": "Middleweight", "matchup": "Matthieu Duclos vs. Modestino Rodrigues", "pick": "Matthieu Duclos", "prob": 54.4, "pure_prob": 53.7, "retail_amer": -162, "sharp_amer": -122, "max_amer": -114, "retail_ev": -12.1, "sharp_ev": -1.1, "itd_pct": 54.4, "dec_pct": 45.6, "u25_pct": 48.1, "prop_lean": "Goes Dec 46%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Close middleweight coin-flip; Duclos slight striking edge vs. Rodrigues."}, {"id": 13, "card": "Prelim", "weight": "Bantamweight", "matchup": "Abdul Hussein vs. Hecher Sosa", "pick": "Abdul Hussein", "prob": 60.1, "pure_prob": 56.9, "retail_amer": -178, "sharp_amer": -163, "max_amer": -143, "retail_ev": -6.2, "sharp_ev": -3.1, "itd_pct": 48.2, "dec_pct": 51.8, "u25_pct": 42.8, "prop_lean": "Goes Dec 52%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Hussein wrestling control vs. Sosa 70-inch reach & bantamweight pace."}, {"id": 14, "card": "Prelim", "weight": "Lightweight", "matchup": "Mateusz Rebecki vs. Elves Brener", "pick": "Mateusz Rebecki", "prob": 55.8, "pure_prob": 51.1, "retail_amer": -160, "sharp_amer": -160, "max_amer": -121, "retail_ev": -9.3, "sharp_ev": -9.3, "itd_pct": 55.5, "dec_pct": 44.5, "u25_pct": 48.6, "prop_lean": "Goes Dec 44%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Rebecki southpaw wrestling (3.05 TD/15m) vs. Brener high-output brawl."}];</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
