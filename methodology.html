@@ -8,7 +8,10 @@
   <meta content="Engine v5 Methodology | MMA Math Predictions" property="og:title"/>
   <meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." property="og:description"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="assets/styles.css" rel="stylesheet"/>
+  <style>.hidden { display: none !important; } 
+html { scroll-behavior: smooth; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
 
@@ -122,6 +125,339 @@
   </div>
 </footer>
 <script>window.RIYADH_DATA = [{"id": 1, "card": "Main", "weight": "Middleweight", "matchup": "Israel Adesanya vs. Shara Magomedov", "pick": "Israel Adesanya", "prob": 60.5, "pure_prob": 63.0, "retail_amer": -184, "sharp_amer": -138, "max_amer": -146, "retail_ev": -6.7, "sharp_ev": 4.3, "itd_pct": 51.4, "dec_pct": 48.6, "u25_pct": 31.1, "prop_lean": "Goes Dec 49%", "status": "POLY_EV", "status_label": "+EV ON POLYMARKET (+4.3%)", "script": "Adesanya range/kicks control at distance (60.5%) vs. Magomedov blitz & R1-R2 power."}, {"id": 2, "card": "Main", "weight": "Welterweight", "matchup": "Ian Machado Garry vs. Yaroslav Amosov", "pick": "Ian Machado Garry", "prob": 63.9, "pure_prob": 62.7, "retail_amer": -192, "sharp_amer": -186, "max_amer": -168, "retail_ev": -2.8, "sharp_ev": -1.7, "itd_pct": 43.4, "dec_pct": 56.6, "u25_pct": 27.0, "prop_lean": "Goes Dec 57%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Garry footwork & volume outpoint Amosov over 25 min; watch Amosov clinch/takedowns."}, {"id": 3, "card": "Main", "weight": "Heavyweight", "matchup": "Mario Pinto vs. Serghei Spivac", "pick": "Mario Pinto", "prob": 67.8, "pure_prob": 58.2, "retail_amer": -360, "sharp_amer": -317, "max_amer": -199, "retail_ev": -13.3, "sharp_ev": -10.8, "itd_pct": 68.2, "dec_pct": 31.8, "u25_pct": 61.5, "prop_lean": "ITD 68% / U2.5 62%", "status": "AVOID_JUICE", "status_label": "AVOID (-360 Juice Cap)", "script": "Pinto heavy hands & youth vs. Spivac takedown-to-GNP; high ITD finish volatility."}, {"id": 4, "card": "Main", "weight": "Welterweight", "matchup": "Islam Dulatov vs. Levan Chokheli", "pick": "Islam Dulatov", "prob": 62.3, "pure_prob": 58.9, "retail_amer": -245, "sharp_amer": -170, "max_amer": -157, "retail_ev": -12.3, "sharp_ev": -1.1, "itd_pct": 57.2, "dec_pct": 42.8, "u25_pct": 50.7, "prop_lean": "ITD 57% / U2.5 51%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Dulatov size & length edge vs. Chokheli pace; live KO/TKO threat in R1-R2."}, {"id": 5, "card": "Main", "weight": "Lightweight", "matchup": "Akbar Abdullaev vs. Mairon Santos", "pick": "Akbar Abdullaev", "prob": 66.0, "pure_prob": 52.9, "retail_amer": -330, "sharp_amer": -270, "max_amer": -183, "retail_ev": -14.0, "sharp_ev": -9.6, "itd_pct": 57.9, "dec_pct": 42.1, "u25_pct": 52.4, "prop_lean": "ITD 58% / U2.5 52%", "status": "AVOID_JUICE", "status_label": "AVOID (-330 Juice Cap)", "script": "Abdullaev undefeated pressure & grappling vs. Santos counter-striking."}, {"id": 6, "card": "Main", "weight": "Light Heavyweight", "matchup": "Magomed Tuchalov vs. Ion Cutelaba", "pick": "Magomed Tuchalov", "prob": 60.5, "pure_prob": 58.0, "retail_amer": -188, "sharp_amer": -213, "max_amer": -146, "retail_ev": -7.4, "sharp_ev": -11.1, "itd_pct": 69.2, "dec_pct": 30.8, "u25_pct": 63.2, "prop_lean": "ITD 69% / U2.5 63%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Tuchalov debut power vs. Cutelaba southpaw wrestling & chaos; high R1 finish rate."}, {"id": 7, "card": "Prelim", "weight": "Featherweight", "matchup": "Luke Riley vs. Gabriel Santos", "pick": "Luke Riley", "prob": 59.0, "pure_prob": 60.8, "retail_amer": -150, "sharp_amer": -150, "max_amer": -137, "retail_ev": -1.7, "sharp_ev": -1.7, "itd_pct": 47.9, "dec_pct": 52.1, "u25_pct": 42.0, "prop_lean": "Goes Dec 52%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Riley 6.67 SLpM striking pace vs. Santos 4.34 TD/15m grappling pressure."}, {"id": 8, "card": "Prelim", "weight": "Flyweight", "matchup": "Jafel Filho vs. Bruno Silva", "pick": "Jafel Filho", "prob": 61.1, "pure_prob": 64.6, "retail_amer": -162, "sharp_amer": -144, "max_amer": -150, "retail_ev": -1.1, "sharp_ev": 3.6, "itd_pct": 49.6, "dec_pct": 50.4, "u25_pct": 43.9, "prop_lean": "Goes Dec 50%", "status": "POLY_EV", "status_label": "+EV ON POLYMARKET (+3.6%)", "script": "Filho submission/control edge vs. Silva veteran flyweight durability."}, {"id": 9, "card": "Prelim", "weight": "Light Heavyweight", "matchup": "Ivan Gnizditskiy vs. Uran Satybaldiev", "pick": "Ivan Gnizditskiy", "prob": 54.9, "pure_prob": 56.8, "retail_amer": -150, "sharp_amer": -117, "max_amer": -117, "retail_ev": -8.5, "sharp_ev": 1.8, "itd_pct": 66.1, "dec_pct": 33.9, "u25_pct": 60.4, "prop_lean": "ITD 66% / U2.5 60%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Gnizditskiy debut striking power vs. Satybaldiev 79-inch reach & LHW size."}, {"id": 10, "card": "Prelim", "weight": "Middleweight", "matchup": "Marco Tulio vs. JunYong Park", "pick": "Marco Tulio", "prob": 63.8, "pure_prob": 62.2, "retail_amer": -188, "sharp_amer": -194, "max_amer": -167, "retail_ev": -2.3, "sharp_ev": -3.4, "itd_pct": 50.1, "dec_pct": 49.9, "u25_pct": 45.4, "prop_lean": "Goes Dec 50%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Tulio 6.02 SLpM volume vs. Park veteran durability & clinch wrestling."}, {"id": 11, "card": "Prelim", "weight": "Bantamweight", "matchup": "Pavel Andrusca vs. Mahammadali Osmanli", "pick": "Pavel Andrusca", "prob": 57.5, "pure_prob": 57.8, "retail_amer": -146, "sharp_amer": -138, "max_amer": -129, "retail_ev": -3.2, "sharp_ev": -0.9, "itd_pct": 47.1, "dec_pct": 52.9, "u25_pct": 41.3, "prop_lean": "Goes Dec 53%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Andrusca undefeated pressure vs. Osmanli tight bantamweight boxing."}, {"id": 12, "card": "Prelim", "weight": "Middleweight", "matchup": "Matthieu Duclos vs. Modestino Rodrigues", "pick": "Matthieu Duclos", "prob": 54.4, "pure_prob": 53.7, "retail_amer": -162, "sharp_amer": -122, "max_amer": -114, "retail_ev": -12.1, "sharp_ev": -1.1, "itd_pct": 54.4, "dec_pct": 45.6, "u25_pct": 48.1, "prop_lean": "Goes Dec 46%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Close middleweight coin-flip; Duclos slight striking edge vs. Rodrigues."}, {"id": 13, "card": "Prelim", "weight": "Bantamweight", "matchup": "Abdul Hussein vs. Hecher Sosa", "pick": "Abdul Hussein", "prob": 60.1, "pure_prob": 56.9, "retail_amer": -178, "sharp_amer": -163, "max_amer": -143, "retail_ev": -6.2, "sharp_ev": -3.1, "itd_pct": 48.2, "dec_pct": 51.8, "u25_pct": 42.8, "prop_lean": "Goes Dec 52%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Hussein wrestling control vs. Sosa 70-inch reach & bantamweight pace."}, {"id": 14, "card": "Prelim", "weight": "Lightweight", "matchup": "Mateusz Rebecki vs. Elves Brener", "pick": "Mateusz Rebecki", "prob": 55.8, "pure_prob": 51.1, "retail_amer": -160, "sharp_amer": -160, "max_amer": -121, "retail_ev": -9.3, "sharp_ev": -9.3, "itd_pct": 55.5, "dec_pct": 44.5, "u25_pct": 48.6, "prop_lean": "Goes Dec 44%", "status": "PASS", "status_label": "PASS (Wait for Line)", "script": "Rebecki southpaw wrestling (3.05 TD/15m) vs. Brener high-output brawl."}];</script>
-<script src="assets/app.js"></script>
+<script>
+
+function toggleMobileNav() {
+  const m = document.getElementById("mobile-nav");
+  if (m) m.classList.toggle("hidden");
+}
+
+function updateCountdown() {
+  const el = document.getElementById("riyadh-countdown");
+  if (!el) return;
+  const target = new Date("2026-12-05T18:00:00Z").getTime();
+  const diff = target - Date.now();
+  if (diff <= 0) {
+    el.textContent = "LIVE / COMPLETED";
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  el.textContent = d + "d " + h + "h " + m + "m";
+}
+
+function amerToDecJS(amer) {
+  amer = Number(amer);
+  if (!amer || isNaN(amer)) return 1.0;
+  return amer > 0 ? 1 + amer / 100 : 1 + 100 / Math.abs(amer);
+}
+
+function decToAmerJS(dec) {
+  if (dec <= 1.01) return -10000;
+  if (dec >= 2.0) return Math.round((dec - 1) * 100);
+  return Math.round(-100 / (dec - 1));
+}
+
+function fmtAmer(a) {
+  return a > 0 ? "+" + a : String(a);
+}
+
+function initToolsPage() {
+  const data = window.RIYADH_DATA || [];
+  const sel = document.getElementById("kelly-bout-select");
+  if (sel && sel.options.length === 0) {
+    data.forEach(b => {
+      const opt = document.createElement("option");
+      opt.value = b.id;
+      opt.textContent = "#" + b.id + " [" + b.card + "] " + b.matchup + " — " + b.pick + " (" + b.prob + "%)";
+      sel.appendChild(opt);
+    });
+  }
+  const pList = document.getElementById("parlay-legs-list");
+  if (pList && pList.children.length === 0) {
+    data.forEach((b, idx) => {
+      const label = document.createElement("label");
+      label.className = "flex items-center gap-2 bg-slate-950/80 border border-slate-800 rounded-lg px-2.5 py-2 cursor-pointer hover:border-sky-500/50";
+      const checked = (idx === 0 || idx === 1) ? "checked" : "";
+      label.innerHTML = '<input type="checkbox" class="parlay-chk accent-sky-500" value="' + b.id + '" ' + checked + ' onchange="calcParlay()"/>' +
+        '<span class="text-slate-200 font-medium truncate">' + b.pick + '</span>' +
+        '<span class="ml-auto font-mono text-sky-300">' + b.prob + '%</span>';
+      pList.appendChild(label);
+    });
+  }
+  if (sel) {
+    const params = new URLSearchParams(window.location.search || "");
+    const bid = Number(params.get("bout"));
+    if (bid) loadBoutToCalc(bid);
+    else { calcKelly(); calcParlay(); }
+  }
+}
+
+function loadBoutSelect() {
+  const sel = document.getElementById("kelly-bout-select");
+  if (sel) loadBoutToCalc(Number(sel.value));
+}
+
+function loadBoutToCalc(id) {
+  const data = window.RIYADH_DATA || [];
+  const b = data.find(x => x.id === id);
+  if (!b) return;
+  const sel = document.getElementById("kelly-bout-select");
+  if (sel) sel.value = String(id);
+  const pEl = document.getElementById("kelly-prob");
+  const oEl = document.getElementById("kelly-odds");
+  if (pEl) pEl.value = b.prob;
+  if (oEl) oEl.value = b.sharp_amer;
+  calcKelly();
+}
+
+function calcKelly() {
+  const pEl = document.getElementById("kelly-prob");
+  const oEl = document.getElementById("kelly-odds");
+  if (!pEl || !oEl) return;
+  const pPct = parseFloat(pEl.value);
+  const amer = parseFloat(oEl.value);
+  const bank = parseFloat((document.getElementById("kelly-bankroll") || {}).value) || 100;
+  const frac = parseFloat((document.getElementById("kelly-frac") || {}).value) || 0.35;
+  if (isNaN(pPct) || isNaN(amer) || pPct <= 1 || pPct >= 99) return;
+
+  const p = pPct / 100.0;
+  const dec = amerToDecJS(amer);
+  const be = (1.0 / dec) * 100.0;
+  const fairAmer = decToAmerJS(1.0 / p);
+  const maxAmer = decToAmerJS(1.02 / p);
+  const ev = (p * dec - 1.0) * 100.0;
+  const bNet = dec - 1.0;
+  const rawKelly = bNet > 0 ? Math.max(0, (p * dec - 1.0) / bNet) : 0;
+  const cappedPct = (amer <= -250 || ev < 2.0) ? 0.0 : Math.min(0.05, rawKelly * frac);
+  const stakeU = bank * cappedPct;
+
+  document.getElementById("kelly-be").textContent = be.toFixed(1) + "%";
+  document.getElementById("kelly-fair").textContent = fmtAmer(fairAmer);
+  document.getElementById("kelly-max").textContent = fmtAmer(maxAmer);
+  const evEl = document.getElementById("kelly-ev");
+  evEl.textContent = (ev >= 0 ? "+" : "") + ev.toFixed(1) + "%";
+  evEl.className = "text-base font-black font-mono mt-0.5 " + (ev >= 2.0 ? "text-emerald-400" : (ev >= 0 ? "text-amber-300" : "text-rose-400"));
+  document.getElementById("kelly-stake").textContent = stakeU.toFixed(2) + "u (" + (cappedPct * 100).toFixed(1) + "% of bankroll)";
+  const badge = document.getElementById("kelly-badge");
+  if (amer <= -250) {
+    badge.textContent = "AVOID (JUICE CAP)";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+  } else if (ev >= 2.0) {
+    badge.textContent = "+EV BET";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+  } else {
+    badge.textContent = "PASS (LOW / -EV)";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30";
+  }
+}
+
+function clearParlay() {
+  document.querySelectorAll(".parlay-chk").forEach(c => { c.checked = false; });
+  calcParlay();
+}
+
+function calcParlay() {
+  const bookEl = document.getElementById("parlay-book-odds");
+  if (!bookEl) return;
+  const data = window.RIYADH_DATA || [];
+  const checks = Array.from(document.querySelectorAll(".parlay-chk:checked"));
+  const bookOdds = parseFloat(bookEl.value);
+  let combP = 1.0;
+  checks.forEach(c => {
+    const b = data.find(x => x.id === Number(c.value));
+    if (b) combP *= (b.prob / 100.0);
+  });
+  document.getElementById("parlay-count").textContent = String(checks.length);
+  const badge = document.getElementById("parlay-badge");
+  if (checks.length < 2 || isNaN(bookOdds)) {
+    document.getElementById("parlay-prob").textContent = checks.length === 1 ? (combP * 100).toFixed(1) + "%" : "0.0%";
+    document.getElementById("parlay-fair").textContent = "--";
+    document.getElementById("parlay-ev").textContent = "--";
+    badge.textContent = "SELECT 2+ LEGS";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700";
+    return;
+  }
+  const fairAmer = decToAmerJS(1.0 / combP);
+  const bookDec = amerToDecJS(bookOdds);
+  const ev = (combP * bookDec - 1.0) * 100.0;
+  document.getElementById("parlay-prob").textContent = (combP * 100).toFixed(1) + "%";
+  document.getElementById("parlay-fair").textContent = fmtAmer(fairAmer);
+  const evEl = document.getElementById("parlay-ev");
+  evEl.textContent = (ev >= 0 ? "+" : "") + ev.toFixed(1) + "%";
+  evEl.className = "text-base font-black font-mono mt-0.5 " + (ev >= 2.0 ? "text-emerald-400" : "text-rose-400");
+  if (ev >= 2.0) {
+    badge.textContent = "+EV PARLAY";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+  } else {
+    badge.textContent = "-EV TRAP PARLAY";
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+  }
+}
+
+function renderRiyadhRadar(filter) {
+  const tbody = document.getElementById("riyadh-radar-body");
+  if (!tbody) return;
+  const data = window.RIYADH_DATA || [];
+  tbody.innerHTML = "";
+  const list = data.filter(b => {
+    if (filter === "ALL") return true;
+    if (filter === "POLY_EV") return b.status === "POLY_EV";
+    return b.card === filter;
+  });
+  list.forEach(b => {
+    const tr = document.createElement("tr");
+    tr.className = "hover:bg-slate-800/40";
+    const badgeCls = b.status === "POLY_EV"
+      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+      : (b.status === "AVOID_JUICE" ? "bg-rose-500/20 text-rose-300 border-rose-500/40" : "bg-slate-800 text-slate-300 border-slate-700");
+    tr.innerHTML =
+      '<td class="py-3 px-3"><div class="font-bold text-white">' + b.matchup + '</div><div class="text-[11px] text-slate-400">' + b.card + ' · ' + b.weight + ' · ' + b.script + '</div></td>' +
+      '<td class="py-3 px-3 font-semibold text-sky-300">' + b.pick + ' <span class="font-mono text-slate-300">(' + b.prob + '% / ' + b.pure_prob + '% Pure)</span></td>' +
+      '<td class="py-3 px-3 font-mono text-slate-200">' + fmtAmer(b.sharp_amer) + ' / ' + fmtAmer(b.retail_amer) + '</td>' +
+      '<td class="py-3 px-3 font-mono font-bold text-amber-300">' + fmtAmer(b.max_amer) + '</td>' +
+      '<td class="py-3 px-3 text-slate-200">' + b.prop_lean + '</td>' +
+      '<td class="py-3 px-3"><span class="px-2 py-0.5 rounded border text-[11px] font-bold ' + badgeCls + '">' + b.status_label + '</span></td>' +
+      '<td class="py-3 px-3"><a href="tools.html?bout=' + b.id + '" class="inline-block px-2.5 py-1 rounded bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold border border-sky-500/30">Kelly Calc →</a></td>';
+    tbody.appendChild(tr);
+  });
+}
+
+function filterRiyadhRadar(filter) {
+  document.querySelectorAll(".radar-filter").forEach(btn => {
+    const active = btn.getAttribute("data-filter") === filter;
+    btn.className = active
+      ? "radar-filter px-3 py-1.5 rounded-lg bg-sky-500 text-white font-bold"
+      : "radar-filter px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-semibold hover:text-white";
+  });
+  renderRiyadhRadar(filter);
+}
+
+function switchArchiveEvent(ev) {
+  const d = document.getElementById("archive-doha");
+  const u = document.getElementById("archive-ufc334");
+  const bd = document.getElementById("arch-btn-doha");
+  const bu = document.getElementById("arch-btn-ufc334");
+  if (!d || !u) return;
+  const isDoha = ev === "doha";
+  d.classList.toggle("hidden", !isDoha);
+  u.classList.toggle("hidden", isDoha);
+  if (bd) bd.className = isDoha ? "px-4 py-2 rounded-lg text-xs font-bold bg-sky-500 text-white" : "px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300";
+  if (bu) bu.className = !isDoha ? "px-4 py-2 rounded-lg text-xs font-bold bg-sky-500 text-white" : "px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300";
+}
+
+function toggleBout(id) {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  const body = scope.querySelector("#body-" + id) || document.getElementById("body-" + id);
+  const chev = scope.querySelector("#chev-" + id) || document.getElementById("chev-" + id);
+  if (!body) return;
+  const isHidden = body.classList.toggle("hidden");
+  if (chev) chev.style.transform = isHidden ? "rotate(0deg)" : "rotate(180deg)";
+}
+
+function setAllOpen(open) {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  for (let i = 1; i <= 13; i++) {
+    const body = scope.querySelector("#body-" + i);
+    const chev = scope.querySelector("#chev-" + i);
+    if (body) body.classList.toggle("hidden", !open);
+    if (chev) chev.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
+  }
+}
+
+function jumpToBout(id) {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  const el = scope.querySelector("#bout-" + id);
+  const body = scope.querySelector("#body-" + id);
+  const chev = scope.querySelector("#chev-" + id);
+  if (body && body.classList.contains("hidden")) {
+    body.classList.remove("hidden");
+    if (chev) chev.style.transform = "rotate(180deg)";
+  }
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function scrollToPredictions() {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  const el = scope.querySelector("#prediction-table") || document.getElementById("prediction-table");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function filterBouts(cat, btn) {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  scope.querySelectorAll(".bout-card").forEach(card => {
+    const c = (card.getAttribute("data-cat") || "").toLowerCase();
+    const show = (cat === "all") || (c.indexOf(cat) !== -1);
+    card.classList.toggle("hidden", !show);
+  });
+}
+
+function switchBoutTab(boutId, tab) {
+  document.querySelectorAll('[id^="bout-' + boutId + '-tab-"]').forEach(p => p.classList.add("hidden"));
+  const t = document.getElementById("bout-" + boutId + "-tab-" + tab);
+  if (t) t.classList.remove("hidden");
+}
+
+function submitVipWaitlist(e) {
+  e.preventDefault();
+  const email = (document.getElementById("vip-email") || {}).value || "";
+  const msg = document.getElementById("vip-msg");
+  if (msg && email.includes("@")) {
+    msg.textContent = "Waitlist preview confirmed for " + email + " — Founding Member access opens after Fight #100.";
+    msg.classList.remove("hidden");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+  renderRiyadhRadar("ALL");
+  initToolsPage();
+  if (window.location.hash === "#ufc334") switchArchiveEvent("ufc334");
+});
+
+
+function scrollToBout(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.style.display = "block";
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+function loadYouTube(slotId, vid) {
+      if (!window.location.hostname.includes("github.io")) {
+        return true;
+      }
+      if (event) event.preventDefault();
+      const slot = document.getElementById(slotId);
+      if (!slot) return false;
+      slot.innerHTML = "<iframe class=\"w-full h-full\" referrerpolicy=\"strict-origin-when-cross-origin\" src=\"https://www.youtube.com/embed/" + vid + "?autoplay=1\" title=\"Official UFC Tape\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+      return false;
+    }
+
+function filterTier(tier) {
+      document.querySelectorAll("#page-doha .bout-card").forEach(el => {
+        el.style.display = (tier === "all" || el.dataset.tier === tier) ? "block" : "none";
+      });
+      document.querySelectorAll("#page-doha .tier-btn").forEach(btn => {
+        btn.classList.remove("bg-sky-500", "text-white");
+        btn.classList.add("bg-slate-800", "text-slate-300");
+      });
+      if (event && event.target) {
+        event.target.classList.remove("bg-slate-800", "text-slate-300");
+        event.target.classList.add("bg-sky-500", "text-white");
+      }
+    }
+
+function toggleAll(open) {
+      document.querySelectorAll("[class*=\"bout-panel-\"]").forEach(p => {
+        if (open) p.classList.remove("hidden");
+        else if (!p.id.endsWith("-tab-overview")) p.classList.add("hidden");
+      });
+    }
+
+</script>
 </body>
 </html>
