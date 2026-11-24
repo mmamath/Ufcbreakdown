@@ -1,126 +1,130 @@
 <!DOCTYPE html>
+
 <html class="dark" lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Engine v5 Methodology | MMA Math Predictions</title>
-  <meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." name="description"/>
-  <meta content="Engine v5 Methodology | MMA Math Predictions" property="og:title"/>
-  <meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." property="og:description"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>.hidden { display: none !important; } 
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Engine v5 Methodology | MMA Math Predictions</title>
+<meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." name="description"/>
+<meta content="Engine v5 Methodology | MMA Math Predictions" property="og:title"/>
+<meta content="How Engine v5 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." property="og:description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>.hidden { display: none !important; } 
 html { scroll-behavior: smooth; }
 body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
-
 <div class="bg-sky-950/70 border-b border-sky-500/30 text-[11px] text-sky-200 px-4 py-1.5 text-center">
-  <span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
-  <span id="riyadh-countdown" class="font-mono font-bold text-white">Loading countdown...</span> ·
-  <a href="next-card.html" class="underline text-amber-300 font-semibold ml-1">View 14-Bout Forecast →</a>
+<span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
+  <span class="font-mono font-bold text-white" id="riyadh-countdown">Loading countdown...</span> ·
+  <a class="underline text-amber-300 font-semibold ml-1" href="next-card.html">View 14-Bout Forecast →</a>
 </div>
 <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
-      <div>
-        <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
-        <div class="text-[10px] text-slate-400 font-mono">ROAD TO 100: 18–6–1 (75.0%)</div>
-      </div>
-    </a>
-    <nav class="hidden lg:flex items-center gap-1.5">
-      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Home</a><a href="next-card.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Next Card: Riyadh</a><a href="tools.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Quant Tools</a><a href="track-record.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Track Record</a><a href="archive.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Fight Archive</a><a href="methodology.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap">Engine v5</a><a href="vip.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap">VIP Access</a>
-    </nav>
-    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+<a class="flex items-center gap-2.5 shrink-0" href="index.html">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
+<div>
+<div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
+<div class="text-[10px] text-slate-400 font-mono">ROAD TO 100: 18–6–1 (75.0%)</div>
+</div>
+</a>
+<nav class="hidden lg:flex items-center gap-1.5">
+<a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="index.html">Home</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="next-card.html">Next Card: Riyadh</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="tools.html">Quant Tools</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="track-record.html">Track Record</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="archive.html">Fight Archive</a><a class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap" href="methodology.html">Engine v5</a><a class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap" href="vip.html">VIP Access</a>
+</nav>
+<button aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200" onclick="toggleMobileNav()" type="button">
       Menu ☰
     </button>
-  </div>
-  <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5">
-    <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Home</a><a href="next-card.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Next Card: Riyadh</a><a href="tools.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Quant Tools</a><a href="track-record.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Track Record</a><a href="archive.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Fight Archive</a><a href="methodology.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white">Engine v5</a><a href="vip.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">VIP Access</a>
-  </div>
-</header>
-<div class="page-view" id="page-methodology">
-<header class="bg-slate-900 border-b border-slate-800 py-6 px-4">
-<div class="max-w-4xl mx-auto">
-<div class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Engine v2 • Reproducible &amp; Auditable Architecture</div>
-<h1 class="text-2xl sm:text-3xl font-extrabold text-white">How the UFC ANALYSIS Engine v2 Works</h1>
-<p class="text-sm text-slate-400 mt-1">Pure 0%-market fighter evaluation, Bayesian sample-size smoothing, Empirical Bayes market shrinkage, and live 1,000-fight round-by-round simulations.</p>
+</div>
+<div class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5" id="mobile-nav">
+<a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="index.html">Home</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="next-card.html">Next Card: Riyadh</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="tools.html">Quant Tools</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="track-record.html">Track Record</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="archive.html">Fight Archive</a><a class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white" href="methodology.html">Engine v5</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="vip.html">VIP Access</a>
 </div>
 </header>
-<main class="max-w-4xl mx-auto px-4 mt-6 space-y-5 text-sm text-slate-300 leading-relaxed"><section class="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-900 border border-sky-500/40 rounded-2xl p-5 space-y-2" id="v2-to-v3-upgrade">
-<div class="text-[10px] font-bold uppercase tracking-widest text-sky-300">Model Changelog • Nov 21, 2026</div>
-<h2 class="text-base font-extrabold text-white">Upgrade from Engine v2 to Engine v3 (Directional Finish Rates)</h2>
-<p class="text-xs text-slate-300"><strong>What v2 got wrong:</strong> Engine v2 used a single shared fight finish-rate parameter (<code>base_finish</code>) and career-long KO/Sub shares. In bouts like Hooker vs. Ortega, Hooker's recent stoppage <em>losses</em> inflated the fight's ITD rate even though Hooker hadn't finished an opponent since November 2022 and Ortega hadn't been cleanly finished since 2018.</p>
-<p class="text-xs text-slate-300"><strong>How v3 fixes it:</strong> Engine v3 splits finishing into two directional inputs per fighter—<strong>Recent Offensive Finish Rate</strong> and <strong>Recent Defensive Stoppage Vulnerability</strong>—weighted over recent 3-year form. That change correctly pushed Hooker vs. Ortega, Sterling vs. Vallejos, and Horiguchi vs. Almabayev toward Unanimous Decisions (3-for-3 at UFC Doha) while preserving early-finish upside for genuine finishers like Stirling and Nurgozhay.</p>
-</section>
-<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-x-auto">
-<h2 class="text-base font-extrabold text-white mb-3">Engine v2 Architecture Summary</h2>
-<table class="w-full text-left border-collapse text-xs">
-<thead>
-<tr class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
-<th class="py-2 px-3">Component</th>
-<th class="py-2 px-3">How It Works &amp; What Is Displayed</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-800">
-<tr><td class="py-2.5 px-3 font-bold text-white">1. Pure Statistical Model (0% Market)</td><td class="py-2.5 px-3">Independent logistic probability using smoothed UFCStats striking/grappling differentials, non-linear age decline (&gt;33), and LoC ratings — zero betting odds used.</td></tr>
-<tr><td class="py-2.5 px-3 font-bold text-white">2. Market Comparison</td><td class="py-2.5 px-3">Power-devigged Kalshi/Polymarket exchange prices and Betway/BestFightOdds lines displayed separately as an external benchmark.</td></tr>
-<tr><td class="py-2.5 px-3 font-bold text-white">3. Blended Posterior Model</td><td class="py-2.5 px-3">Clearly labeled Empirical Bayes blend: <strong>35% Pure Stat/LoC Model + 50% Sharp Exchange Prior + 15% Sportsbook Fair Prior</strong> to prevent small-sample overfitting when pricing bets.</td></tr>
-<tr><td class="py-2.5 px-3 font-bold text-white">4. Sample-Size Adjustment</td><td class="py-2.5 px-3">Every raw UFCStat is smoothed toward division averages via <code>n / (n + 4)</code> based on each fighter's UFC bout count (e.g., 0–2 UFC fights shrink heavily toward weight-class priors).</td></tr>
-<tr><td class="py-2.5 px-3 font-bold text-white">5. Round-by-Round Simulator</td><td class="py-2.5 px-3">Runs <strong>1,000 live, unseeded round-by-round simulations</strong> per bout (Rounds 1–3 or 1–5) with R1 burst finish variance, cardio decay (&gt;32), and 10–9 scoring—reporting exact <code>X/1,000</code> counts, KO/Sub/Dec, and <code>R1–R5</code> totals.</td></tr>
-<tr><td class="py-2.5 px-3 font-bold text-white">6. Out-of-Sample Validation</td><td class="py-2.5 px-3">Evaluated on Brier Score &amp; accuracy: on UFC 334 (Nov 14, 2026), Engine v2 (0% market) scored <strong>10–2–1 (83.3%)</strong> with a <strong>0.2057 Brier Score</strong> (vs. v1's 9–3–1 / 0.2167).</td></tr>
-</tbody>
-</table>
-</section>
-<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-<h2 class="text-base font-extrabold text-white mb-2">Level of Competition (LoC) Scoring</h2>
-<p class="text-xs text-slate-300">Official <a class="text-sky-400 underline" href="http://ufcstats.com" target="_blank">UFCStats</a> metrics (retrieved Nov 20, 2026) are paired with proprietary LoC grades mapped directly into the logistic model: <strong>A+ (+1.25)</strong>, <strong>A (+1.00)</strong>, <strong>A- (+0.75)</strong>, <strong>B+ (+0.45)</strong>, <strong>B (+0.15)</strong>, <strong>B- (-0.15)</strong>, <strong>C+ (-0.50)</strong>, <strong>C (-0.85)</strong>.</p>
-</section>
-<section class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-<h2 class="text-base font-extrabold text-white mb-2">Unit Sizing &amp; High-Variance Risk Rules</h2>
-<ul class="list-disc pl-5 space-y-1 text-xs text-slate-300">
-<li><strong>100u Bankroll Standard:</strong> All stakes are published in units (<code>1u = 1%</code> of bankroll).</li>
-<li><strong>Conservative Half-Kelly (0.50x):</strong> Requires <code>+2.0%</code> post-shrinkage edge and <code>+3.0%</code> EV, capped at <code>13.5u</code> per bet, <code>17.0u</code> per fight, and a <code>-250</code> (1.40) favorite juice ceiling.</li>
-<li><strong>High-Variance Plays:</strong> Correlated parlays and round snipers are isolated at the bottom of the card with explicit Risk-of-Ruin disclosures (~78% bust risk).</li>
+
+<div id="page-methodology">
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+<div class="bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/50 border border-sky-500/30 rounded-3xl p-6 sm:p-8 space-y-3">
+<span class="px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider">Engine v5 · Proprietary Architecture</span>
+<h1 class="text-2xl sm:text-4xl font-black text-white">How MMA Math Engine v5 Works</h1>
+<p class="text-sm text-slate-300 leading-relaxed">
+      Engine v5 pairs an independent quantitative fighter model with sharp market benchmarks and 1,000-run fight simulations—designed for long-term calibration and bankroll discipline without exposing proprietary weights or formulas.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs sm:text-sm">
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+<div class="text-sky-400 font-bold uppercase text-xs">1. 20-Signal Fighter Evaluation</div>
+<h2 class="text-lg font-extrabold text-white">Pure 0%-Market Projection</h2>
+<p class="text-slate-300 leading-relaxed">
+        Every fighter is evaluated on opponent-adjusted striking and grappling efficiency, recent form, strength of schedule, physical matchup leverage, durability, and inactivity—completely independent of betting odds.
+      </p>
+</div>
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+<div class="text-emerald-400 font-bold uppercase text-xs">2. Sample-Aware Market Comparison</div>
+<h2 class="text-lg font-extrabold text-white">Beating Retail Juice</h2>
+<p class="text-slate-300 leading-relaxed">
+        Pure projections are compared against devigged prediction-market prices and sportsbook lines. Thin-sample prospects automatically lean more on sharp market consensus, while proven UFC veterans rely heavily on statistical edge.
+      </p>
+</div>
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+<div class="text-amber-300 font-bold uppercase text-xs">3. Directional Finish Simulation</div>
+<h2 class="text-lg font-extrabold text-white">1,000-Run Fight Scripts</h2>
+<p class="text-slate-300 leading-relaxed">
+        Instead of generic fight finish rates, Engine v5 separates each fighter's offensive finishing threat from their opponent's defensive stoppage vulnerability across 1,000 round-by-round simulations to project KO/TKO, Submission, and Decision splits.
+      </p>
+</div>
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
+<div class="text-purple-300 font-bold uppercase text-xs">4. Strict Unit Discipline</div>
+<h2 class="text-lg font-extrabold text-white">100u Bankroll Protection</h2>
+<p class="text-slate-300 leading-relaxed">
+        Every play is sized on a standardized 100u scale using fractional Kelly staking, strict favorite-price caps, and minimum +EV thresholds—automatically flagging overpriced favorites as <span class="font-bold text-rose-300">AVOID</span> or <span class="font-bold text-amber-300">PASS</span>.
+      </p>
+</div>
+</div>
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-3">
+<h2 class="text-lg font-extrabold text-white">Validation &amp; Leak-Free Standards</h2>
+<ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc pl-5">
+<li><strong>Zero Future Leakage:</strong> Historical backtests across 3,048+ modern-era bouts (2018–2024) reconstruct strictly pre-fight stats and fight-night ages before every bout.</li>
+<li><strong>High-Conviction Separation:</strong> On unseen historical slates without betting odds, Engine v5 clears 70%+ accuracy in its top-conviction tier while passing on coin-flip variance.</li>
+<li><strong>Public Live Grading:</strong> Every pick on the Road to 100 Fights (currently <strong>18–6–1 · 75.0%</strong>) is timestamped pre-fight and graded against official UFC results.</li>
 </ul>
-</section>
+</div>
 </main>
 </div>
+
 <footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div>
-      <div class="font-black text-white text-sm">MMA Math Predictions</div>
-      <p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
-      <div class="mt-3 font-mono text-[11px] text-emerald-400">Challenge Progress: 25 / 100 Fights Graded</div>
-    </div>
-    <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
-      <ul class="space-y-1.5">
-        <li><a href="index.html" class="hover:text-white">Home Overview</a></li>
-        <li><a href="next-card.html" class="hover:text-white">Next Card: UFC Riyadh</a></li>
-        <li><a href="tools.html" class="hover:text-white">Kelly &amp; Parlay Tools</a></li>
-        <li><a href="vip.html" class="hover:text-amber-300 text-amber-300/90">VIP Early Access</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
-      <ul class="space-y-1.5">
-        <li><a href="track-record.html" class="hover:text-white">Road to 100 Ledger (18–6–1)</a></li>
-        <li><a href="archive.html" class="hover:text-white">Past Fight Archive (25 Bouts)</a></li>
-        <li><a href="methodology.html" class="hover:text-white">Engine v5 Methodology</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
-      <ul class="space-y-1.5">
-        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-sky-300">UFC.com Event Hub ↗</a></li>
-        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-sky-300">UFCStats Official Data ↗</a></li>
-        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-sky-300">BestFightOdds Lines ↗</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div>
+<div class="font-black text-white text-sm">MMA Math Predictions</div>
+<p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
+<div class="mt-3 font-mono text-[11px] text-emerald-400">Challenge Progress: 25 / 100 Fights Graded</div>
+</div>
+<div>
+<div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
+<ul class="space-y-1.5">
+<li><a class="hover:text-white" href="index.html">Home Overview</a></li>
+<li><a class="hover:text-white" href="next-card.html">Next Card: UFC Riyadh</a></li>
+<li><a class="hover:text-white" href="tools.html">Kelly &amp; Parlay Tools</a></li>
+<li><a class="hover:text-amber-300 text-amber-300/90" href="vip.html">VIP Early Access</a></li>
+</ul>
+</div>
+<div>
+<div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
+<ul class="space-y-1.5">
+<li><a class="hover:text-white" href="track-record.html">Road to 100 Ledger (18–6–1)</a></li>
+<li><a class="hover:text-white" href="archive.html">Past Fight Archive (25 Bouts)</a></li>
+<li><a class="hover:text-white" href="methodology.html">Engine v5 Methodology</a></li>
+</ul>
+</div>
+<div>
+<div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
+<ul class="space-y-1.5">
+<li><a class="hover:text-sky-300" href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" rel="noopener" target="_blank">UFC.com Event Hub ↗</a></li>
+<li><a class="hover:text-sky-300" href="http://ufcstats.com/event-details/a1bf037613180253" rel="noopener" target="_blank">UFCStats Official Data ↗</a></li>
+<li><a class="hover:text-sky-300" href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" rel="noopener" target="_blank">BestFightOdds Lines ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>

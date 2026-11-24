@@ -6763,10 +6763,20 @@ function filterBouts(cat, btn) {
   });
 }
 
-function switchBoutTab(boutId, tab) {
-  document.querySelectorAll('[id^="bout-' + boutId + '-tab-"]').forEach(p => p.classList.add("hidden"));
-  const t = document.getElementById("bout-" + boutId + "-tab-" + tab);
-  if (t) t.classList.remove("hidden");
+function switchBoutTab(boutId, tab, btn) {
+  const scope = (btn && btn.closest("#archive-doha, #archive-ufc334")) || document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  const prefix = String(boutId).startsWith("bout-") ? String(boutId) : ("bout-" + boutId);
+  scope.querySelectorAll('[id^="' + prefix + '-tab-"]').forEach(p => p.classList.add("hidden"));
+  const target = scope.querySelector("#" + prefix + "-tab-" + tab);
+  if (target) target.classList.remove("hidden");
+  scope.querySelectorAll(".bout-tab-btn-" + prefix).forEach(b => {
+    b.classList.remove("bg-sky-500", "text-white");
+    b.classList.add("bg-slate-800/90", "text-slate-300");
+  });
+  if (btn) {
+    btn.classList.remove("bg-slate-800/90", "text-slate-300");
+    btn.classList.add("bg-sky-500", "text-white");
+  }
 }
 
 function submitVipWaitlist(e) {
@@ -6827,6 +6837,22 @@ function toggleAll(open) {
         else if (!p.id.endsWith("-tab-overview")) p.classList.add("hidden");
       });
     }
+
+
+
+function filterSearch() {
+  const scope = document.querySelector("#archive-doha:not(.hidden), #archive-ufc334:not(.hidden)") || document;
+  const inp = scope.querySelector("#searchInput") || document.getElementById("searchInput");
+  const q = inp ? inp.value.toLowerCase().trim() : "";
+  scope.querySelectorAll(".bout-card").forEach(card => {
+    const txt = (card.textContent || "").toLowerCase();
+    card.classList.toggle("hidden", Boolean(q) && !txt.includes(q));
+  });
+}
+
+function applyFilters() {
+  filterSearch();
+}
 
 </script>
 </body>
