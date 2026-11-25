@@ -4,10 +4,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Engine v5.1 Methodology | MMA Math Predictions</title>
-<meta content="How Engine v5.1 20-Signal Proprietary Ensemble and 1,000-run Monte Carlo simulations work." name="description"/>
-<meta content="Engine v5.1 Methodology | MMA Math Predictions" property="og:title"/>
-<meta content="How Engine v5.1 20-Signal Proprietary Ensemble and 1,000-run Monte Carlo simulations work." property="og:description"/>
+<title>Engine v5.1.1 Methodology | MMA Math Predictions</title>
+<meta content="How Engine v5.1 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." name="description"/>
+<meta content="Engine v5.1.1 Methodology | MMA Math Predictions" property="og:title"/>
+<meta content="How Engine v5.1 Hybrid Ensemble (Logistic + GBDT + MLP) and 1,000-run Monte Carlo simulations work." property="og:description"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>.hidden { display: none !important; } 
 html { scroll-behavior: smooth; }
@@ -26,26 +26,28 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
 <div>
 <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
-<div class="text-[10px] text-slate-400 font-mono">ROAD TO 100: 18–6–1 (75.0%)</div>
+<div class="text-[10px] text-slate-400 font-mono">RIYADH v1 · ENGINE v5.1 · 18–6–1 (75.0%)</div>
 </div>
 </a>
 <nav class="hidden lg:flex items-center gap-1.5">
 <a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="index.html">Home</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="next-card.html">Next Card: Riyadh</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="tools.html">Quant Tools</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="track-record.html">Track Record</a><a class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap" href="archive.html">Fight Archive</a><a class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap" href="methodology.html">Engine v5.1</a><a class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap" href="vip.html">VIP Access</a>
-</nav>
+      <div class="flex items-center gap-0.5 bg-slate-900 border border-slate-700 rounded-lg p-0.5 ml-1" title="Switch Odds Format (American / European Decimal / Both)"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">Both</button></div>
+    </nav>
 <button aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200" onclick="toggleMobileNav()" type="button">
       Menu ☰
     </button>
 </div>
 <div class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5" id="mobile-nav">
 <a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="index.html">Home</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="next-card.html">Next Card: Riyadh</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="tools.html">Quant Tools</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="track-record.html">Track Record</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="archive.html">Fight Archive</a><a class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white" href="methodology.html">Engine v5.1</a><a class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800" href="vip.html">VIP Access</a>
-</div>
+    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 mt-1"><span class="text-xs font-semibold text-slate-400">Odds Format</span><div class="flex items-center gap-1"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">Both</button></div></div>
+  </div>
 </header>
 
 <div id="page-methodology">
 <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
 <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/50 border border-sky-500/30 rounded-3xl p-6 sm:p-8 space-y-3">
-<span class="px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider">Engine v5.1 · Proprietary Architecture</span>
-<h1 class="text-2xl sm:text-4xl font-black text-white">How MMA Math Engine v5.1 Works</h1>
+<span class="px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider">Engine v5.1.1 · Proprietary Architecture</span>
+<h1 class="text-2xl sm:text-4xl font-black text-white">How MMA Math Engine v5.1.1 Works</h1>
 <p class="text-sm text-slate-300 leading-relaxed">
       Engine v5.1 pairs an independent quantitative fighter model with sharp market benchmarks and 1,000-run fight simulations—designed for long-term calibration and bankroll discipline without exposing proprietary weights or formulas.
     </p>
@@ -53,35 +55,35 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs sm:text-sm">
 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
 <div class="text-sky-400 font-bold uppercase text-xs">1. 20-Signal Fighter Evaluation</div>
-<h2 class="text-lg font-extrabold text-white">Pure 0%-Market Projection</h2>
+<h2 class="text-lg font-extrabold text-white">Independent Fighter Model</h2>
 <p class="text-slate-300 leading-relaxed">
         Every fighter is evaluated on opponent-adjusted striking and grappling efficiency, recent form, strength of schedule, physical matchup leverage, durability, and inactivity—completely independent of betting odds.
       </p>
 </div>
 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
 <div class="text-emerald-400 font-bold uppercase text-xs">2. Sample-Aware Market Comparison</div>
-<h2 class="text-lg font-extrabold text-white">Beating Retail Juice</h2>
+<h2 class="text-lg font-extrabold text-white">Finding Value vs. Bookmakers</h2>
 <p class="text-slate-300 leading-relaxed">
         Pure projections are compared against devigged prediction-market prices and sportsbook lines. Thin-sample prospects automatically lean more on sharp market consensus, while proven UFC veterans rely heavily on statistical edge.
       </p>
 </div>
 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
 <div class="text-amber-300 font-bold uppercase text-xs">3. Directional Finish Simulation</div>
-<h2 class="text-lg font-extrabold text-white">1,000-Run Fight Scripts</h2>
+<h2 class="text-lg font-extrabold text-white">1,000-Run Fight Simulations</h2>
 <p class="text-slate-300 leading-relaxed">
         Instead of generic fight finish rates, Engine v5.1 separates each fighter's offensive finishing threat from their opponent's defensive stoppage vulnerability across 1,000 round-by-round simulations to project KO/TKO, Submission, and Decision splits.
       </p>
 </div>
 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-2">
 <div class="text-purple-300 font-bold uppercase text-xs">4. Strict Unit Discipline</div>
-<h2 class="text-lg font-extrabold text-white">100u Bankroll Protection</h2>
+<h2 class="text-lg font-extrabold text-white">Bankroll Protection (100u Scale)</h2>
 <p class="text-slate-300 leading-relaxed">
         Every play is sized on a standardized 100u scale using fractional Kelly staking, strict favorite-price caps, and minimum +EV thresholds—automatically flagging overpriced favorites as <span class="font-bold text-rose-300">AVOID</span> or <span class="font-bold text-amber-300">PASS</span>.
       </p>
 </div>
 </div>
 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-3">
-<h2 class="text-lg font-extrabold text-white">Validation &amp; Leak-Free Standards</h2>
+<h2 class="text-lg font-extrabold text-white">Verified Pre-Fight Testing</h2>
 <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc pl-5">
 <li><strong>Zero Future Leakage:</strong> Historical backtests across 3,048+ modern-era bouts (2018–2024) reconstruct strictly pre-fight stats and fight-night ages before every bout.</li>
 <li><strong>High-Conviction Separation:</strong> On unseen historical slates without betting odds, Engine v5.1 clears 70%+ accuracy in its top-conviction tier while passing on coin-flip variance.</li>
@@ -95,8 +97,9 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 <div>
 <div class="font-black text-white text-sm">MMA Math Predictions</div>
-<p class="mt-2 leading-relaxed">MMA Math — Season 1. Quantitative UFC forecasting powered by Engine v5.1 (8,497-fight ML ensemble) and 1,000-run Monte Carlo fight simulations.</p>
-<div class="mt-3 font-mono text-[11px] text-emerald-400">Challenge Progress: 25 / 100 Fights Graded</div>
+<p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5.1 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
+<div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Challenge: 25 / 100 Fights Graded</div>
+      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-sky-400 hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
 </div>
 <div>
 <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
@@ -112,7 +115,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
 <ul class="space-y-1.5">
 <li><a class="hover:text-white" href="track-record.html">Road to 100 Ledger (18–6–1)</a></li>
 <li><a class="hover:text-white" href="archive.html">Past Fight Archive (25 Bouts)</a></li>
-<li><a class="hover:text-white" href="methodology.html">Engine v5.1 Methodology</a></li>
+<li><a class="hover:text-white" href="methodology.html">Engine v5.1.1 Methodology</a></li>
 </ul>
 </div>
 <div>
@@ -128,8 +131,15 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>
-<script>window.RIYADH_DATA = [{"id": 1, "card": "Main", "weight": "Middleweight", "matchup": "Israel Adesanya vs. Shara Magomedov", "pick": "Shara Magomedov", "prob": 50.1, "pure_prob": 52.5, "sharp_prob": 40.4, "sharp_amer": 144, "retail_amer": 142, "book": "FanDuel", "max_amer": 107, "ev_pct": 21.2, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (29%)", "status": "MOONSHOT", "status_label": "MOONSHOT SPRINKLE (+21.2% EV)", "script": "5-round Middleweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 19% KO / 8% Sub / 29% Dec"}, {"id": 2, "card": "Main", "weight": "Welterweight", "matchup": "Ian Machado Garry vs. Yaroslav Amosov", "pick": "Ian Machado Garry", "prob": 57.6, "pure_prob": 57.2, "sharp_prob": 61.1, "sharp_amer": -163, "retail_amer": -192, "book": "FanDuel", "max_amer": -126, "ev_pct": -12.4, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (35%)", "status": "PASS", "status_label": "PASS (-12.4% EV)", "script": "5-round Welterweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 19% KO / 6% Sub / 35% Dec"}, {"id": 3, "card": "Main", "weight": "Heavyweight", "matchup": "Mario Pinto vs. Serghei Spivac", "pick": "Mario Pinto", "prob": 64.0, "pure_prob": 63.2, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -360, "book": "FanDuel", "max_amer": -162, "ev_pct": -18.3, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (32%)", "status": "AVOID_JUICE", "status_label": "JUICE CAP (-360)", "script": "3-round Heavyweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 32% KO / 10% Sub / 21% Dec"}, {"id": 4, "card": "Main", "weight": "Welterweight", "matchup": "Islam Dulatov vs. Levan Chokheli", "pick": "Islam Dulatov", "prob": 60.8, "pure_prob": 57.6, "sharp_prob": 62.5, "sharp_amer": -170, "retail_amer": -225, "book": "FanDuel", "max_amer": -142, "ev_pct": -12.2, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (27%)", "status": "PASS", "status_label": "PASS (-12.2% EV)", "script": "3-round Welterweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 26% KO / 7% Sub / 27% Dec"}, {"id": 5, "card": "Main", "weight": "Lightweight", "matchup": "Akbar Abdullaev vs. Mairon Santos", "pick": "Akbar Abdullaev", "prob": 63.8, "pure_prob": 57.7, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -330, "book": "FanDuel", "max_amer": -160, "ev_pct": -16.9, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (28%)", "status": "AVOID_JUICE", "status_label": "JUICE CAP (-330)", "script": "3-round Lightweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 27% KO / 9% Sub / 28% Dec"}, {"id": 6, "card": "Main", "weight": "Light Heavyweight", "matchup": "Magomed Tuchalov vs. Ion Cutelaba", "pick": "Magomed Tuchalov", "prob": 60.3, "pure_prob": 58.2, "sharp_prob": 61.5, "sharp_amer": -163, "retail_amer": -188, "book": "FanDuel", "max_amer": -139, "ev_pct": -7.7, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (30%)", "status": "PASS", "status_label": "PASS (-7.7% EV)", "script": "3-round Light Heavyweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 30% KO / 10% Sub / 19% Dec"}, {"id": 7, "card": "Prelim", "weight": "Featherweight", "matchup": "Luke Riley vs. Gabriel Santos", "pick": "Luke Riley", "prob": 62.4, "pure_prob": 59.9, "sharp_prob": 62.5, "sharp_amer": -194, "retail_amer": -150, "book": "Caesars", "max_amer": -152, "ev_pct": 3.9, "kelly": 1.48, "high_conv": true, "prop_lean": "Decision (32%)", "status": "KELLY_BET", "status_label": "BET 1.48u (+3.9% EV)", "script": "3-round Featherweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 21% KO / 8% Sub / 32% Dec"}, {"id": 8, "card": "Prelim", "weight": "Flyweight", "matchup": "Jafel Filho vs. Bruno Silva", "pick": "Jafel Filho", "prob": 61.5, "pure_prob": 67.3, "sharp_prob": 53.1, "sharp_amer": -127, "retail_amer": -150, "book": "Caesars", "max_amer": -147, "ev_pct": 2.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (34%)", "status": "STEAM_TRAP", "status_label": "STEAM TRAP (-5.1%)", "script": "3-round Flyweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 21% KO / 7% Sub / 34% Dec"}, {"id": 9, "card": "Prelim", "weight": "Light Heavyweight", "matchup": "Ivan Gnizditskiy vs. Uran Satybaldiev", "pick": "Ivan Gnizditskiy", "prob": 51.0, "pure_prob": 61.3, "sharp_prob": 48.5, "sharp_amer": 104, "retail_amer": -113, "book": "FanDuel", "max_amer": 103, "ev_pct": -3.8, "kelly": 0.0, "high_conv": false, "prop_lean": "KO/TKO (23%)", "status": "PASS", "status_label": "CONFIDENCE FLOOR (51.0% < 52%)", "script": "3-round Light Heavyweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 23% KO / 9% Sub / 16% Dec"}, {"id": 10, "card": "Prelim", "weight": "Middleweight", "matchup": "Marco Tulio vs. JunYong Park", "pick": "Marco Tulio", "prob": 54.5, "pure_prob": 55.5, "sharp_prob": 59.6, "sharp_amer": -150, "retail_amer": -188, "book": "FanDuel", "max_amer": -111, "ev_pct": -16.5, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (27%)", "status": "STEAM_TRAP", "status_label": "STEAM TRAP (-6.0%)", "script": "3-round Middleweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 21% KO / 6% Sub / 27% Dec"}, {"id": 11, "card": "Prelim", "weight": "Bantamweight", "matchup": "Pavel Andrusca vs. Mahammadali Osmanli", "pick": "Pavel Andrusca", "prob": 56.6, "pure_prob": 56.8, "sharp_prob": 56.5, "sharp_amer": -133, "retail_amer": -146, "book": "FanDuel", "max_amer": -121, "ev_pct": -4.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (30%)", "status": "PASS", "status_label": "PASS (-4.6% EV)", "script": "3-round Bantamweight \u00b7 High-Conviction (>=56%) \u00b7 Sim: 18% KO / 7% Sub / 30% Dec"}, {"id": 12, "card": "Prelim", "weight": "Middleweight", "matchup": "Matthieu Duclos vs. Modestino Rodrigues", "pick": "Modestino Rodrigues", "prob": 53.2, "pure_prob": 63.2, "sharp_prob": 47.1, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -106, "ev_pct": 18.2, "kelly": 3.73, "high_conv": false, "prop_lean": "Decision (24%)", "status": "KELLY_BET", "status_label": "BET 3.73u (+18.2% EV)", "script": "3-round Middleweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 20% KO / 7% Sub / 24% Dec"}, {"id": 13, "card": "Prelim", "weight": "Bantamweight", "matchup": "Abdul Hussein vs. Hecher Sosa", "pick": "Hecher Sosa", "prob": 52.9, "pure_prob": 55.5, "sharp_prob": 47.5, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -105, "ev_pct": 17.4, "kelly": 3.57, "high_conv": false, "prop_lean": "Decision (27%)", "status": "KELLY_BET", "status_label": "BET 3.57u (+17.4% EV)", "script": "3-round Bantamweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 17% KO / 6% Sub / 27% Dec"}, {"id": 14, "card": "Prelim", "weight": "Lightweight", "matchup": "Mateusz Rebecki vs. Elves Brener", "pick": "Mateusz Rebecki", "prob": 54.3, "pure_prob": 58.9, "sharp_prob": 52.1, "sharp_amer": -133, "retail_amer": -156, "book": "FanDuel", "max_amer": -111, "ev_pct": -10.8, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (24%)", "status": "STEAM_TRAP", "status_label": "STEAM TRAP (-7.6%)", "script": "3-round Lightweight \u00b7 Coin-Flip / Lean (<56%) \u00b7 Sim: 21% KO / 7% Sub / 24% Dec"}];</script>
+<script>window.RIYADH_DATA = [{"id": 1, "card": "Main", "weight": "Middleweight", "matchup": "Israel Adesanya vs. Shara Magomedov", "pick": "Shara Magomedov", "prob": 50.1, "pure_prob": 52.5, "sharp_prob": 40.4, "sharp_amer": 144, "retail_amer": 142, "book": "FanDuel", "max_amer": 107, "ev_pct": 21.2, "retail_ev": 21.2, "sharp_ev": 21.2, "kelly": 2.0, "high_conv": false, "prop_lean": "Decision (29%)", "status": "POLY_EV", "status_label": "+EV DOG 2.00u (+21.2% EV)", "script": "5-round Middleweight \u00b7 Sim: 19% KO / 8% Sub / 29% Dec"}, {"id": 2, "card": "Main", "weight": "Welterweight", "matchup": "Ian Machado Garry vs. Yaroslav Amosov", "pick": "Ian Machado Garry", "prob": 57.6, "pure_prob": 57.2, "sharp_prob": 61.1, "sharp_amer": -163, "retail_amer": -192, "book": "FanDuel", "max_amer": -126, "ev_pct": -12.4, "retail_ev": -12.4, "sharp_ev": -12.4, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (35%)", "status": "PASS", "status_label": "Pass (-12.4% EV)", "script": "5-round Welterweight \u00b7 Sim: 19% KO / 6% Sub / 35% Dec"}, {"id": 3, "card": "Main", "weight": "Heavyweight", "matchup": "Mario Pinto vs. Serghei Spivac", "pick": "Mario Pinto", "prob": 64.0, "pure_prob": 63.2, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -360, "book": "FanDuel", "max_amer": -162, "ev_pct": -18.3, "retail_ev": -18.3, "sharp_ev": -18.3, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (32%)", "status": "AVOID_JUICE", "status_label": "Odds Too Steep (-360)", "script": "3-round Heavyweight \u00b7 Sim: 32% KO / 10% Sub / 21% Dec"}, {"id": 4, "card": "Main", "weight": "Welterweight", "matchup": "Islam Dulatov vs. Levan Chokheli", "pick": "Islam Dulatov", "prob": 60.8, "pure_prob": 57.6, "sharp_prob": 62.5, "sharp_amer": -170, "retail_amer": -225, "book": "FanDuel", "max_amer": -142, "ev_pct": -12.2, "retail_ev": -12.2, "sharp_ev": -12.2, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (27%)", "status": "PASS", "status_label": "Pass (-12.2% EV)", "script": "3-round Welterweight \u00b7 Sim: 26% KO / 7% Sub / 27% Dec"}, {"id": 5, "card": "Main", "weight": "Lightweight", "matchup": "Akbar Abdullaev vs. Mairon Santos", "pick": "Akbar Abdullaev", "prob": 63.8, "pure_prob": 57.7, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -330, "book": "FanDuel", "max_amer": -160, "ev_pct": -16.9, "retail_ev": -16.9, "sharp_ev": -16.9, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (28%)", "status": "AVOID_JUICE", "status_label": "Odds Too Steep (-330)", "script": "3-round Lightweight \u00b7 Sim: 27% KO / 9% Sub / 28% Dec"}, {"id": 6, "card": "Main", "weight": "Light Heavyweight", "matchup": "Magomed Tuchalov vs. Ion Cutelaba", "pick": "Magomed Tuchalov", "prob": 60.3, "pure_prob": 58.2, "sharp_prob": 61.5, "sharp_amer": -163, "retail_amer": -188, "book": "FanDuel", "max_amer": -139, "ev_pct": -7.7, "retail_ev": -7.7, "sharp_ev": -7.7, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (30%)", "status": "PASS", "status_label": "Pass (-7.7% EV)", "script": "3-round Light Heavyweight \u00b7 Sim: 30% KO / 10% Sub / 19% Dec"}, {"id": 7, "card": "Prelim", "weight": "Featherweight", "matchup": "Luke Riley vs. Gabriel Santos", "pick": "Luke Riley", "prob": 62.4, "pure_prob": 59.9, "sharp_prob": 62.5, "sharp_amer": -194, "retail_amer": -150, "book": "Caesars", "max_amer": -152, "ev_pct": 3.9, "retail_ev": 3.9, "sharp_ev": 3.9, "kelly": 1.48, "high_conv": true, "prop_lean": "Decision (32%)", "status": "POLY_EV", "status_label": "BET 1.48u (+3.9% EV)", "script": "3-round Featherweight \u00b7 Sim: 21% KO / 8% Sub / 32% Dec"}, {"id": 8, "card": "Prelim", "weight": "Flyweight", "matchup": "Jafel Filho vs. Bruno Silva", "pick": "Jafel Filho", "prob": 61.5, "pure_prob": 67.3, "sharp_prob": 53.1, "sharp_amer": -127, "retail_amer": -150, "book": "Caesars", "max_amer": -147, "ev_pct": 2.6, "retail_ev": 2.6, "sharp_ev": 2.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (34%)", "status": "PASS", "status_label": "No Value (+2.6% EV)", "script": "3-round Flyweight \u00b7 Sim: 21% KO / 7% Sub / 34% Dec"}, {"id": 9, "card": "Prelim", "weight": "Light Heavyweight", "matchup": "Ivan Gnizditskiy vs. Uran Satybaldiev", "pick": "Ivan Gnizditskiy", "prob": 51.0, "pure_prob": 61.3, "sharp_prob": 48.5, "sharp_amer": 104, "retail_amer": -113, "book": "FanDuel", "max_amer": 103, "ev_pct": -3.8, "retail_ev": -3.8, "sharp_ev": -3.8, "kelly": 0.0, "high_conv": false, "prop_lean": "KO/TKO (23%)", "status": "PASS", "status_label": "Low Confidence (<52%) \u00b7 Pass", "script": "3-round Light Heavyweight \u00b7 Sim: 23% KO / 9% Sub / 16% Dec"}, {"id": 10, "card": "Prelim", "weight": "Middleweight", "matchup": "Marco Tulio vs. JunYong Park", "pick": "Marco Tulio", "prob": 54.5, "pure_prob": 55.5, "sharp_prob": 59.6, "sharp_amer": -150, "retail_amer": -188, "book": "FanDuel", "max_amer": -111, "ev_pct": -16.5, "retail_ev": -16.5, "sharp_ev": -16.5, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (27%)", "status": "PASS", "status_label": "No Value (-16.5% EV)", "script": "3-round Middleweight \u00b7 Sim: 21% KO / 6% Sub / 27% Dec"}, {"id": 11, "card": "Prelim", "weight": "Bantamweight", "matchup": "Pavel Andrusca vs. Mahammadali Osmanli", "pick": "Pavel Andrusca", "prob": 56.6, "pure_prob": 56.8, "sharp_prob": 56.5, "sharp_amer": -133, "retail_amer": -146, "book": "FanDuel", "max_amer": -121, "ev_pct": -4.6, "retail_ev": -4.6, "sharp_ev": -4.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (30%)", "status": "PASS", "status_label": "Pass (-4.6% EV)", "script": "3-round Bantamweight \u00b7 Sim: 18% KO / 7% Sub / 30% Dec"}, {"id": 12, "card": "Prelim", "weight": "Middleweight", "matchup": "Matthieu Duclos vs. Modestino Rodrigues", "pick": "Modestino Rodrigues", "prob": 53.2, "pure_prob": 63.2, "sharp_prob": 47.1, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -106, "ev_pct": 18.2, "retail_ev": 18.2, "sharp_ev": 18.2, "kelly": 3.73, "high_conv": false, "prop_lean": "Decision (24%)", "status": "POLY_EV", "status_label": "BET 3.73u (+18.2% EV)", "script": "3-round Middleweight \u00b7 Sim: 20% KO / 7% Sub / 24% Dec"}, {"id": 13, "card": "Prelim", "weight": "Bantamweight", "matchup": "Abdul Hussein vs. Hecher Sosa", "pick": "Hecher Sosa", "prob": 52.9, "pure_prob": 55.5, "sharp_prob": 47.5, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -105, "ev_pct": 17.4, "retail_ev": 17.4, "sharp_ev": 17.4, "kelly": 3.57, "high_conv": false, "prop_lean": "Decision (27%)", "status": "POLY_EV", "status_label": "BET 3.57u (+17.4% EV)", "script": "3-round Bantamweight \u00b7 Sim: 17% KO / 6% Sub / 27% Dec"}, {"id": 14, "card": "Prelim", "weight": "Lightweight", "matchup": "Mateusz Rebecki vs. Elves Brener", "pick": "Mateusz Rebecki", "prob": 54.3, "pure_prob": 58.9, "sharp_prob": 52.1, "sharp_amer": -133, "retail_amer": -156, "book": "FanDuel", "max_amer": -111, "ev_pct": -10.8, "retail_ev": -10.8, "sharp_ev": -10.8, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (24%)", "status": "PASS", "status_label": "No Value (-10.8% EV)", "script": "3-round Lightweight \u00b7 Sim: 21% KO / 7% Sub / 24% Dec"}];</script>
 <script>
+
+function copyContactEmail() {
+  navigator.clipboard.writeText("MMAMATHPREDICTIONS@gmail.com").then(() => {
+    const el = document.getElementById("copy-msg");
+    if (el) { el.textContent = "Copied MMAMATHPREDICTIONS@gmail.com!"; el.classList.remove("hidden"); }
+  });
+}
 
 function toggleMobileNav() {
   const m = document.getElementById("mobile-nav");
@@ -163,8 +173,45 @@ function decToAmerJS(dec) {
   return Math.round(-100 / (dec - 1));
 }
 
+window.ODDS_FMT = (typeof localStorage !== "undefined" && localStorage.getItem("mma_odds_fmt")) || "US";
+window.CURRENT_RADAR_FILTER = "ALL";
+
 function fmtAmer(a) {
-  return a > 0 ? "+" + a : String(a);
+  a = Number(a);
+  if (isNaN(a) || a === 0) return "-";
+  const us = a > 0 ? "+" + a : String(a);
+  const dec = a > 0 ? (1 + a / 100) : (1 + 100 / Math.abs(a));
+  const eu = dec.toFixed(2);
+  if (window.ODDS_FMT === "EU") return eu;
+  if (window.ODDS_FMT === "BOTH") return us + " (" + eu + ")";
+  return us;
+}
+
+function applyOddsFormatUI() {
+  document.querySelectorAll(".odds-fmt-btn").forEach(btn => {
+    const active = btn.getAttribute("data-odds-btn") === window.ODDS_FMT;
+    btn.className = active
+      ? "odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-sky-500 text-slate-950"
+      : "odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white";
+  });
+  document.querySelectorAll("[data-amer]").forEach(el => {
+    el.textContent = fmtAmer(Number(el.getAttribute("data-amer")));
+  });
+  if (typeof renderRiyadhRadar === "function" && document.getElementById("riyadh-radar-body")) {
+    renderRiyadhRadar(window.CURRENT_RADAR_FILTER || "ALL");
+  }
+  if (typeof calcKelly === "function" && document.getElementById("kelly-prob")) {
+    calcKelly();
+  }
+  if (typeof calcParlay === "function" && document.getElementById("parlay-legs-list")) {
+    calcParlay();
+  }
+}
+
+function setOddsFormat(fmt) {
+  window.ODDS_FMT = fmt;
+  try { localStorage.setItem("mma_odds_fmt", fmt); } catch (e) {}
+  applyOddsFormatUI();
 }
 
 function initToolsPage() {
@@ -246,7 +293,7 @@ function calcKelly() {
   document.getElementById("kelly-stake").textContent = stakeU.toFixed(2) + "u (" + (cappedPct * 100).toFixed(1) + "% of bankroll)";
   const badge = document.getElementById("kelly-badge");
   if (amer <= -250) {
-    badge.textContent = "AVOID (JUICE CAP)";
+    badge.textContent = "ODDS TOO STEEP (-250+)";
     badge.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30";
   } else if (ev >= 2.0) {
     badge.textContent = "+EV BET";
@@ -305,8 +352,10 @@ function renderRiyadhRadar(filter) {
   if (!tbody) return;
   const data = window.RIYADH_DATA || [];
   tbody.innerHTML = "";
+  window.CURRENT_RADAR_FILTER = filter || "ALL";
   const list = data.filter(b => {
     if (filter === "ALL") return true;
+    if (filter === "HIGH_CONV") return b.high_conv;
     if (filter === "POLY_EV") return b.status === "POLY_EV";
     return b.card === filter;
   });
@@ -317,8 +366,8 @@ function renderRiyadhRadar(filter) {
       ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
       : (b.status === "AVOID_JUICE" ? "bg-rose-500/20 text-rose-300 border-rose-500/40" : "bg-slate-800 text-slate-300 border-slate-700");
     tr.innerHTML =
-      '<td class="py-3 px-3"><div class="font-bold text-white">' + b.matchup + '</div><div class="text-[11px] text-slate-400">' + b.card + ' · ' + b.weight + ' · ' + b.script + '</div></td>' +
-      '<td class="py-3 px-3 font-semibold text-sky-300">' + b.pick + ' <span class="font-mono text-slate-300">(' + b.prob + '% / ' + b.pure_prob + '% Pure)</span></td>' +
+      '<td class="py-3 px-3"><div class="font-bold text-white">' + b.matchup + (b.high_conv ? ' <span class="ml-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-bold">56%+ TRACKED</span>' : ' <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 text-[10px]">LEAN</span>') + '</div><div class="text-[11px] text-slate-400">' + b.card + ' · ' + b.weight + ' · ' + b.script + '</div></td>' +
+      '<td class="py-3 px-3 font-semibold text-sky-300">' + b.pick + ' <span class="font-mono text-slate-200">(' + b.prob + '%)</span> <span class="text-[10px] text-slate-400 font-mono">[' + b.pure_prob + '% raw]</span></td>' +
       '<td class="py-3 px-3 font-mono text-slate-200">' + fmtAmer(b.sharp_amer) + ' / ' + fmtAmer(b.retail_amer) + '</td>' +
       '<td class="py-3 px-3 font-mono font-bold text-amber-300">' + fmtAmer(b.max_amer) + '</td>' +
       '<td class="py-3 px-3 text-slate-200">' + b.prop_lean + '</td>' +
@@ -416,7 +465,7 @@ function submitVipWaitlist(e) {
 document.addEventListener("DOMContentLoaded", () => {
   updateCountdown();
   setInterval(updateCountdown, 60000);
-  renderRiyadhRadar("ALL");
+  applyOddsFormatUI();
   initToolsPage();
   if (window.location.hash === "#ufc334") switchArchiveEvent("ufc334");
 });
