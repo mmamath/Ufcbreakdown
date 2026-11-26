@@ -8,6 +8,7 @@
   <meta content="VIP Access | MMA Math Predictions" property="og:title"/>
   <meta content="Founding Member VIP Waitlist for MMA Math Predictions." property="og:description"/>
   <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>.hidden { display: none !important; } 
 html { scroll-behavior: smooth; }
 body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -53,7 +54,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
       <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
         <div class="font-bold text-amber-300">1. Early &amp; Closing Locks</div>
-        <p class="text-slate-400 mt-1">Full 14-bout v5 cards, max playable odds, and post-weigh-in Friday updates before lines move.</p>
+        <p class="text-slate-400 mt-1">Full 14-bout v5.1 cards, max playable odds, and post-weigh-in Friday updates before lines move.</p>
       </div>
       <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4">
         <div class="font-bold text-sky-300">2. Prop &amp; Round Edges</div>
@@ -64,11 +65,39 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         <p class="text-slate-400 mt-1">First 100 waitlist members receive their first month free when VIP opens.</p>
       </div>
     </div>
-    <form onsubmit="submitVipWaitlist(event)" class="flex flex-wrap gap-3 pt-2">
-      <input id="vip-email" type="email" required placeholder="Enter your email for Founding Member waitlist..." class="flex-1 min-w-[240px] bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white"/>
-      <button type="submit" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm">Join Waitlist →</button>
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5 text-xs">
+      <span class="text-slate-300 font-semibold">Founding 100 Availability</span>
+      <span id="f100-counter" class="font-mono font-bold text-amber-300">Checking live spots...</span>
+    </div>
+
+    <form id="f100-form" onsubmit="submitFoundingSignup(event)" class="flex flex-wrap gap-3 pt-1">
+      <input id="vip-email" type="email" required placeholder="Enter your email to verify &amp; claim a Founding 100 spot..." class="flex-1 min-w-[240px] bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white"/>
+      <button id="f100-btn" type="submit" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm">Verify &amp; Claim Spot →</button>
     </form>
-    <div id="vip-msg" class="hidden text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3"></div>
+    <div id="vip-msg" class="hidden text-xs font-semibold rounded-xl p-3 border"></div>
+
+    <!-- Permanent Founding Member Recognition Card (shown only after backend verification) -->
+    <div id="f100-badge" class="hidden bg-gradient-to-br from-amber-950/50 via-slate-950 to-slate-950 border border-amber-400/50 rounded-2xl p-6 text-center space-y-1.5">
+      <div class="text-[11px] font-bold uppercase tracking-widest text-amber-300">FOUNDING MEMBER</div>
+      <div id="f100-num" class="text-4xl font-black text-white font-mono">#001</div>
+      <div class="text-sm font-bold text-emerald-400">MMA Math — Founding 100</div>
+      <p class="text-xs text-slate-300">Joined during the original 100-fight challenge · Lifetime founding-member recognition.</p>
+      <div class="pt-2"><button type="button" onclick="signOutFounding()" class="text-[11px] text-slate-400 hover:text-white underline">Sign out</button></div>
+    </div>
+
+    <!-- Private Admin View (visible only when signed in as MMAMATHPREDICTIONS@gmail.com via Supabase RLS) -->
+    <div id="f100-admin" class="hidden bg-slate-950/90 border border-sky-500/40 rounded-2xl p-4 space-y-3 text-xs">
+      <div class="flex items-center justify-between">
+        <div class="font-bold text-sky-300 uppercase tracking-wider">Private Admin — Founding 100 Registrations</div>
+        <span id="f100-admin-count" class="font-mono text-slate-300"></span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead><tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px]"><th class="py-2 px-2">#</th><th class="py-2 px-2">Email</th><th class="py-2 px-2">Verified At</th></tr></thead>
+          <tbody id="f100-admin-body" class="divide-y divide-slate-800/70"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -443,14 +472,113 @@ function switchBoutTab(boutId, tab) {
   if (t) t.classList.remove("hidden");
 }
 
-function submitVipWaitlist(e) {
-  e.preventDefault();
-  const email = (document.getElementById("vip-email") || {}).value || "";
-  const msg = document.getElementById("vip-msg");
-  if (msg && email.includes("@")) {
-    msg.textContent = "Waitlist preview confirmed for " + email + " — Founding Member access opens after Fight #100.";
-    msg.classList.remove("hidden");
+// Public Supabase client config (anon public key ONLY — never put service_role key in frontend code)
+const SUPABASE_URL = "https://ynpubehvchqtairzjykh.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_d6Ahodn6hGAXdBrgrr6MGQ_TlZJxR4R";
+const ADMIN_EMAIL = "mmamathpredictions@gmail.com";
+
+function getSupabaseClient() {
+  if (!window.supabase || !SUPABASE_URL.startsWith("https://") || SUPABASE_ANON_KEY.startsWith("YOUR_")) {
+    return null;
   }
+  return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+function showVipStatus(text, isError) {
+  const msg = document.getElementById("vip-msg");
+  if (!msg) return;
+  msg.textContent = text;
+  msg.className = isError
+    ? "text-xs font-semibold rounded-xl p-3 border text-rose-300 bg-rose-500/10 border-rose-500/30"
+    : "text-xs font-semibold rounded-xl p-3 border text-emerald-300 bg-emerald-500/10 border-emerald-500/30";
+}
+
+function renderFoundingBadge(num) {
+  const badge = document.getElementById("f100-badge");
+  const numEl = document.getElementById("f100-num");
+  const form = document.getElementById("f100-form");
+  if (badge && numEl) {
+    numEl.textContent = "#" + String(num).padStart(3, "0");
+    badge.classList.remove("hidden");
+  }
+  if (form) form.classList.add("hidden");
+}
+
+async function initFounding100() {
+  const counterEl = document.getElementById("f100-counter");
+  const sb = getSupabaseClient();
+  if (!sb) {
+    if (counterEl) counterEl.textContent = "Backend setup pending (Supabase config required)";
+    return;
+  }
+  try {
+    const { data: cnt, error: cntErr } = await sb.rpc("get_founding_count");
+    if (cntErr) throw cntErr;
+    if (counterEl && cnt) {
+      counterEl.textContent = cnt.remaining + " / 100 Spots Remaining (" + cnt.count + " Claimed)";
+      if (cnt.remaining <= 0) {
+        const btn = document.getElementById("f100-btn");
+        if (btn) { btn.disabled = true; btn.textContent = "Founding 100 Full"; }
+      }
+    }
+    const { data: sessData } = await sb.auth.getSession();
+    const user = sessData && sessData.session ? sessData.session.user : null;
+    if (user) {
+      const { data: claim, error: claimErr } = await sb.rpc("claim_founding_spot");
+      if (claimErr) {
+        showVipStatus("Verification error: " + claimErr.message, true);
+      } else if (claim && (claim.status === "claimed" || claim.status === "existing")) {
+        renderFoundingBadge(claim.member_number);
+        showVipStatus("Verified & confirmed by backend: Founding Member #" + String(claim.member_number).padStart(3, "0") + ".", false);
+      } else if (claim && claim.status === "full") {
+        showVipStatus(claim.message || "All 100 Founding Member spots have been claimed.", true);
+      }
+      if ((user.email || "").toLowerCase() === ADMIN_EMAIL) {
+        const { data: rows, error: admErr } = await sb.from("founding_members").select("member_number,email,verified_at").order("member_number", { ascending: true });
+        if (!admErr && rows) {
+          const adm = document.getElementById("f100-admin");
+          const tbody = document.getElementById("f100-admin-body");
+          const cntLbl = document.getElementById("f100-admin-count");
+          if (adm && tbody) {
+            if (cntLbl) cntLbl.textContent = rows.length + " / 100 Verified";
+            tbody.innerHTML = rows.map(r => '<tr><td class="py-1.5 px-2 font-mono text-amber-300">#' + String(r.member_number).padStart(3, "0") + '</td><td class="py-1.5 px-2 font-mono text-white">' + r.email + '</td><td class="py-1.5 px-2 text-slate-400">' + new Date(r.verified_at).toLocaleString() + '</td></tr>').join("");
+            adm.classList.remove("hidden");
+          }
+        }
+      }
+    }
+  } catch (err) {
+    if (counterEl) counterEl.textContent = "Unable to reach registration backend";
+    showVipStatus("Backend error: " + (err && err.message ? err.message : String(err)), true);
+  }
+}
+
+async function submitFoundingSignup(e) {
+  e.preventDefault();
+  const email = ((document.getElementById("vip-email") || {}).value || "").trim().toLowerCase();
+  const btn = document.getElementById("f100-btn");
+  const sb = getSupabaseClient();
+  if (!sb) {
+    showVipStatus("Registration backend is not configured yet. Add your Supabase URL and public anon key in vip.html.", true);
+    return;
+  }
+  if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
+  const { error } = await sb.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: window.location.href.split("#")[0] }
+  });
+  if (btn) { btn.disabled = false; btn.textContent = "Verify & Claim Spot →"; }
+  if (error) {
+    showVipStatus("Could not send verification email: " + error.message, true);
+  } else {
+    showVipStatus("Verification link sent to " + email + ". Click the link in your email to confirm and claim your Founding #001–#100 number.", false);
+  }
+}
+
+async function signOutFounding() {
+  const sb = getSupabaseClient();
+  if (sb) await sb.auth.signOut();
+  window.location.reload();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -458,6 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 60000);
   applyOddsFormatUI();
   initToolsPage();
+  if (typeof initFounding100 === "function") initFounding100();
   if (window.location.hash === "#ufc334") switchArchiveEvent("ufc334");
 });
 
