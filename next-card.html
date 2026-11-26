@@ -111,6 +111,60 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
       </table>
     </div>
   </section>
+
+<!-- Individual Fight Analysis Modal (Phase 4) -->
+<div id="fight-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="fm-title">
+  <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full p-5 sm:p-6 space-y-4 my-8 shadow-2xl">
+    <div class="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+      <div>
+        <div id="fm-meta" class="text-[11px] font-bold uppercase tracking-wider text-sky-400"></div>
+        <h2 id="fm-title" class="text-xl font-black text-white mt-0.5"></h2>
+      </div>
+      <button type="button" onclick="closeFightModal()" aria-label="Close Breakdown" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold">✕ Close</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
+        <div class="text-[10px] uppercase text-slate-400">Predicted Winner &amp; Win %</div>
+        <div id="fm-pick" class="text-base font-black text-emerald-400 mt-1"></div>
+        <div id="fm-probs" class="text-[11px] text-slate-400 mt-1 font-mono"></div>
+      </div>
+      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
+        <div class="text-[10px] uppercase text-slate-400">Confidence Tier &amp; Bet Status</div>
+        <div id="fm-tier" class="text-sm font-bold text-sky-300 mt-1"></div>
+        <div id="fm-status" class="text-[11px] text-slate-300 mt-1"></div>
+      </div>
+      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
+        <div class="text-[10px] uppercase text-slate-400">Winner Method Share (1,000 Sims)</div>
+        <div id="fm-method" class="text-sm font-bold text-white mt-1"></div>
+        <div class="text-[10px] text-slate-400 mt-1">Conditional on predicted winner (sums to 100%)</div>
+      </div>
+    </div>
+
+    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4">
+      <div class="text-xs font-bold text-white mb-2">Fighter Profile &amp; Statistical Comparison</div>
+      <div id="fm-stats" class="grid grid-cols-3 gap-2 text-xs"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3.5">
+        <div class="font-bold text-white mb-1.5">Key Variables Driving Forecast</div>
+        <ul id="fm-drivers" class="list-disc pl-4 space-y-1 text-slate-300"></ul>
+      </div>
+      <div class="bg-amber-950/20 border border-amber-500/30 rounded-xl p-3.5">
+        <div class="font-bold text-amber-300 mb-1.5">Uncertainty &amp; Model Limitations</div>
+        <p id="fm-uncertainty" class="text-slate-300 leading-relaxed"></p>
+        <div id="fm-stamp" class="text-[10px] font-mono text-slate-400 mt-2"></div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-800 text-xs">
+      <div id="fm-odds-line" class="font-mono text-slate-300"></div>
+      <a id="fm-kelly-link" href="tools.html" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-black">Open in Kelly Calculator →</a>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
@@ -151,7 +205,8 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>
-<script>window.RIYADH_DATA = [{"id": 1, "card": "Main", "weight": "Middleweight", "matchup": "Israel Adesanya vs. Shara Magomedov", "pick": "Shara Magomedov", "prob": 50.1, "pure_prob": 52.5, "sharp_prob": 40.4, "sharp_amer": 144, "retail_amer": 142, "book": "FanDuel", "max_amer": 107, "ev_pct": 21.2, "retail_ev": 21.2, "sharp_ev": 21.2, "kelly": 2.0, "high_conv": false, "prop_lean": "Decision (29%)", "status": "POLY_EV", "status_label": "+EV DOG 2.00u (+21.2% EV)", "script": "5-round Middleweight \u00b7 Sim: 19% KO / 8% Sub / 29% Dec"}, {"id": 2, "card": "Main", "weight": "Welterweight", "matchup": "Ian Machado Garry vs. Yaroslav Amosov", "pick": "Ian Machado Garry", "prob": 57.6, "pure_prob": 57.2, "sharp_prob": 61.1, "sharp_amer": -163, "retail_amer": -192, "book": "FanDuel", "max_amer": -126, "ev_pct": -12.4, "retail_ev": -12.4, "sharp_ev": -12.4, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (35%)", "status": "PASS", "status_label": "Pass (-12.4% EV)", "script": "5-round Welterweight \u00b7 Sim: 19% KO / 6% Sub / 35% Dec"}, {"id": 3, "card": "Main", "weight": "Heavyweight", "matchup": "Mario Pinto vs. Serghei Spivac", "pick": "Mario Pinto", "prob": 64.0, "pure_prob": 63.2, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -360, "book": "FanDuel", "max_amer": -162, "ev_pct": -18.3, "retail_ev": -18.3, "sharp_ev": -18.3, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (32%)", "status": "AVOID_JUICE", "status_label": "Odds Too Steep (-360)", "script": "3-round Heavyweight \u00b7 Sim: 32% KO / 10% Sub / 21% Dec"}, {"id": 4, "card": "Main", "weight": "Welterweight", "matchup": "Islam Dulatov vs. Levan Chokheli", "pick": "Islam Dulatov", "prob": 60.8, "pure_prob": 57.6, "sharp_prob": 62.5, "sharp_amer": -170, "retail_amer": -225, "book": "FanDuel", "max_amer": -142, "ev_pct": -12.2, "retail_ev": -12.2, "sharp_ev": -12.2, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (27%)", "status": "PASS", "status_label": "Pass (-12.2% EV)", "script": "3-round Welterweight \u00b7 Sim: 26% KO / 7% Sub / 27% Dec"}, {"id": 5, "card": "Main", "weight": "Lightweight", "matchup": "Akbar Abdullaev vs. Mairon Santos", "pick": "Akbar Abdullaev", "prob": 63.8, "pure_prob": 57.7, "sharp_prob": 72.6, "sharp_amer": -270, "retail_amer": -330, "book": "FanDuel", "max_amer": -160, "ev_pct": -16.9, "retail_ev": -16.9, "sharp_ev": -16.9, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (28%)", "status": "AVOID_JUICE", "status_label": "Odds Too Steep (-330)", "script": "3-round Lightweight \u00b7 Sim: 27% KO / 9% Sub / 28% Dec"}, {"id": 6, "card": "Main", "weight": "Light Heavyweight", "matchup": "Magomed Tuchalov vs. Ion Cutelaba", "pick": "Magomed Tuchalov", "prob": 60.3, "pure_prob": 58.2, "sharp_prob": 61.5, "sharp_amer": -163, "retail_amer": -188, "book": "FanDuel", "max_amer": -139, "ev_pct": -7.7, "retail_ev": -7.7, "sharp_ev": -7.7, "kelly": 0.0, "high_conv": true, "prop_lean": "KO/TKO (30%)", "status": "PASS", "status_label": "Pass (-7.7% EV)", "script": "3-round Light Heavyweight \u00b7 Sim: 30% KO / 10% Sub / 19% Dec"}, {"id": 7, "card": "Prelim", "weight": "Featherweight", "matchup": "Luke Riley vs. Gabriel Santos", "pick": "Luke Riley", "prob": 62.4, "pure_prob": 59.9, "sharp_prob": 62.5, "sharp_amer": -194, "retail_amer": -150, "book": "Caesars", "max_amer": -152, "ev_pct": 3.9, "retail_ev": 3.9, "sharp_ev": 3.9, "kelly": 1.48, "high_conv": true, "prop_lean": "Decision (32%)", "status": "POLY_EV", "status_label": "BET 1.48u (+3.9% EV)", "script": "3-round Featherweight \u00b7 Sim: 21% KO / 8% Sub / 32% Dec"}, {"id": 8, "card": "Prelim", "weight": "Flyweight", "matchup": "Jafel Filho vs. Bruno Silva", "pick": "Jafel Filho", "prob": 61.5, "pure_prob": 67.3, "sharp_prob": 53.1, "sharp_amer": -127, "retail_amer": -150, "book": "Caesars", "max_amer": -147, "ev_pct": 2.6, "retail_ev": 2.6, "sharp_ev": 2.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (34%)", "status": "PASS", "status_label": "No Value (+2.6% EV)", "script": "3-round Flyweight \u00b7 Sim: 21% KO / 7% Sub / 34% Dec"}, {"id": 9, "card": "Prelim", "weight": "Light Heavyweight", "matchup": "Ivan Gnizditskiy vs. Uran Satybaldiev", "pick": "Ivan Gnizditskiy", "prob": 51.0, "pure_prob": 61.3, "sharp_prob": 48.5, "sharp_amer": 104, "retail_amer": -113, "book": "FanDuel", "max_amer": 103, "ev_pct": -3.8, "retail_ev": -3.8, "sharp_ev": -3.8, "kelly": 0.0, "high_conv": false, "prop_lean": "KO/TKO (23%)", "status": "PASS", "status_label": "Low Confidence (<52%) \u00b7 Pass", "script": "3-round Light Heavyweight \u00b7 Sim: 23% KO / 9% Sub / 16% Dec"}, {"id": 10, "card": "Prelim", "weight": "Middleweight", "matchup": "Marco Tulio vs. JunYong Park", "pick": "Marco Tulio", "prob": 54.5, "pure_prob": 55.5, "sharp_prob": 59.6, "sharp_amer": -150, "retail_amer": -188, "book": "FanDuel", "max_amer": -111, "ev_pct": -16.5, "retail_ev": -16.5, "sharp_ev": -16.5, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (27%)", "status": "PASS", "status_label": "No Value (-16.5% EV)", "script": "3-round Middleweight \u00b7 Sim: 21% KO / 6% Sub / 27% Dec"}, {"id": 11, "card": "Prelim", "weight": "Bantamweight", "matchup": "Pavel Andrusca vs. Mahammadali Osmanli", "pick": "Pavel Andrusca", "prob": 56.6, "pure_prob": 56.8, "sharp_prob": 56.5, "sharp_amer": -133, "retail_amer": -146, "book": "FanDuel", "max_amer": -121, "ev_pct": -4.6, "retail_ev": -4.6, "sharp_ev": -4.6, "kelly": 0.0, "high_conv": true, "prop_lean": "Decision (30%)", "status": "PASS", "status_label": "Pass (-4.6% EV)", "script": "3-round Bantamweight \u00b7 Sim: 18% KO / 7% Sub / 30% Dec"}, {"id": 12, "card": "Prelim", "weight": "Middleweight", "matchup": "Matthieu Duclos vs. Modestino Rodrigues", "pick": "Modestino Rodrigues", "prob": 53.2, "pure_prob": 63.2, "sharp_prob": 47.1, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -106, "ev_pct": 18.2, "retail_ev": 18.2, "sharp_ev": 18.2, "kelly": 3.73, "high_conv": false, "prop_lean": "Decision (24%)", "status": "POLY_EV", "status_label": "BET 3.73u (+18.2% EV)", "script": "3-round Middleweight \u00b7 Sim: 20% KO / 7% Sub / 24% Dec"}, {"id": 13, "card": "Prelim", "weight": "Bantamweight", "matchup": "Abdul Hussein vs. Hecher Sosa", "pick": "Hecher Sosa", "prob": 52.9, "pure_prob": 55.5, "sharp_prob": 47.5, "sharp_amer": 108, "retail_amer": 122, "book": "FanDuel", "max_amer": -105, "ev_pct": 17.4, "retail_ev": 17.4, "sharp_ev": 17.4, "kelly": 3.57, "high_conv": false, "prop_lean": "Decision (27%)", "status": "POLY_EV", "status_label": "BET 3.57u (+17.4% EV)", "script": "3-round Bantamweight \u00b7 Sim: 17% KO / 6% Sub / 27% Dec"}, {"id": 14, "card": "Prelim", "weight": "Lightweight", "matchup": "Mateusz Rebecki vs. Elves Brener", "pick": "Mateusz Rebecki", "prob": 54.3, "pure_prob": 58.9, "sharp_prob": 52.1, "sharp_amer": -133, "retail_amer": -156, "book": "FanDuel", "max_amer": -111, "ev_pct": -10.8, "retail_ev": -10.8, "sharp_ev": -10.8, "kelly": 0.0, "high_conv": false, "prop_lean": "Decision (24%)", "status": "PASS", "status_label": "No Value (-10.8% EV)", "script": "3-round Lightweight \u00b7 Sim: 21% KO / 7% Sub / 24% Dec"}];</script>
+<script src="data/riyadh_data.js"></script>
+<script src="data/track_record.js"></script>
 <script>
 
 function copyContactEmail() {
@@ -160,6 +215,60 @@ function copyContactEmail() {
     if (el) { el.textContent = "Copied MMAMATHPREDICTIONS@gmail.com!"; el.classList.remove("hidden"); }
   });
 }
+
+function ensureDataLoaded() {
+  if (!Array.isArray(window.RIYADH_DATA) || window.RIYADH_DATA.length === 0) {
+    const tb = document.getElementById("riyadh-radar-body");
+    if (tb) tb.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-rose-400">Unable to load canonical Riyadh fight data. Please refresh.</td></tr>';
+  }
+}
+
+
+function openFightModal(id) {
+  const b = (window.RIYADH_DATA || []).find(x => x.id === Number(id));
+  if (!b) return;
+  const meta = window.MMA_META || {};
+  document.getElementById("fm-meta").textContent = b.card + " · " + b.weight + " · " + (b.rounds || 3) + " Rounds";
+  document.getElementById("fm-title").textContent = b.matchup;
+  document.getElementById("fm-pick").textContent = b.pick + " (" + b.prob + "%)";
+  document.getElementById("fm-probs").textContent = "Raw Model: " + b.pure_prob + "% · Market: " + b.sharp_prob + "%";
+  document.getElementById("fm-tier").textContent = b.conf_tier;
+  document.getElementById("fm-status").textContent = b.status_label;
+  document.getElementById("fm-method").textContent = "KO " + b.ko_pct + "% · Sub " + b.sub_pct + "% · Dec " + b.dec_pct + "%";
+
+  const s1 = b.f1_stats || {}, s2 = b.f2_stats || {};
+  const statRows = [
+    ["UFC Bouts", s1.ufc_bouts, s2.ufc_bouts],
+    ["Age / Reach", s1.age + "y / " + s1.reach + '"', s2.age + "y / " + s2.reach + '"'],
+    ["SLpM / SApM", s1.slpm + " / " + s1.sapm, s2.slpm + " / " + s2.sapm],
+    ["TD/15m / Def", s1.td + " / " + s1.td_def + "%", s2.td + " / " + s2.td_def + "%"],
+    ["LoC Grade", s1.loc, s2.loc],
+  ];
+  let html = '<div class="font-bold text-slate-400">Metric</div><div class="font-bold text-sky-300">' + b.f1 + '</div><div class="font-bold text-amber-300">' + b.f2 + '</div>';
+  statRows.forEach(r => {
+    html += '<div class="text-slate-400 border-t border-slate-800/70 pt-1">' + r[0] + '</div><div class="font-mono text-slate-200 border-t border-slate-800/70 pt-1">' + r[1] + '</div><div class="font-mono text-slate-200 border-t border-slate-800/70 pt-1">' + r[2] + '</div>';
+  });
+  document.getElementById("fm-stats").innerHTML = html;
+
+  const ul = document.getElementById("fm-drivers");
+  ul.innerHTML = (b.key_drivers || []).map(d => '<li>' + d + '</li>').join("");
+  document.getElementById("fm-uncertainty").textContent = b.uncertainty_note || "";
+  document.getElementById("fm-stamp").textContent = (meta.engine || "Engine v5.1") + " (" + (meta.release || "Riyadh v1") + ") · Locked " + (meta.lockedAt || "2026-11-25");
+  document.getElementById("fm-odds-line").textContent = "Poly: " + fmtAmer(b.sharp_amer) + " · Book (" + b.book + "): " + fmtAmer(b.retail_amer) + " · Max Playable: " + fmtAmer(b.max_amer);
+  document.getElementById("fm-kelly-link").href = "tools.html?bout=" + b.id;
+  document.getElementById("fight-modal").classList.remove("hidden");
+}
+
+function closeFightModal() {
+  const m = document.getElementById("fight-modal");
+  if (m) m.classList.add("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search || "");
+  const bid = Number(params.get("bout"));
+  if (bid) openFightModal(bid);
+});
 
 function toggleMobileNav() {
   const m = document.getElementById("mobile-nav");
@@ -231,6 +340,7 @@ function applyOddsFormatUI() {
 function setOddsFormat(fmt) {
   window.ODDS_FMT = fmt;
   try { localStorage.setItem("mma_odds_fmt", fmt); } catch (e) {}
+  ensureDataLoaded();
   applyOddsFormatUI();
 }
 
@@ -386,13 +496,13 @@ function renderRiyadhRadar(filter) {
       ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
       : (b.status === "AVOID_JUICE" ? "bg-rose-500/20 text-rose-300 border-rose-500/40" : "bg-slate-800 text-slate-300 border-slate-700");
     tr.innerHTML =
-      '<td class="py-3 px-3"><div class="font-bold text-white">' + b.matchup + (b.high_conv ? ' <span class="ml-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-bold">56%+ TRACKED</span>' : ' <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 text-[10px]">LEAN</span>') + '</div><div class="text-[11px] text-slate-400">' + b.card + ' · ' + b.weight + ' · ' + b.script + '</div></td>' +
+      '<td class="py-3 px-3"><div class="font-bold text-white"><button type="button" onclick="openFightModal(' + b.id + ')" class="text-left hover:text-sky-300 transition">' + b.matchup + '</button>' + (b.high_conv ? ' <span class="ml-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-bold">56%+ TRACKED</span>' : ' <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 text-[10px]">LEAN</span>') + '</div><div class="text-[11px] text-slate-400">' + b.card + ' · ' + b.weight + ' · ' + b.script + '</div></td>' +
       '<td class="py-3 px-3 font-semibold text-sky-300">' + b.pick + ' <span class="font-mono text-slate-200">(' + b.prob + '%)</span> <span class="text-[10px] text-slate-400 font-mono">[' + b.pure_prob + '% raw]</span></td>' +
       '<td class="py-3 px-3 font-mono text-slate-200">' + fmtAmer(b.sharp_amer) + ' / ' + fmtAmer(b.retail_amer) + '</td>' +
       '<td class="py-3 px-3 font-mono font-bold text-amber-300">' + fmtAmer(b.max_amer) + '</td>' +
       '<td class="py-3 px-3 text-slate-200">' + b.prop_lean + '</td>' +
       '<td class="py-3 px-3"><span class="px-2 py-0.5 rounded border text-[11px] font-bold ' + badgeCls + '">' + b.status_label + '</span></td>' +
-      '<td class="py-3 px-3"><a href="tools.html?bout=' + b.id + '" class="inline-block px-2.5 py-1 rounded bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold border border-sky-500/30">Kelly Calc →</a></td>';
+      '<td class="py-3 px-3 flex flex-wrap gap-1.5"><button type="button" onclick="openFightModal(' + b.id + ')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white font-bold border border-slate-600">Breakdown</button><a href="tools.html?bout=' + b.id + '" class="inline-block px-2.5 py-1 rounded bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold border border-sky-500/30">Kelly →</a></td>';
     tbody.appendChild(tr);
   });
 }
