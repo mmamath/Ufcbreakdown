@@ -117,13 +117,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
       </div>
       <a href="next-card.html" class="text-xs font-bold text-sky-400 hover:text-sky-300">Open All 14 Bouts →</a>
     </div>
-        <div class="bg-sky-950/40 border border-sky-500/30 rounded-2xl p-4 text-xs text-slate-200 flex flex-wrap items-center justify-between gap-3">
-      <div>
-        <span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold uppercase tracking-wider text-[10px]">Official 70%+ Goal · 56%+ Confidence Picks (8 of 14)</span>
-        <div class="mt-1.5 leading-relaxed"><strong>Ian Machado Garry</strong> (57.6%), <strong>Mario Pinto</strong> (64.0%), <strong>Islam Dulatov</strong> (60.8%), <strong>Akbar Abdullaev</strong> (63.8%), <strong>Magomed Tuchalov</strong> (60.3%), <strong>Luke Riley</strong> (62.4%), <strong>Jafel Filho</strong> (61.5%), <strong>Pavel Andrusca</strong> (56.6%)</div>
-      </div>
-      <a href="next-card.html" class="shrink-0 px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-black text-xs hover:bg-sky-400">Filter 56%+ Picks →</a>
-    </div>
+        <div id="home-hc-banner" class="bg-sky-950/40 border border-sky-500/30 rounded-2xl p-4 text-xs text-slate-200 flex flex-wrap items-center justify-between gap-3"></div>
     <div id="home-top3-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
   </section>
 
@@ -256,6 +250,13 @@ function fmtAmer(a) {
 
 
 function renderHomeTop3() {
+  const hcEl = document.getElementById("home-hc-banner");
+  if (hcEl) {
+    const all = window.RIYADH_DATA || [];
+    const hc = all.filter(b => b.high_conv);
+    const names = hc.map(b => "<strong>" + b.pick + "</strong> (" + b.prob + "%)").join(", ");
+    hcEl.innerHTML = '<div><span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold uppercase tracking-wider text-[10px]">Official 70%+ Goal · 56%+ Confidence Picks (' + hc.length + ' of ' + all.length + ')</span><div class="mt-1.5 leading-relaxed">' + (names || "Loading...") + '</div></div><a href="next-card.html" class="shrink-0 px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-black text-xs hover:bg-sky-400">Filter 56%+ Picks →</a>';
+  }
   const grid = document.getElementById("home-top3-grid");
   if (!grid) return;
   const data = (window.RIYADH_DATA || []).slice(0, 3);

@@ -124,6 +124,15 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         <p class="text-slate-300 leading-relaxed">Our 1,000-run round simulations estimate KO/Sub/Decision distributions from historical fighter rates. They cannot predict mid-fight freak injuries, illegal fouls, weight-miss stamina crashes not captured pre-fight, or outlier judging scorecards.</p>
       </div>
     </div>
+    <div class="bg-slate-950/80 border border-slate-700 rounded-xl p-4 text-xs space-y-2 mt-2">
+      <div class="font-bold text-white">935-Fight Out-of-Sample Reproducibility &amp; Verification Scope</div>
+      <ul class="list-disc pl-5 space-y-1 text-slate-300">
+        <li><strong>Dataset &amp; Split:</strong> <code class="text-sky-300">master.csv</code> (8,497 decided UFC bouts, 2010-01-01 to 2026-08-08). Training cutoff <code class="text-sky-300">&lt; 2025-01-01</code> (n = 7,562); strict OOS evaluation <code class="text-sky-300">2025-01-01 to 2026-08-08</code> (n = 935, 0% market odds).</li>
+        <li><strong>Evaluation Script:</strong> <code class="text-sky-300">run_10_team_tournament.py</code> (<code class="text-sky-300">rec_center=2021.5, rec_scale=0.65</code>) updating fighter state chronologically prior to each bout.</li>
+        <li><strong>Confidence-Tier Definitions (OOS n = 935):</strong> Lean (50.0%–55.9%: 209/384 = 54.4%), Tracked Core (56.0%–61.9%: 203/306 = 66.3%), High Conviction (62.0%+: 186/245 = 75.9%), Combined 56%+ Tracked Tier (389/551 = 70.6%).</li>
+        <li><strong>Independent Verification Status:</strong> All out-of-sample metrics were computed internally; <strong>no external third-party audit has been performed yet</strong>.</li>
+      </ul>
+    </div>
   </section>
 </main>
 </div>
