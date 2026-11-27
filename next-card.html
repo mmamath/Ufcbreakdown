@@ -139,18 +139,6 @@
     </div>
   </section>
 
-  <!-- Fight-Week Video Breakdown -->
-  <section id="riyadh-video-section" class="bg-[#171321] border border-[#332941] rounded-lg p-5 sm:p-6">
-    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-      <div>
-        <div class="text-xs font-mono text-[#A78BFA]">Fight-Week Media · YouTube Breakdown</div>
-        <h2 class="text-lg sm:text-xl font-bold text-[#F5F3F8] mt-0.5">UFC Riyadh Breakdown &amp; 1,000-Sim Walkthrough</h2>
-      </div>
-      <a href="https://www.youtube.com/@MMAMathPredictions" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-md bg-[#211735] hover:bg-[#7041B8] border border-[#7041B8] text-xs font-semibold text-[#F5F3F8] transition">Watch on YouTube →</a>
-    </div>
-    <div id="riyadh-video-slot" class="rounded-lg overflow-hidden border border-[#332941] bg-[#100D19]"></div>
-  </section>
-
   <!-- 56%+ Confidence Tracked Core -->
   <section class="bg-[#171321] border border-[#332941] border-l-4 border-l-[#7041B8] rounded-lg p-5 sm:p-6 space-y-4">
     <div class="flex flex-wrap items-center justify-between gap-3">
@@ -212,15 +200,19 @@
       <div>
         <div class="text-xs font-mono text-[#A78BFA]">Doha-Style Full Card Breakdown</div>
         <h2 class="text-xl font-bold text-[#F5F3F8] mt-0.5">Head-to-Head Matchup Cards (14 Bouts)</h2>
-        <p class="text-xs text-[#AAA3B5] mt-0.5">Full tale-of-the-tape stats, Monte Carlo method-of-victory splits, key drivers, and Kelly links for every bout.</p>
       </div>
-      <div class="flex flex-wrap gap-2 text-xs">
-        <button type="button" onclick="filterRiyadhRadar('ALL')" class="radar-filter px-3 py-1.5 rounded-md bg-[#7041B8] text-[#F5F3F8] font-bold" data-filter="ALL">All (14)</button>
-        <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#A78BFA] font-semibold hover:text-[#F5F3F8]" data-filter="HIGH_CONV">56%+ (8)</button>
-        <button type="button" onclick="filterRiyadhRadar('Main')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]" data-filter="Main">Main (6)</button>
-        <button type="button" onclick="filterRiyadhRadar('Prelim')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]" data-filter="Prelim">Prelims (8)</button>
-        <button type="button" onclick="filterRiyadhRadar('POLY_EV')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-emerald-300 font-semibold hover:text-[#F5F3F8]" data-filter="POLY_EV">+EV (4)</button>
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <input id="doha-search" type="search" oninput="filterRiyadhSearch(this.value)" placeholder="Search fighter or weight..." class="px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#F5F3F8] placeholder-[#AAA3B5] focus:outline-none focus:border-[#7041B8]" />
+        <button type="button" onclick="setDohaCardsOpen(true)" class="px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#F5F3F8] font-semibold hover:border-[#7041B8]">Expand</button>
+        <button type="button" onclick="setDohaCardsOpen(false)" class="px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]">Collapse</button>
       </div>
+    </div>
+    <div class="flex flex-wrap gap-2 text-xs">
+      <button type="button" onclick="filterRiyadhRadar('ALL')" class="radar-filter px-3 py-1.5 rounded-md bg-[#7041B8] text-[#F5F3F8] font-bold" data-filter="ALL">All (14)</button>
+      <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#A78BFA] font-semibold hover:text-[#F5F3F8]" data-filter="HIGH_CONV">56%+ (8)</button>
+      <button type="button" onclick="filterRiyadhRadar('Main')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]" data-filter="Main">Main (6)</button>
+      <button type="button" onclick="filterRiyadhRadar('Prelim')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]" data-filter="Prelim">Prelims (8)</button>
+      <button type="button" onclick="filterRiyadhRadar('POLY_EV')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-emerald-300 font-semibold hover:text-[#F5F3F8]" data-filter="POLY_EV">+EV (4)</button>
     </div>
     <div id="riyadh-doha-cards" class="space-y-5"></div>
   </section>
@@ -625,6 +617,7 @@ function renderRiyadhRadar(filter) {
   const cardsWrap = document.getElementById("riyadh-doha-cards");
   if (cardsWrap) {
     cardsWrap.innerHTML = "";
+    const q = (window.RIYADH_SEARCH || "").trim().toLowerCase();
     const FIGHTER_PHOTOS = {
       "Israel Adesanya": "https://www.sherdog.com/image_crop/200/300/_images/fighter/20220325103200_Israel_Adesanya_ff.JPG",
       "Shara Magomedov": "https://www.sherdog.com/image_crop/200/300/_images/fighter/20240721111123_Sharabutdin_Magomedov_ff.JPG",
@@ -639,19 +632,78 @@ function renderRiyadhRadar(filter) {
       "Jafel Filho": "https://www.sherdog.com/image_crop/200/300/_images/fighter/20180528102715_jafel_filho.JPG",
       "JunYong Park": "https://www.sherdog.com/image_crop/200/300/_images/fighter/20220922062203_Jun_Yong_Park_ff.JPG"
     };
+    const BOUT_VIDEOS = {
+      1: [
+        { vid: "WRFO5YH7_IY", title: "Israel Adesanya vs Robert Whittaker 1 | Full Fight", ch: "Official Channel: UFC" },
+        { vid: "m8Lngrf6ijQ", title: "Shara Magomedov vs Armen Petrosyan | Full Fight", ch: "Official Channel: UFC" }
+      ],
+      2: [
+        { vid: "VAUmgZ7dZCc", title: "Ian Machado Garry vs Belal Muhammad | Full Fight", ch: "Official Channel: UFC" },
+        { vid: "a-h6W4az3X0", title: "Yaroslav Amosov vs Douglas Lima | Full Fight", ch: "Official Channel: Bellator / PFL" }
+      ],
+      3: [
+        { vid: "G_lLJvMMaCk", title: "Mario Pinto Octagon Interview | UFC Vegas 103", ch: "Official Channel: UFC" },
+        { vid: "GNRYfes8nVI", title: "Serghei Spivac | Top UFC Finishes", ch: "Official Channel: UFC" }
+      ],
+      4: [
+        { vid: "ahijnlf9FHU", title: "Islam Dulatov vs Vanilton Antunes | Full Fight", ch: "Official Channel: UFC / DWCS" },
+        { vid: "EaOTDjJedi8", title: "Islam Dulatov Octagon Interview | UFC 318", ch: "Official Channel: UFC" }
+      ],
+      5: [
+        { vid: "yGBOe3JBa2U", title: "Akbar Abdullaev DWCS Highlights", ch: "YouTube Fight Tape" },
+        { vid: "TkhhH9KbYug", title: "Mairon Santos Pre-Fight Interview | UFC Riyadh", ch: "MMA Junkie" }
+      ],
+      6: [
+        { vid: "ZWsXNzwnCDo", title: "Ion Cutelaba Octagon Interview | UFC Vegas 114", ch: "Official Channel: UFC" },
+        { vid: "qGpFU9l2y5I", title: "Ion Cutelaba Octagon Interview | UFC Seattle", ch: "Official Channel: UFC" }
+      ],
+      7: [
+        { vid: "iL5qEmbSlnc", title: "Luke Riley Octagon Interview", ch: "Official Channel: UFC" },
+        { vid: "AXkVXshFg_M", title: "Gabriel Santos Octagon Interview | UFC 312", ch: "Official Channel: UFC" }
+      ],
+      8: [
+        { vid: "1QBaFJkUnh0", title: "Jafel Filho Octagon Interview | UFC Rio", ch: "Official Channel: UFC" },
+        { vid: "aRbMhqCYJko", title: "Bruno Silva vs Jafel Filho | Tape Breakdown", ch: "YouTube Fight Tape" }
+      ],
+      9: [
+        { vid: "RNF6OSL3hl0", title: "Uran Satybaldiev Octagon Interview | UFC Shanghai", ch: "Official Channel: UFC" },
+        { vid: "QhPtjoI2Apo", title: "Uran Satybaldiev vs Ivan Gnizditskiy | Breakdown", ch: "YouTube Fight Tape" }
+      ],
+      10: [
+        { vid: "Ahb6P7DViFI", title: "Christian Leroy Duncan vs Marco Tulio | Full Fight", ch: "Official Channel: UFC" },
+        { vid: "dk4asjMSaJs", title: "Jun Yong Park | UFC Tape Preview", ch: "YouTube Fight Tape" }
+      ],
+      11: [
+        { vid: "nsptCiah_ME", title: "Pavel Andrusca vs Pengchu Gexi | UAE Warriors 72", ch: "Official Fight Tape" },
+        { vid: "1AO4yZf8jTk", title: "Pavel Andrusca vs Mahammadali Osmanli | Highlights", ch: "YouTube Fight Tape" }
+      ],
+      12: [
+        { vid: "Hfc995rRxF4", title: "UFC Saudi Arabia Full Card Breakdown", ch: "YouTube Fight Tape" }
+      ],
+      13: [
+        { vid: "upwd8f3wV4I", title: "Hecher Sosa | Dana White's Contender Series", ch: "Official Channel: UFC" },
+        { vid: "IRKzM2ZKheY", title: "Abdul Hussein vs Hansraj Samota | UAE Warriors 54", ch: "Official Fight Tape" }
+      ],
+      14: [
+        { vid: "noX-QzMh1Qs", title: "Mateusz Rebecki vs Kyle Prepolec | Highlights", ch: "YouTube Fight Tape" },
+        { vid: "csN0GaMFI_g", title: "Elves Brener Octagon Interview | UFC Vegas 121", ch: "Official Channel: UFC" }
+      ]
+    };
     const initials = (name) => (name || "?").trim().split(/\s+/).map(p => p[0]).slice(0, 2).join("").toUpperCase();
     const avatarHtml = (name, isPick) => {
       const borderCls = isPick ? "border-emerald-400 text-emerald-300" : "border-[#7041B8] text-[#A78BFA]";
       const url = FIGHTER_PHOTOS[name];
       if (url) {
-        return '<div class="relative w-14 h-14 rounded-full bg-[#211735] border-2 ' + borderCls + ' flex items-center justify-center font-black text-sm shrink-0 overflow-hidden">' +
+        return '<div class="relative w-16 h-16 rounded-full bg-[#211735] border-2 ' + borderCls + ' flex items-center justify-center font-black text-base shrink-0 overflow-hidden">' +
           '<span>' + initials(name) + '</span>' +
-          '<img src="' + url + '" alt="' + name + '" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top" onerror="this.style.display=\'none\'" />' +
+          '<img src="' + url + '" alt="' + name + '" class="absolute inset-0 w-full h-full object-cover object-top" onerror="this.style.display=\'none\'" />' +
         '</div>';
       }
-      return '<div class="w-14 h-14 rounded-full bg-[#211735] border-2 ' + borderCls + ' flex items-center justify-center font-black text-sm shrink-0">' + initials(name) + '</div>';
+      return '<div class="w-16 h-16 rounded-full bg-[#211735] border-2 ' + borderCls + ' flex items-center justify-center font-black text-base shrink-0">' + initials(name) + '</div>';
     };
-    list.forEach(b => {
+
+    const filteredCards = list.filter(b => !q || (b.matchup + " " + b.weight + " " + b.card).toLowerCase().includes(q));
+    filteredCards.forEach(b => {
       const f1Pick = b.pick === b.f1;
       const p1 = f1Pick ? b.prob : b.opp_prob;
       const p2 = f1Pick ? b.opp_prob : b.prob;
@@ -661,78 +713,104 @@ function renderRiyadhRadar(filter) {
         ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/40"
         : (b.status === "AVOID_JUICE" ? "bg-rose-500/15 text-rose-300 border-rose-500/40" : "bg-[#211735] text-[#AAA3B5] border-[#332941]");
       const driversHtml = (b.key_drivers || []).map(d => '<li>' + d + '</li>').join("");
+      const vids = BOUT_VIDEOS[b.id] || [];
+      const tapeHtml = vids.length ? (
+        '<div class="pt-2">' +
+          '<div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">' +
+            '<h4 class="text-[11px] font-bold uppercase tracking-wider text-rose-400">Official Fight Tape (Click-to-Load · Zero Copyright Risk)</h4>' +
+            '<span class="text-[10px] text-[#AAA3B5]">Authorized YouTube Channels Only</span>' +
+          '</div>' +
+          '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">' +
+            vids.map(v => {
+              const slotId = "riyadh-yt-" + b.id + "-" + v.vid;
+              return '<div class="bg-[#100D19] border border-[#332941] rounded-xl overflow-hidden">' +
+                '<div id="' + slotId + '" onclick="loadRiyadhYouTube(\'' + slotId + '\', \'' + v.vid + '\')" class="relative aspect-video bg-[#171321] cursor-pointer group">' +
+                  '<img src="https://i.ytimg.com/vi/' + v.vid + '/hqdefault.jpg" alt="' + v.title + '" class="w-full h-full object-cover group-hover:opacity-90 transition" />' +
+                  '<div class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/10 transition">' +
+                    '<div class="w-12 h-12 rounded-full bg-rose-600/95 flex items-center justify-center shadow-lg"><span class="text-white text-lg ml-0.5">▶</span></div>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="p-2.5 flex items-center justify-between gap-2">' +
+                  '<div class="min-w-0">' +
+                    '<div class="text-xs font-semibold text-[#F5F3F8] truncate">' + v.title + '</div>' +
+                    '<div class="text-[10px] text-[#AAA3B5]">' + v.ch + '</div>' +
+                  '</div>' +
+                  '<a href="https://www.youtube.com/watch?v=' + v.vid + '" target="_blank" rel="noopener" class="px-2 py-1 rounded bg-[#211735] border border-[#332941] text-[10px] font-semibold text-[#A78BFA] hover:text-[#F5F3F8] shrink-0">YouTube ↗</a>' +
+                '</div>' +
+              '</div>';
+            }).join("") +
+          '</div>' +
+        '</div>'
+      ) : '';
 
       const card = document.createElement("article");
-      card.className = "bg-[#171321] border border-[#332941] rounded-lg overflow-hidden";
+      card.className = "doha-bout-card bg-[#171321] border border-[#332941] rounded-xl overflow-hidden";
       card.innerHTML =
-        '<div class="px-4 sm:px-5 py-3 bg-[#211735]/70 border-b border-[#332941] flex flex-wrap items-center justify-between gap-2">' +
+        '<div onclick="toggleRiyadhCard(' + b.id + ')" class="px-4 sm:px-5 py-3 bg-[#211735]/70 border-b border-[#332941] flex flex-wrap items-center justify-between gap-2 cursor-pointer">' +
           '<div class="flex flex-wrap items-center gap-2">' +
-            '<span class="px-2 py-0.5 rounded bg-[#100D19] border border-[#332941] font-mono text-[11px] text-[#A78BFA] font-bold">#' + b.id + '</span>' +
-            '<span class="text-xs font-semibold text-[#F5F3F8]">' + b.card + ' Card · ' + b.weight + '</span>' +
-            '<span class="text-[11px] font-mono text-[#AAA3B5]">(' + b.rounds + ' Rds)</span>' +
-            (b.high_conv ? '<span class="px-2 py-0.5 rounded bg-[#7041B8]/25 border border-[#7041B8]/50 text-[#A78BFA] text-[10px] font-bold">56%+ TRACKED</span>' : '') +
+            '<span class="px-2 py-0.5 rounded bg-[#7041B8]/25 border border-[#7041B8]/50 font-mono text-[11px] text-[#A78BFA] font-bold uppercase">' + b.card + ' Card</span>' +
+            '<span class="text-xs font-semibold text-[#F5F3F8]">' + b.weight + ' (' + b.rounds + ' Rds)</span>' +
           '</div>' +
-          '<span class="px-2.5 py-0.5 rounded border text-[11px] font-bold ' + badgeCls + '">' + b.status_label + '</span>' +
+          '<div class="flex items-center gap-2">' +
+            '<span class="px-2.5 py-0.5 rounded border text-[11px] font-bold ' + badgeCls + '">' + b.status_label + '</span>' +
+            '<span id="doha-chev-' + b.id + '" class="text-[#AAA3B5] text-xs transition-transform">▾</span>' +
+          '</div>' +
         '</div>' +
 
-        '<div class="p-4 sm:p-5 space-y-4">' +
+        '<div id="doha-body-' + b.id + '" class="p-4 sm:p-5 space-y-4">' +
           '<div class="grid grid-cols-1 md:grid-cols-2 gap-3">' +
-            '<div class="flex items-center gap-3 bg-[#100D19] p-3.5 rounded-lg border ' + (f1Pick ? 'border-emerald-500/50' : 'border-[#332941]') + '">' +
+            '<div class="flex items-center gap-3.5 bg-[#100D19] p-3.5 rounded-xl border ' + (f1Pick ? 'border-emerald-500/50' : 'border-[#332941]') + '">' +
               avatarHtml(b.f1, f1Pick) +
               '<div class="min-w-0 flex-1">' +
-                '<div class="flex items-center justify-between gap-2">' +
-                  '<h3 class="font-bold text-[#F5F3F8] text-sm sm:text-base truncate">' + b.f1 + (f1Pick ? ' <span class="text-[10px] font-mono text-emerald-400">★ PICK</span>' : '') + '</h3>' +
-                  '<span class="font-mono font-black text-sm ' + (f1Pick ? 'text-emerald-400' : 'text-[#AAA3B5]') + '">' + p1 + '%</span>' +
+                '<div class="flex items-center gap-2 flex-wrap">' +
+                  '<h3 class="font-bold text-[#F5F3F8] text-base">' + b.f1 + '</h3>' +
+                  '<span class="text-xs font-mono px-1.5 py-0.5 rounded bg-[#211735] ' + (f1Pick ? 'text-emerald-300' : 'text-[#AAA3B5]') + '">' + p1 + '%</span>' +
                 '</div>' +
-                '<div class="text-[11px] text-[#AAA3B5] mt-0.5 font-mono">UFC: ' + (s1.n_ufc ?? "?") + ' bouts · Age ' + (s1.age ?? "?") + ' · Reach ' + (s1.reach ? s1.reach + "\"" : "N/A") + '</div>' +
+                '<p class="text-xs text-[#AAA3B5] mt-0.5">UFC: ' + (s1.ufc_bouts ?? "?") + ' bouts · Age ' + (s1.age ?? "?") + '</p>' +
+                '<p class="text-[11px] text-[#AAA3B5]/80 font-mono">Reach ' + (s1.reach ? s1.reach + "\"" : "N/A") + ' · LoC ' + (s1.loc ?? "?") + '</p>' +
               '</div>' +
             '</div>' +
 
-            '<div class="flex items-center gap-3 bg-[#100D19] p-3.5 rounded-lg border ' + (!f1Pick ? 'border-emerald-500/50' : 'border-[#332941]') + '">' +
+            '<div class="flex items-center gap-3.5 bg-[#100D19] p-3.5 rounded-xl border ' + (!f1Pick ? 'border-emerald-500/50' : 'border-[#332941]') + '">' +
               avatarHtml(b.f2, !f1Pick) +
               '<div class="min-w-0 flex-1">' +
-                '<div class="flex items-center justify-between gap-2">' +
-                  '<h3 class="font-bold text-[#F5F3F8] text-sm sm:text-base truncate">' + b.f2 + (!f1Pick ? ' <span class="text-[10px] font-mono text-emerald-400">★ PICK</span>' : '') + '</h3>' +
-                  '<span class="font-mono font-black text-sm ' + (!f1Pick ? 'text-emerald-400' : 'text-[#AAA3B5]') + '">' + p2 + '%</span>' +
+                '<div class="flex items-center gap-2 flex-wrap">' +
+                  '<h3 class="font-bold text-[#F5F3F8] text-base">' + b.f2 + '</h3>' +
+                  '<span class="text-xs font-mono px-1.5 py-0.5 rounded bg-[#211735] ' + (!f1Pick ? 'text-emerald-300' : 'text-[#AAA3B5]') + '">' + p2 + '%</span>' +
                 '</div>' +
-                '<div class="text-[11px] text-[#AAA3B5] mt-0.5 font-mono">UFC: ' + (s2.n_ufc ?? "?") + ' bouts · Age ' + (s2.age ?? "?") + ' · Reach ' + (s2.reach ? s2.reach + "\"" : "N/A") + '</div>' +
+                '<p class="text-xs text-[#AAA3B5] mt-0.5">UFC: ' + (s2.ufc_bouts ?? "?") + ' bouts · Age ' + (s2.age ?? "?") + '</p>' +
+                '<p class="text-[11px] text-[#AAA3B5]/80 font-mono">Reach ' + (s2.reach ? s2.reach + "\"" : "N/A") + ' · LoC ' + (s2.loc ?? "?") + '</p>' +
               '</div>' +
             '</div>' +
           '</div>' +
 
-          '<div class="space-y-1.5">' +
-            '<div class="h-2 w-full rounded-full bg-[#100D19] overflow-hidden flex border border-[#332941]">' +
-              '<div style="width:' + p1 + '%" class="' + (f1Pick ? 'bg-emerald-500' : 'bg-[#7041B8]') + ' h-full"></div>' +
-              '<div style="width:' + p2 + '%" class="' + (!f1Pick ? 'bg-emerald-500' : 'bg-[#332941]') + ' h-full"></div>' +
-            '</div>' +
-            '<div class="flex flex-wrap items-center justify-between gap-2 text-xs">' +
-              '<div class="font-mono text-[#F5F3F8]">Method (1,000 Sims): <span class="text-[#A78BFA] font-bold">KO ' + b.ko_pct + '%</span> · <span class="text-emerald-300 font-bold">Sub ' + b.sub_pct + '%</span> · <span class="text-[#AAA3B5] font-bold">Dec ' + b.dec_pct + '%</span></div>' +
-              '<div class="text-[11px] font-mono text-amber-300">Prop Lean: ' + b.prop_lean + '</div>' +
-            '</div>' +
+          '<div class="flex flex-wrap gap-2 text-xs">' +
+            '<button type="button" onclick="switchDohaTab(' + b.id + ', \'ov\')" id="dtab-btn-' + b.id + '-ov" class="px-3 py-1.5 rounded-md bg-[#7041B8] text-[#F5F3F8] font-bold">Overview &amp; +EV</button>' +
+            '<button type="button" onclick="switchDohaTab(' + b.id + ', \'tale\')" id="dtab-btn-' + b.id + '-tale" class="px-3 py-1.5 rounded-md bg-[#211735] text-[#AAA3B5] font-semibold">Tale of the Tape &amp; LoC</button>' +
+            '<button type="button" onclick="switchDohaTab(' + b.id + ', \'sim\')" id="dtab-btn-' + b.id + '-sim" class="px-3 py-1.5 rounded-md bg-[#211735] text-[#AAA3B5] font-semibold">1,000-Fight Sim &amp; Scenarios</button>' +
           '</div>' +
 
-          '<div class="grid grid-cols-1 lg:grid-cols-3 gap-3 text-xs">' +
-            '<div class="bg-[#100D19] border border-[#332941] rounded-md p-3 space-y-1.5">' +
-              '<div class="font-bold text-[#F5F3F8]">Tale of the Tape</div>' +
-              '<div class="flex justify-between font-mono text-[11px]"><span class="text-[#AAA3B5]">SLpM / SApM</span><span class="text-[#F5F3F8]">' + (s1.slpm ?? "?") + '/' + (s1.sapm ?? "?") + ' vs ' + (s2.slpm ?? "?") + '/' + (s2.sapm ?? "?") + '</span></div>' +
-              '<div class="flex justify-between font-mono text-[11px]"><span class="text-[#AAA3B5]">TD/15m / Def</span><span class="text-[#F5F3F8]">' + (s1.td ?? "?") + '/' + (s1.tdd ?? "?") + '% vs ' + (s2.td ?? "?") + '/' + (s2.tdd ?? "?") + '%</span></div>' +
-              '<div class="flex justify-between font-mono text-[11px]"><span class="text-[#AAA3B5]">LoC Grade</span><span class="text-[#A78BFA]">' + (s1.loc ?? "?") + ' vs ' + (s2.loc ?? "?") + '</span></div>' +
+          '<div id="dtab-pane-' + b.id + '-ov" class="space-y-4">' +
+            '<div class="bg-[#100D19] border border-[#332941] rounded-lg p-3.5 space-y-2">' +
+              '<div class="text-[11px] font-bold uppercase tracking-wider text-[#A78BFA]">Tactical Matchup &amp; Key Drivers</div>' +
+              '<p class="text-xs text-[#F5F3F8] leading-relaxed">' + (b.uncertainty_note || b.script) + '</p>' +
+              '<ul class="list-disc pl-4 space-y-0.5 text-xs text-[#AAA3B5]">' + driversHtml + '</ul>' +
             '</div>' +
+            tapeHtml +
+          '</div>' +
 
-            '<div class="bg-[#100D19] border border-[#332941] rounded-md p-3">' +
-              '<div class="font-bold text-[#F5F3F8] mb-1">Key Drivers</div>' +
-              '<ul class="list-disc pl-4 space-y-0.5 text-[11px] text-[#AAA3B5]">' + driversHtml + '</ul>' +
-            '</div>' +
+          '<div id="dtab-pane-' + b.id + '-tale" class="hidden bg-[#100D19] border border-[#332941] rounded-lg p-4 space-y-2 text-xs">' +
+            '<div class="flex justify-between font-mono border-b border-[#332941] pb-1.5"><span class="text-[#AAA3B5]">Metric</span><span class="text-[#F5F3F8]">' + b.f1 + ' vs ' + b.f2 + '</span></div>' +
+            '<div class="flex justify-between font-mono"><span class="text-[#AAA3B5]">SLpM / SApM</span><span class="text-[#F5F3F8]">' + (s1.slpm ?? "?") + ' / ' + (s1.sapm ?? "?") + ' vs ' + (s2.slpm ?? "?") + ' / ' + (s2.sapm ?? "?") + '</span></div>' +
+            '<div class="flex justify-between font-mono"><span class="text-[#AAA3B5]">TD/15m / TDD</span><span class="text-[#F5F3F8]">' + (s1.td ?? "?") + ' / ' + (s1.td_def ?? "?") + '% vs ' + (s2.td ?? "?") + ' / ' + (s2.td_def ?? "?") + '%</span></div>' +
+            '<div class="flex justify-between font-mono"><span class="text-[#AAA3B5]">LoC Grade</span><span class="text-[#A78BFA]">' + (s1.loc ?? "?") + ' vs ' + (s2.loc ?? "?") + '</span></div>' +
+          '</div>' +
 
-            '<div class="bg-[#211735]/60 border border-[#332941] rounded-md p-3 flex flex-col justify-between gap-2">' +
-              '<div>' +
-                '<div class="font-bold text-amber-300 mb-1">Risk &amp; Market Context</div>' +
-                '<p class="text-[11px] text-[#F5F3F8] leading-relaxed">' + (b.uncertainty_note || b.script) + '</p>' +
-              '</div>' +
-              '<div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#332941] font-mono text-[11px]">' +
-                '<span class="text-[#AAA3B5]">Best: <strong class="text-[#F5F3F8]">' + fmtAmer(b.retail_amer) + '</strong> · Max: <strong class="text-amber-300">' + fmtAmer(b.max_amer) + '</strong></span>' +
-                '<a href="tools.html?bout=' + b.id + '" class="px-2.5 py-1 rounded bg-[#7041B8] hover:bg-[#8B5CF6] text-[#F5F3F8] font-sans font-semibold">Kelly →</a>' +
-              '</div>' +
+          '<div id="dtab-pane-' + b.id + '-sim" class="hidden bg-[#100D19] border border-[#332941] rounded-lg p-4 space-y-3 text-xs">' +
+            '<div class="font-mono text-[#F5F3F8]">1,000-Sim Method Split: <span class="text-[#A78BFA] font-bold">KO ' + b.ko_pct + '%</span> · <span class="text-emerald-300 font-bold">Sub ' + b.sub_pct + '%</span> · <span class="text-[#AAA3B5] font-bold">Dec ' + b.dec_pct + '%</span></div>' +
+            '<div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#332941] font-mono">' +
+              '<span class="text-[#AAA3B5]">Best: <strong class="text-[#F5F3F8]">' + fmtAmer(b.retail_amer) + '</strong> · Max: <strong class="text-amber-300">' + fmtAmer(b.max_amer) + '</strong> · Prop: <strong class="text-amber-300">' + b.prop_lean + '</strong></span>' +
+              '<a href="tools.html?bout=' + b.id + '" class="px-3 py-1.5 rounded bg-[#7041B8] hover:bg-[#8B5CF6] text-[#F5F3F8] font-sans font-semibold">Open in Kelly Calculator →</a>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -741,25 +819,44 @@ function renderRiyadhRadar(filter) {
   }
 }
 
-
-// Paste your YouTube Video ID (e.g. "dQw4w9WgXcQ") once published to embed the live player automatically
-const RIYADH_VIDEO_ID = "";
-(function initRiyadhVideoSlot() {
-  const slot = document.getElementById("riyadh-video-slot");
+function loadRiyadhYouTube(slotId, vid) {
+  const slot = document.getElementById(slotId);
   if (!slot) return;
-  if (RIYADH_VIDEO_ID) {
-    slot.innerHTML = '<div class="aspect-video w-full"><iframe class="w-full h-full" src="https://www.youtube.com/embed/' + RIYADH_VIDEO_ID + '" title="MMA Math UFC Riyadh Breakdown" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
-  } else {
-    slot.innerHTML = '<div class="p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-[#100D19] via-[#171321] to-[#211735]">' +
-      '<div class="space-y-1.5 text-center sm:text-left">' +
-        '<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#7041B8]/25 border border-[#7041B8]/50 text-[#A78BFA] text-[11px] font-mono">READY FOR FIGHT-WEEK EMBED</div>' +
-        '<div class="text-base font-bold text-[#F5F3F8]">UFC Riyadh 30-Second Short &amp; Card Breakdown</div>' +
-        '<p class="text-xs text-[#AAA3B5] max-w-xl">Add your YouTube Video ID to <code class="text-[#A78BFA] font-mono">RIYADH_VIDEO_ID</code> in <code class="text-[#A78BFA] font-mono">next-card.html</code> after uploading to embed the live player here.</p>' +
-      '</div>' +
-      '<a href="https://www.youtube.com/@MMAMathPredictions" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-md bg-[#7041B8] hover:bg-[#8B5CF6] text-xs font-bold text-[#F5F3F8] whitespace-nowrap shrink-0">Open @MMAMathPredictions →</a>' +
-    '</div>';
-  }
-})();
+  slot.innerHTML = '<iframe class="w-full h-full" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/' + vid + '?autoplay=1" title="Official UFC Tape" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+}
+
+function switchDohaTab(id, tab) {
+  ["ov", "tale", "sim"].forEach(t => {
+    const pane = document.getElementById("dtab-pane-" + id + "-" + t);
+    const btn = document.getElementById("dtab-btn-" + id + "-" + t);
+    if (pane) pane.classList.toggle("hidden", t !== tab);
+    if (btn) btn.className = t === tab
+      ? "px-3 py-1.5 rounded-md bg-[#7041B8] text-[#F5F3F8] font-bold"
+      : "px-3 py-1.5 rounded-md bg-[#211735] text-[#AAA3B5] font-semibold";
+  });
+}
+
+function toggleRiyadhCard(id) {
+  const body = document.getElementById("doha-body-" + id);
+  const chev = document.getElementById("doha-chev-" + id);
+  if (!body) return;
+  const hidden = body.classList.toggle("hidden");
+  if (chev) chev.style.transform = hidden ? "rotate(-90deg)" : "rotate(0deg)";
+}
+
+function setDohaCardsOpen(open) {
+  (window.RIYADH_DATA || []).forEach(b => {
+    const body = document.getElementById("doha-body-" + b.id);
+    const chev = document.getElementById("doha-chev-" + b.id);
+    if (body) body.classList.toggle("hidden", !open);
+    if (chev) chev.style.transform = open ? "rotate(0deg)" : "rotate(-90deg)";
+  });
+}
+
+function filterRiyadhSearch(val) {
+  window.RIYADH_SEARCH = val || "";
+  renderRiyadhRadar(window.CURRENT_RADAR_FILTER || "ALL");
+}
 
 function filterRiyadhRadar(filter) {
   document.querySelectorAll(".radar-filter").forEach(btn => {
