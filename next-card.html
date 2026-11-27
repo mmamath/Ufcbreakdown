@@ -8,201 +8,282 @@
   <meta content="Next Card: UFC Riyadh | MMA Math Predictions" property="og:title"/>
   <meta content="Full 14-bout Engine v5.1 forecast, Max Playable Odds, and simulation prop leans for UFC Fight Night Riyadh (Dec 5, 2026)." property="og:description"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>.hidden { display: none !important; } 
-html { scroll-behavior: smooth; }
-body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-</style>
+  <style>
+    :root {
+      --mp-bg: #100D19;
+      --mp-bg-2: #171321;
+      --mp-surface: #211735;
+      --mp-purple: #7041B8;
+      --mp-violet: #8B5CF6;
+      --mp-soft: #A78BFA;
+      --mp-text: #F5F3F8;
+      --mp-muted: #AAA3B5;
+      --mp-border: #332941;
+    }
+    .hidden { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--mp-bg);
+      color: var(--mp-text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .odds-fmt-btn.bg-sky-500,
+    .radar-filter.bg-sky-500 {
+      background-color: var(--mp-purple) !important;
+      color: var(--mp-text) !important;
+    }
+    .radar-filter.bg-slate-800 {
+      background-color: var(--mp-bg) !important;
+      border: 1px solid var(--mp-border) !important;
+      color: var(--mp-muted) !important;
+    }
+    .radar-filter.bg-slate-800:hover {
+      color: var(--mp-text) !important;
+      border-color: var(--mp-purple) !important;
+    }
+    #riyadh-radar-body tr:hover { background-color: rgba(33, 23, 53, 0.55) !important; }
+    #riyadh-radar-body .text-sky-300 { color: var(--mp-soft) !important; }
+    #riyadh-radar-body .bg-sky-500\/20 {
+      background-color: rgba(112, 65, 184, 0.22) !important;
+      border-color: rgba(139, 92, 246, 0.4) !important;
+      color: var(--mp-soft) !important;
+    }
+    #riyadh-radar-body .bg-slate-800 {
+      background-color: var(--mp-bg) !important;
+      border-color: var(--mp-border) !important;
+    }
+    #riyadh-radar-body .text-slate-400 { color: var(--mp-muted) !important; }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+<body class="bg-[#100D19] text-[#F5F3F8] min-h-screen flex flex-col">
 
-<div class="bg-sky-950/70 border-b border-sky-500/30 text-[11px] text-sky-200 px-4 py-1.5 text-center">
-  <span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
-  <span id="riyadh-countdown" class="font-mono font-bold text-white">Loading countdown...</span> ·
-  <a href="next-card.html" class="underline text-amber-300 font-semibold ml-1">View 14-Bout Forecast →</a> · <span class="text-slate-300 font-mono">Updated: Nov 25, 2026</span>
+<div class="bg-[#171321] border-b border-[#332941] text-xs text-[#AAA3B5] px-4 py-2 text-center">
+  <span class="font-semibold text-[#A78BFA]">Next Event:</span>
+  <span class="text-[#F5F3F8]">UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh)</span> ·
+  <span id="riyadh-countdown" class="font-mono font-semibold text-[#F5F3F8]">Loading countdown...</span> ·
+  <a href="next-card.html" class="underline decoration-[#7041B8] underline-offset-4 text-[#F5F3F8] hover:text-[#A78BFA] font-medium ml-1">View 14-Bout Forecast →</a> ·
+  <span class="text-[#AAA3B5] font-mono text-[11px]">Updated: Nov 26, 2026</span>
 </div>
-<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
+
+<header class="sticky top-0 z-50 bg-[#100D19]/95 backdrop-blur border-b border-[#332941]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 rounded-md bg-[#211735] border border-[#7041B8] flex items-center justify-center font-black text-[#F5F3F8] text-xs tracking-wider">MM</div>
       <div>
-        <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
-        <div class="text-[10px] text-slate-400 font-mono">RIYADH v1 · ENGINE v5.1 · 18–6–1 (75.0%)</div>
+        <div class="font-bold text-[#F5F3F8] text-sm sm:text-base tracking-tight leading-tight">MMA Math Predictions</div>
+        <div class="text-[11px] text-[#AAA3B5] font-mono">Riyadh v1 · Engine v5.1 · 18–6–1 (75.0%)</div>
       </div>
     </a>
-    <nav class="hidden lg:flex items-center gap-1.5">
-      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Home</a><a href="next-card.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap">Next Card: Riyadh</a><a href="tools.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Quant Tools</a><a href="track-record.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Track Record</a><a href="archive.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Fight Archive</a><a href="methodology.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Engine v5.1</a><a href="vip.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap">VIP Access</a>
-      <div class="flex items-center gap-0.5 bg-slate-900 border border-slate-700 rounded-lg p-0.5 ml-1" title="Switch Odds Format (American / European Decimal / Both)"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">Both</button></div>
+    <nav class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Home</a>
+      <a href="next-card.html" class="px-3 py-1.5 rounded-md text-xs font-semibold bg-[#7041B8] text-[#F5F3F8] whitespace-nowrap">Next Card: Riyadh</a>
+      <a href="tools.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Quant Tools</a>
+      <a href="track-record.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Track Record</a>
+      <a href="archive.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Fight Archive</a>
+      <a href="methodology.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Engine v5.1</a>
+      <a href="vip.html" class="px-3 py-1.5 rounded-md text-xs font-semibold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 ml-1 whitespace-nowrap">VIP Access</a>
+      <div class="flex items-center gap-0.5 bg-[#171321] border border-[#332941] rounded-md p-0.5 ml-2" title="Switch Odds Format (American / European Decimal / Both)">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">Both</button>
+      </div>
     </nav>
-    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200">
+    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-xs font-semibold text-[#F5F3F8]">
       Menu ☰
     </button>
   </div>
-  <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5">
-    <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Home</a><a href="next-card.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white">Next Card: Riyadh</a><a href="tools.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Quant Tools</a><a href="track-record.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Track Record</a><a href="archive.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Fight Archive</a><a href="methodology.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Engine v5.1</a><a href="vip.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">VIP Access</a>
-    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 mt-1"><span class="text-xs font-semibold text-slate-400">Odds Format</span><div class="flex items-center gap-1"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">Both</button></div></div>
+  <div id="mobile-nav" class="hidden lg:hidden border-t border-[#332941] bg-[#100D19] px-4 py-3 space-y-1">
+    <a href="index.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Home</a>
+    <a href="next-card.html" class="block px-3 py-2 rounded-md text-sm font-semibold bg-[#7041B8] text-[#F5F3F8]">Next Card: Riyadh</a>
+    <a href="tools.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Quant Tools</a>
+    <a href="track-record.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Track Record</a>
+    <a href="archive.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Fight Archive</a>
+    <a href="methodology.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Engine v5.1</a>
+    <a href="vip.html" class="block px-3 py-2 rounded-md text-sm font-semibold text-amber-300 hover:bg-[#171321]">VIP Access</a>
+    <div class="flex items-center justify-between px-3 py-2 rounded-md bg-[#171321] border border-[#332941] mt-2">
+      <span class="text-xs font-medium text-[#AAA3B5]">Odds Format</span>
+      <div class="flex items-center gap-1">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">Both</button>
+      </div>
+    </div>
   </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
-  <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-sky-500/30 rounded-2xl p-6">
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <span class="px-2.5 py-0.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-[11px] font-bold uppercase tracking-wider">Saturday, Dec 5, 2026 · ANB Arena, Riyadh</span>
-        <div class="mt-2 mb-1 flex flex-wrap items-center gap-2"><span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Early Forecast · Pre-Weigh-In</span><span class="text-[11px] text-amber-200/90">Preliminary projection — not final locked predictions or bets (final lock after Friday weigh-ins).</span></div>
-        <h1 class="text-2xl sm:text-3xl font-black text-white mt-2">UFC Fight Night: Adesanya vs. Magomedov</h1>
-        <p class="text-sm text-slate-300 mt-1">Full 14-bout Engine v5.1 predictions, Polymarket vs. Retail lines, Max Playable Odds, and 1,000-run Monte Carlo prop leans.</p>
-      </div>
-      <div class="flex gap-3 text-center">
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl px-4 py-2.5">
-          <div class="text-[10px] uppercase text-slate-400">Tracked Picks (56%+)</div>
-          <div class="text-lg font-black text-sky-400">8 of 14 Bouts</div>
-        </div>
-        <div class="bg-slate-950/70 border border-slate-800 rounded-xl px-4 py-2.5">
-          <div class="text-[10px] uppercase text-slate-400">Active +EV Plays</div>
-          <div class="text-lg font-black text-emerald-400">4 Bets (10.78u)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
-  </div>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10 w-full">
 
-  <section class="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-900 border border-sky-500/40 rounded-2xl p-5 space-y-3">
-    <div class="flex flex-wrap items-center justify-between gap-2">
-      <div>
-        <span class="px-2.5 py-0.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-[10px] font-bold uppercase tracking-wider">70%+ Accuracy Goal · Official Tracked Tier</span>
-        <h2 class="text-lg font-extrabold text-white mt-1">56%+ Confidence Picks (8 of 14 Bouts)</h2>
-        <p class="text-xs text-slate-400">All 14 bouts are predicted and graded below; picks at &ge;56% confidence are our true tracked picks for the 70%+ accuracy target.</p>
+  <!-- Editorial Card Header -->
+  <section class="pb-8 border-b border-[#332941]">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="space-y-2 max-w-2xl">
+        <div class="text-xs font-mono text-[#A78BFA]">Saturday, Dec 5, 2026 · ANB Arena, Riyadh</div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs font-semibold">Early Forecast · Pre-Weigh-In</span>
+          <span class="text-xs text-amber-300/90">Preliminary projection — final lock after Friday weigh-ins.</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black text-[#F5F3F8] tracking-tight pt-1">UFC Fight Night: Adesanya vs. Magomedov</h1>
+        <p class="text-sm text-[#AAA3B5] leading-relaxed">Full 14-bout Engine v5.1 predictions, Polymarket vs. sportsbook lines, Max Playable Odds, and 1,000-run Monte Carlo method leans.</p>
       </div>
-      <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs">Show Only 56%+ in Table ↓</button>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      <div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Main · Welterweight</div><div class="text-sm font-bold text-white mt-0.5">Ian Machado Garry <span class="text-sky-300 font-mono">(57.6%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Yaroslav Amosov · Pass (-12.4% EV)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Main · Heavyweight</div><div class="text-sm font-bold text-white mt-0.5">Mario Pinto <span class="text-sky-300 font-mono">(64.0%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Serghei Spivac · Odds Too Steep (-360)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Main · Welterweight</div><div class="text-sm font-bold text-white mt-0.5">Islam Dulatov <span class="text-sky-300 font-mono">(60.8%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Levan Chokheli · Pass (-12.2% EV)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Main · Lightweight</div><div class="text-sm font-bold text-white mt-0.5">Akbar Abdullaev <span class="text-sky-300 font-mono">(63.8%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Mairon Santos · Odds Too Steep (-330)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Main · Light Heavyweight</div><div class="text-sm font-bold text-white mt-0.5">Magomed Tuchalov <span class="text-sky-300 font-mono">(60.3%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Ion Cutelaba · Pass (-7.7% EV)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Prelim · Featherweight</div><div class="text-sm font-bold text-white mt-0.5">Luke Riley <span class="text-sky-300 font-mono">(62.4%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Gabriel Santos · BET 1.48u (+3.9% EV)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Prelim · Flyweight</div><div class="text-sm font-bold text-white mt-0.5">Jafel Filho <span class="text-sky-300 font-mono">(61.5%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Bruno Silva · No Value (+2.6% EV)</div></div><div class="bg-slate-950/80 border border-sky-500/30 rounded-xl p-3"><div class="text-[10px] text-slate-400 uppercase">Prelim · Bantamweight</div><div class="text-sm font-bold text-white mt-0.5">Pavel Andrusca <span class="text-sky-300 font-mono">(56.6%)</span></div><div class="text-[11px] text-slate-400 mt-0.5">vs. Mahammadali Osmanli · Pass (-4.6% EV)</div></div>
+      <div class="bg-[#171321] border border-[#332941] rounded-lg divide-x divide-[#332941] flex text-center shrink-0">
+        <div class="px-5 py-3">
+          <div class="text-[11px] text-[#AAA3B5]">Tracked Picks (56%+)</div>
+          <div class="text-lg font-black font-mono text-[#A78BFA] mt-0.5">8 of 14 Bouts</div>
+        </div>
+        <div class="px-5 py-3">
+          <div class="text-[11px] text-[#AAA3B5]">Active +EV Plays</div>
+          <div class="text-lg font-black font-mono text-emerald-400 mt-0.5">4 Bets (10.78u)</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
+  <!-- 56%+ Confidence Tracked Core -->
+  <section class="bg-[#171321] border border-[#332941] border-l-4 border-l-[#7041B8] rounded-lg p-5 sm:p-6 space-y-4">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
-        <h2 class="text-lg font-extrabold text-white">14-Bout Prop &amp; Path-to-Victory Radar</h2>
-        <p class="text-xs text-slate-400">Click "Kelly Calc →" on any fight to open it pre-loaded in the bankroll calculator.</p>
+        <div class="text-xs font-mono text-[#A78BFA]">70%+ Accuracy Goal · Official Tracked Tier</div>
+        <h2 class="text-xl font-bold text-[#F5F3F8] mt-0.5">56%+ Confidence Picks (8 of 14 Bouts)</h2>
+        <p class="text-xs text-[#AAA3B5] mt-0.5">All 14 bouts are predicted and graded below; picks at &ge;56% confidence are our official tracked picks.</p>
+      </div>
+      <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="px-3.5 py-2 rounded-md bg-[#7041B8] hover:bg-[#8B5CF6] text-[#F5F3F8] font-semibold text-xs transition">Show Only 56%+ in Table ↓</button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Main · Welterweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Ian Machado Garry <span class="text-[#A78BFA] font-mono">(57.6%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Yaroslav Amosov · Pass (-12.4% EV)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Main · Heavyweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Mario Pinto <span class="text-[#A78BFA] font-mono">(64.0%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Serghei Spivac · Odds Too Steep (-360)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Main · Welterweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Islam Dulatov <span class="text-[#A78BFA] font-mono">(60.8%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Levan Chokheli · Pass (-12.2% EV)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Main · Lightweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Akbar Abdullaev <span class="text-[#A78BFA] font-mono">(63.8%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Mairon Santos · Odds Too Steep (-330)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Main · Light Heavyweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Magomed Tuchalov <span class="text-[#A78BFA] font-mono">(60.3%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Ion Cutelaba · Pass (-7.7% EV)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Prelim · Featherweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Luke Riley <span class="text-[#A78BFA] font-mono">(62.4%)</span></div><div class="text-[11px] text-emerald-400 mt-0.5">vs. Gabriel Santos · BET 1.48u (+3.9% EV)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Prelim · Flyweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Jafel Filho <span class="text-[#A78BFA] font-mono">(61.5%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Bruno Silva · No Value (+2.6% EV)</div></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3"><div class="text-[11px] text-[#AAA3B5]">Prelim · Bantamweight</div><div class="text-sm font-bold text-[#F5F3F8] mt-0.5">Pavel Andrusca <span class="text-[#A78BFA] font-mono">(56.6%)</span></div><div class="text-[11px] text-[#AAA3B5] mt-0.5">vs. Mahammadali Osmanli · Pass (-4.6% EV)</div></div>
+    </div>
+  </section>
+
+  <!-- 14-Bout Interactive Forecast Table -->
+  <section class="bg-[#171321] border border-[#332941] rounded-lg p-5 sm:p-6 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <h2 class="text-xl font-bold text-[#F5F3F8]">14-Bout Fight Breakdown &amp; Value Radar</h2>
+        <p class="text-xs text-[#AAA3B5] mt-0.5">Click any matchup or "Breakdown" for full fighter stats, key drivers, and method shares.</p>
       </div>
       <div class="flex flex-wrap gap-2 text-xs">
-        <button type="button" onclick="filterRiyadhRadar('ALL')" class="radar-filter px-3 py-1.5 rounded-lg bg-sky-500 text-white font-bold" data-filter="ALL">All (14)</button>
-        <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-800 text-sky-300 font-semibold hover:text-white" data-filter="HIGH_CONV">56%+ Tracked (8)</button>
-        <button type="button" onclick="filterRiyadhRadar('Main')" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-semibold hover:text-white" data-filter="Main">Main Card (6)</button>
-        <button type="button" onclick="filterRiyadhRadar('Prelim')" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-semibold hover:text-white" data-filter="Prelim">Prelims (8)</button>
-        <button type="button" onclick="filterRiyadhRadar('POLY_EV')" class="radar-filter px-3 py-1.5 rounded-lg bg-slate-800 text-emerald-300 font-semibold hover:text-white" data-filter="POLY_EV">Polymarket +EV (2)</button>
+        <button type="button" onclick="filterRiyadhRadar('ALL')" class="radar-filter px-3 py-1.5 rounded-md bg-sky-500 text-white font-bold" data-filter="ALL">All (14)</button>
+        <button type="button" onclick="filterRiyadhRadar('HIGH_CONV')" class="radar-filter px-3 py-1.5 rounded-md bg-slate-800 text-sky-300 font-semibold hover:text-white" data-filter="HIGH_CONV">56%+ Tracked (8)</button>
+        <button type="button" onclick="filterRiyadhRadar('Main')" class="radar-filter px-3 py-1.5 rounded-md bg-slate-800 text-slate-300 font-semibold hover:text-white" data-filter="Main">Main Card (6)</button>
+        <button type="button" onclick="filterRiyadhRadar('Prelim')" class="radar-filter px-3 py-1.5 rounded-md bg-slate-800 text-slate-300 font-semibold hover:text-white" data-filter="Prelim">Prelims (8)</button>
+        <button type="button" onclick="filterRiyadhRadar('POLY_EV')" class="radar-filter px-3 py-1.5 rounded-md bg-slate-800 text-emerald-300 font-semibold hover:text-white" data-filter="POLY_EV">Active +EV (4)</button>
       </div>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-left border-collapse text-xs">
         <thead>
-          <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider">
-            <th class="py-2.5 px-3">Bout &amp; Path-to-Victory</th>
-            <th class="py-2.5 px-3">v5.1 Pick &amp; Win %</th>
-            <th class="py-2.5 px-3">Best Odds (Poly / Book)</th>
-            <th class="py-2.5 px-3">Max Playable</th>
-            <th class="py-2.5 px-3">Sim Prop Lean</th>
-            <th class="py-2.5 px-3">Status</th>
-            <th class="py-2.5 px-3">Tool</th>
+          <tr class="border-b border-[#332941] text-[#AAA3B5] text-[11px] font-semibold">
+            <th class="py-3 px-3">Bout &amp; Path-to-Victory</th>
+            <th class="py-3 px-3">v5.1 Pick &amp; Win %</th>
+            <th class="py-3 px-3">Best Odds (Poly / Book)</th>
+            <th class="py-3 px-3">Max Playable</th>
+            <th class="py-3 px-3">Sim Prop Lean</th>
+            <th class="py-3 px-3">Status</th>
+            <th class="py-3 px-3">Tools</th>
           </tr>
         </thead>
-        <tbody id="riyadh-radar-body" class="divide-y divide-slate-800/70"></tbody>
+        <tbody id="riyadh-radar-body" class="divide-y divide-[#332941]/70"></tbody>
       </table>
     </div>
   </section>
 
 <!-- Individual Fight Analysis Modal (Phase 4) -->
-<div id="fight-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="fm-title">
-  <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full p-5 sm:p-6 space-y-4 my-8 shadow-2xl">
-    <div class="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+<div id="fight-modal" class="hidden fixed inset-0 z-50 bg-[#100D19]/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="fm-title">
+  <div class="bg-[#171321] border border-[#332941] rounded-lg max-w-3xl w-full p-5 sm:p-6 space-y-4 my-8 shadow-2xl">
+    <div class="flex items-start justify-between gap-3 border-b border-[#332941] pb-3">
       <div>
-        <div id="fm-meta" class="text-[11px] font-bold uppercase tracking-wider text-sky-400"></div>
-        <h2 id="fm-title" class="text-xl font-black text-white mt-0.5"></h2>
+        <div id="fm-meta" class="text-xs font-mono text-[#A78BFA]"></div>
+        <h2 id="fm-title" class="text-xl font-black text-[#F5F3F8] mt-0.5"></h2>
       </div>
-      <button type="button" onclick="closeFightModal()" aria-label="Close Breakdown" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold">✕ Close</button>
+      <button type="button" onclick="closeFightModal()" aria-label="Close Breakdown" class="px-3 py-1.5 rounded-md bg-[#100D19] hover:bg-[#211735] border border-[#332941] text-[#F5F3F8] text-xs font-semibold">✕ Close</button>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-        <div class="text-[10px] uppercase text-slate-400">Predicted Winner &amp; Win %</div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="text-[11px] text-[#AAA3B5]">Predicted Winner &amp; Win %</div>
         <div id="fm-pick" class="text-base font-black text-emerald-400 mt-1"></div>
-        <div id="fm-probs" class="text-[11px] text-slate-400 mt-1 font-mono"></div>
+        <div id="fm-probs" class="text-[11px] text-[#AAA3B5] mt-1 font-mono"></div>
       </div>
-      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-        <div class="text-[10px] uppercase text-slate-400">Confidence Tier &amp; Bet Status</div>
-        <div id="fm-tier" class="text-sm font-bold text-sky-300 mt-1"></div>
-        <div id="fm-status" class="text-[11px] text-slate-300 mt-1"></div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="text-[11px] text-[#AAA3B5]">Confidence Tier &amp; Bet Status</div>
+        <div id="fm-tier" class="text-sm font-bold text-[#A78BFA] mt-1"></div>
+        <div id="fm-status" class="text-[11px] text-[#F5F3F8] mt-1"></div>
       </div>
-      <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-        <div class="text-[10px] uppercase text-slate-400">Winner Method Share (1,000 Sims)</div>
-        <div id="fm-method" class="text-sm font-bold text-white mt-1"></div>
-        <div class="text-[10px] text-slate-400 mt-1">Conditional on predicted winner (sums to 100%)</div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="text-[11px] text-[#AAA3B5]">Winner Method Share (1,000 Sims)</div>
+        <div id="fm-method" class="text-sm font-bold text-[#F5F3F8] mt-1"></div>
+        <div class="text-[10px] text-[#AAA3B5] mt-1">Conditional on predicted winner (sums to 100%)</div>
       </div>
     </div>
 
-    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4">
-      <div class="text-xs font-bold text-white mb-2">Fighter Profile &amp; Statistical Comparison</div>
+    <div class="bg-[#100D19] border border-[#332941] rounded-md p-4">
+      <div class="text-xs font-bold text-[#F5F3F8] mb-2">Fighter Profile &amp; Statistical Comparison</div>
       <div id="fm-stats" class="grid grid-cols-3 gap-2 text-xs"></div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-      <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3.5">
-        <div class="font-bold text-white mb-1.5">Key Variables Driving Forecast</div>
-        <ul id="fm-drivers" class="list-disc pl-4 space-y-1 text-slate-300"></ul>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5">
+        <div class="font-bold text-[#F5F3F8] mb-1.5">Key Variables Driving Forecast</div>
+        <ul id="fm-drivers" class="list-disc pl-4 space-y-1 text-[#AAA3B5]"></ul>
       </div>
-      <div class="bg-amber-950/20 border border-amber-500/30 rounded-xl p-3.5">
+      <div class="bg-[#211735] border border-amber-500/30 rounded-md p-3.5">
         <div class="font-bold text-amber-300 mb-1.5">Uncertainty &amp; Model Limitations</div>
-        <p id="fm-uncertainty" class="text-slate-300 leading-relaxed"></p>
-        <div id="fm-stamp" class="text-[10px] font-mono text-slate-400 mt-2"></div>
+        <p id="fm-uncertainty" class="text-[#F5F3F8] leading-relaxed"></p>
+        <div id="fm-stamp" class="text-[10px] font-mono text-[#AAA3B5] mt-2"></div>
       </div>
     </div>
 
-    <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-800 text-xs">
-      <div id="fm-odds-line" class="font-mono text-slate-300"></div>
-      <a id="fm-kelly-link" href="tools.html" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-black">Open in Kelly Calculator →</a>
+    <div class="flex flex-wrap justify-between items-center gap-2 pt-3 border-t border-[#332941] text-xs">
+      <div id="fm-odds-line" class="font-mono text-[#AAA3B5]"></div>
+      <a id="fm-kelly-link" href="tools.html" class="px-4 py-2 rounded-md bg-[#7041B8] hover:bg-[#8B5CF6] text-[#F5F3F8] font-semibold">Open in Kelly Calculator →</a>
     </div>
   </div>
 </div>
 
 </main>
 
-<footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<footer class="mt-auto border-t border-[#332941] bg-[#0B0812] text-xs text-[#AAA3B5]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div>
-      <div class="font-black text-white text-sm">MMA Math Predictions</div>
+      <div class="font-bold text-[#F5F3F8] text-sm">MMA Math Predictions</div>
       <p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5.1 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
-      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 25, 2026 · Challenge: 25 / 100 Fights Graded</div>
-      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-sky-400 hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
+      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 26, 2026 · Challenge: 25 / 100 Fights Graded</div>
+      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-[#A78BFA] hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Platform</div>
       <ul class="space-y-1.5">
-        <li><a href="index.html" class="hover:text-white">Home Overview</a></li>
-        <li><a href="next-card.html" class="hover:text-white">Next Card: UFC Riyadh</a></li>
-        <li><a href="tools.html" class="hover:text-white">Kelly &amp; Parlay Tools</a></li>
+        <li><a href="index.html" class="hover:text-[#F5F3F8]">Home Overview</a></li>
+        <li><a href="next-card.html" class="hover:text-[#F5F3F8]">Next Card: UFC Riyadh</a></li>
+        <li><a href="tools.html" class="hover:text-[#F5F3F8]">Kelly &amp; Parlay Tools</a></li>
         <li><a href="vip.html" class="hover:text-amber-300 text-amber-300/90">VIP Early Access</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Verification</div>
       <ul class="space-y-1.5">
-        <li><a href="track-record.html" class="hover:text-white">Road to 100 Ledger (18–6–1)</a></li>
-        <li><a href="archive.html" class="hover:text-white">Past Fight Archive (25 Bouts)</a></li>
-        <li><a href="methodology.html" class="hover:text-white">Engine v5.1 Methodology</a></li>
+        <li><a href="track-record.html" class="hover:text-[#F5F3F8]">Road to 100 Ledger (18–6–1)</a></li>
+        <li><a href="archive.html" class="hover:text-[#F5F3F8]">Past Fight Archive (25 Bouts)</a></li>
+        <li><a href="methodology.html" class="hover:text-[#F5F3F8]">Engine v5.1 Methodology</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Official Data Sources</div>
       <ul class="space-y-1.5">
-        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-sky-300">UFC.com Event Hub ↗</a></li>
-        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-sky-300">UFCStats Official Data ↗</a></li>
-        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-sky-300">BestFightOdds Lines ↗</a></li>
+        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFC.com Event Hub ↗</a></li>
+        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFCStats Official Data ↗</a></li>
+        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">BestFightOdds Lines ↗</a></li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
+  <div class="border-t border-[#332941]/70 py-4 text-center text-[11px] text-[#AAA3B5]/80">
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>

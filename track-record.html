@@ -4,160 +4,224 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Track Record | MMA Math Predictions</title>
-  <meta content="Public Road to 100 Fights graded ledger (18-6-1, 75.0%) and probability calibration." name="description"/>
+  <meta content="Verified 18-6-1 (75.0%) Road to 100 Fights ledger, probability calibration, and UFC.com scorecard links." name="description"/>
   <meta content="Track Record | MMA Math Predictions" property="og:title"/>
-  <meta content="Public Road to 100 Fights graded ledger (18-6-1, 75.0%) and probability calibration." property="og:description"/>
+  <meta content="Verified 18-6-1 (75.0%) Road to 100 Fights ledger, probability calibration, and UFC.com scorecard links." property="og:description"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>.hidden { display: none !important; } 
-html { scroll-behavior: smooth; }
-body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-</style>
+  <style>
+    :root {
+      --mp-bg: #100D19;
+      --mp-bg-2: #171321;
+      --mp-surface: #211735;
+      --mp-purple: #7041B8;
+      --mp-violet: #8B5CF6;
+      --mp-soft: #A78BFA;
+      --mp-text: #F5F3F8;
+      --mp-muted: #AAA3B5;
+      --mp-border: #332941;
+    }
+    .hidden { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--mp-bg);
+      color: var(--mp-text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .odds-fmt-btn.bg-sky-500 {
+      background-color: var(--mp-purple) !important;
+      color: var(--mp-text) !important;
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+<body class="bg-[#100D19] text-[#F5F3F8] min-h-screen flex flex-col">
 
-<div class="bg-sky-950/70 border-b border-sky-500/30 text-[11px] text-sky-200 px-4 py-1.5 text-center">
-  <span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
-  <span id="riyadh-countdown" class="font-mono font-bold text-white">Loading countdown...</span> ·
-  <a href="next-card.html" class="underline text-amber-300 font-semibold ml-1">View 14-Bout Forecast →</a> · <span class="text-slate-300 font-mono">Updated: Nov 25, 2026</span>
+<div class="bg-[#171321] border-b border-[#332941] text-xs text-[#AAA3B5] px-4 py-2 text-center">
+  <span class="font-semibold text-[#A78BFA]">Next Event:</span>
+  <span class="text-[#F5F3F8]">UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh)</span> ·
+  <span id="riyadh-countdown" class="font-mono font-semibold text-[#F5F3F8]">Loading countdown...</span> ·
+  <a href="next-card.html" class="underline decoration-[#7041B8] underline-offset-4 text-[#F5F3F8] hover:text-[#A78BFA] font-medium ml-1">View 14-Bout Forecast →</a> ·
+  <span class="text-[#AAA3B5] font-mono text-[11px]">Updated: Nov 26, 2026</span>
 </div>
-<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
+
+<header class="sticky top-0 z-50 bg-[#100D19]/95 backdrop-blur border-b border-[#332941]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 rounded-md bg-[#211735] border border-[#7041B8] flex items-center justify-center font-black text-[#F5F3F8] text-xs tracking-wider">MM</div>
       <div>
-        <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
-        <div class="text-[10px] text-slate-400 font-mono">RIYADH v1 · ENGINE v5.1 · 18–6–1 (75.0%)</div>
+        <div class="font-bold text-[#F5F3F8] text-sm sm:text-base tracking-tight leading-tight">MMA Math Predictions</div>
+        <div class="text-[11px] text-[#AAA3B5] font-mono">Riyadh v1 · Engine v5.1 · 18–6–1 (75.0%)</div>
       </div>
     </a>
-    <nav class="hidden lg:flex items-center gap-1.5">
-      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Home</a><a href="next-card.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Next Card: Riyadh</a><a href="tools.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Quant Tools</a><a href="track-record.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap">Track Record</a><a href="archive.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Fight Archive</a><a href="methodology.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Engine v5.1</a><a href="vip.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap">VIP Access</a>
-      <div class="flex items-center gap-0.5 bg-slate-900 border border-slate-700 rounded-lg p-0.5 ml-1" title="Switch Odds Format (American / European Decimal / Both)"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">Both</button></div>
+    <nav class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Home</a>
+      <a href="next-card.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Next Card: Riyadh</a>
+      <a href="tools.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Quant Tools</a>
+      <a href="track-record.html" class="px-3 py-1.5 rounded-md text-xs font-semibold bg-[#7041B8] text-[#F5F3F8] whitespace-nowrap">Track Record</a>
+      <a href="archive.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Fight Archive</a>
+      <a href="methodology.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Engine v5.1</a>
+      <a href="vip.html" class="px-3 py-1.5 rounded-md text-xs font-semibold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 ml-1 whitespace-nowrap">VIP Access</a>
+      <div class="flex items-center gap-0.5 bg-[#171321] border border-[#332941] rounded-md p-0.5 ml-2" title="Switch Odds Format (American / European Decimal / Both)">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">Both</button>
+      </div>
     </nav>
-    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200">
+    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-xs font-semibold text-[#F5F3F8]">
       Menu ☰
     </button>
   </div>
-  <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5">
-    <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Home</a><a href="next-card.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Next Card: Riyadh</a><a href="tools.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Quant Tools</a><a href="track-record.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white">Track Record</a><a href="archive.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Fight Archive</a><a href="methodology.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Engine v5.1</a><a href="vip.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">VIP Access</a>
-    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 mt-1"><span class="text-xs font-semibold text-slate-400">Odds Format</span><div class="flex items-center gap-1"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">Both</button></div></div>
+  <div id="mobile-nav" class="hidden lg:hidden border-t border-[#332941] bg-[#100D19] px-4 py-3 space-y-1">
+    <a href="index.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Home</a>
+    <a href="next-card.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Next Card: Riyadh</a>
+    <a href="tools.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Quant Tools</a>
+    <a href="track-record.html" class="block px-3 py-2 rounded-md text-sm font-semibold bg-[#7041B8] text-[#F5F3F8]">Track Record</a>
+    <a href="archive.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Fight Archive</a>
+    <a href="methodology.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Engine v5.1</a>
+    <a href="vip.html" class="block px-3 py-2 rounded-md text-sm font-semibold text-amber-300 hover:bg-[#171321]">VIP Access</a>
+    <div class="flex items-center justify-between px-3 py-2 rounded-md bg-[#171321] border border-[#332941] mt-2">
+      <span class="text-xs font-medium text-[#AAA3B5]">Odds Format</span>
+      <div class="flex items-center gap-1">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">Both</button>
+      </div>
+    </div>
   </div>
 </header>
-<div class="page-view" id="page-results">
-<header class="bg-slate-900 border-b border-slate-800 py-6 px-4">
-<div class="max-w-5xl mx-auto">
-<div class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Auditable Performance Ledger • Early Sample: 2 Graded Events (25 Fights)</div>
-<h1 class="text-2xl sm:text-3xl font-extrabold text-white">Track Record &amp; Verified Accuracy</h1>
-<p class="text-sm text-slate-400 mt-1">Every fight predicted, graded honestly against official <a class="text-sky-400 underline" href="https://www.ufc.com/news/ufc-qatar-official-scorecards-prochazka-vs-stirling" target="_blank">UFC.com scorecards</a> — wins, upsets, draws, and calibration.</p>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-<div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><div class="text-[11px] text-slate-400">All-Time Record</div><div class="text-lg font-bold text-emerald-400">18–6–1 (75.0%)</div></div>
-<div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><div class="text-[11px] text-slate-400">Graded Events</div><div class="text-lg font-bold text-white">2 (UFC 334 + Doha)</div></div>
-<div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><div class="text-[11px] text-slate-400">UFC Doha Unit P&amp;L</div><div class="text-lg font-bold text-emerald-400">+35.35u (+101% ROI)</div></div>
-<div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><div class="text-[11px] text-slate-400">Doha High-Variance</div><div class="text-lg font-bold text-amber-400">+63.20u (+63.2% ROI)</div></div>
-</div>
-</div>
-</header>
-<main class="max-w-5xl mx-auto px-4 mt-6 space-y-6">
-<section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5">
-<h2 class="text-lg font-extrabold text-white">Win Rate by Confidence Tier (24 Decided Fights)</h2>
-<p class="text-xs text-slate-400 mt-0.5 mb-4">Comparing predicted probability buckets against actual win rates across UFC 334 and UFC Doha:</p>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-<div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-<div class="flex justify-between font-bold text-white mb-1"><span>50–59% Bucket</span><span class="text-sky-400">2/3 (66.7%)</span></div>
-<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5"><div class="bg-sky-500 h-full" style="width:66.7%"></div></div>
-<div class="text-slate-400">Vallejos ✅, Mitchell ✅, Costa ❌.</div>
-</div>
-<div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-<div class="flex justify-between font-bold text-white mb-1"><span>60–69% Bucket</span><span class="text-emerald-400">10/12 (83.3%)</span></div>
-<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5"><div class="bg-emerald-500 h-full" style="width:83.3%"></div></div>
-<div class="text-slate-400">Stirling ✅, Hooker ✅, Horiguchi ✅, Teixeira ✅, Mar Fan ✅, plus 5 UFC 334 wins; Topuria ❌, Sanches ❌.</div>
-</div>
-<div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-<div class="flex justify-between font-bold text-white mb-1"><span>70%+ Bucket</span><span class="text-amber-400">6/9 (66.7%)</span></div>
-<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5"><div class="bg-amber-500 h-full" style="width:66.7%"></div></div>
-<div class="text-slate-400">Aliskerov ✅, Nurgozhay ✅, Gane ✅, Mesquita ✅, Díaz ✅, Costa ✅; Matthews ❌, Hasan ❌, Johnson ❌.</div>
-</div>
-</div>
-<div class="mt-4 p-3.5 rounded-xl bg-sky-950/40 border border-sky-500/30 text-xs text-sky-200">
-<strong>Engine v2 → Engine v3 Post-Doha Upgrade:</strong> Live during UFC Doha, we upgraded to <strong>Engine v3</strong> (separating recent offensive finish rate from defensive stoppage vulnerability). That immediately corrected Hooker vs. Ortega to <strong>65.0% Decision</strong> (saving the Hooker ITD play) and lifted Sterling/Vallejos &amp; Horiguchi/Almabayev Decisions above <strong>61%</strong> — all three cashed by Unanimous Decision.
+
+<div class="page-view flex-1" id="page-results">
+<section class="bg-[#171321] border-b border-[#332941] py-8 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto space-y-5">
+    <div>
+      <div class="text-xs font-mono text-emerald-400">Auditable Performance Ledger · 2 Graded Events (25 Fights)</div>
+      <h1 class="text-3xl sm:text-4xl font-black text-[#F5F3F8] tracking-tight mt-1">Track Record &amp; Verified Accuracy</h1>
+      <p class="text-sm text-[#AAA3B5] mt-1.5">Every fight predicted, graded honestly against official <a class="text-[#A78BFA] underline underline-offset-4 hover:text-[#F5F3F8]" href="https://www.ufc.com/news/ufc-qatar-official-scorecards-prochazka-vs-stirling" target="_blank">UFC.com scorecards</a> — wins, upsets, draws, and calibration.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 bg-[#100D19] border border-[#332941] rounded-lg divide-y sm:divide-y-0 sm:divide-x divide-[#332941]">
+      <div class="p-4"><div class="text-xs text-[#AAA3B5]">All-Time Record (n=24 decided)</div><div class="text-xl font-black font-mono text-emerald-400 mt-1">18–6–1 (75.0%)</div></div>
+      <div class="p-4"><div class="text-xs text-[#AAA3B5]">Graded Events</div><div class="text-xl font-bold font-mono text-[#F5F3F8] mt-1">2 (UFC 334 + Doha)</div></div>
+      <div class="p-4"><div class="text-xs text-[#AAA3B5]">UFC Doha Unit P&amp;L</div><div class="text-xl font-bold font-mono text-emerald-400 mt-1">+35.35u (+101% ROI)</div></div>
+      <div class="p-4"><div class="text-xs text-[#AAA3B5]">Doha High-Variance</div><div class="text-xl font-bold font-mono text-amber-300 mt-1">+63.20u (+63.2% ROI)</div></div>
+    </div>
+  </div>
+</section>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8 w-full">
+
+  <!-- Confidence Buckets & Audit Policy -->
+  <section class="bg-[#171321] border border-[#332941] rounded-lg p-5 sm:p-6 space-y-4">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <div>
+        <h2 class="text-xl font-bold text-[#F5F3F8]">Win Rate by Confidence Tier (24 Decided Fights)</h2>
+        <p class="text-xs text-[#AAA3B5] mt-0.5">Comparing predicted probability buckets against actual win rates across UFC 334 and UFC Doha (1 draw excluded from decided denominator):</p>
       </div>
-</section>
-<section class="bg-slate-900 border border-emerald-500/30 rounded-2xl overflow-hidden">
-<div class="p-4 sm:p-5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
-<div>
-<span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Event #2 • Nov 21, 2026 • Graded</span>
-<h2 class="text-lg font-extrabold text-white mt-1">UFC Fight Night Doha: Procházka vs. Stirling (9–3 · 5–0 Main Card)</h2>
-<p class="text-xs text-slate-400">Verified via <a class="text-sky-400 underline" href="https://www.ufc.com/news/ufc-qatar-official-scorecards-prochazka-vs-stirling" target="_blank">UFC.com Official Scorecards</a> · Conservative +35.35u · High-Variance +63.20u</p>
-</div>
-<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40" onclick="window.location.href='archive.html#doha'">View Doha Breakdown →</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-slate-950 text-[11px] uppercase tracking-wider text-slate-400 border-b border-slate-800">
-<th class="py-2.5 px-3">Tier</th><th class="py-2.5 px-3">Matchup</th><th class="py-2.5 px-3">Model Pick</th><th class="py-2.5 px-3">Official Result</th><th class="py-2.5 px-3">Grade</th>
-</tr>
-</thead>
-<tbody><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Jiří Procházka vs. Navajo Stirling</td><td class="py-2.5 px-3 text-sky-300">Navajo Stirling (63.1%) <span class="text-slate-400">(KO/TKO R2)</span></td><td class="py-2.5 px-3 text-slate-200">Navajo Stirling — KO R2 (4:58)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Round &amp; Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Aljamain Sterling vs. Kevin Vallejos</td><td class="py-2.5 px-3 text-sky-300">Kevin Vallejos (55.9%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Kevin Vallejos — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Dan Hooker vs. Brian Ortega</td><td class="py-2.5 px-3 text-sky-300">Dan Hooker (65.5%) <span class="text-slate-400">(ITD (v3: Dec))</span></td><td class="py-2.5 px-3 text-slate-200">Dan Hooker — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Winner Hit (v3 Method)</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Kyoji Horiguchi vs. Asu Almabayev</td><td class="py-2.5 px-3 text-sky-300">Kyoji Horiguchi (61.6%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Kyoji Horiguchi — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Ikram Aliskerov vs. Jared Cannonier</td><td class="py-2.5 px-3 text-sky-300">Ikram Aliskerov (77.0%) <span class="text-slate-400">(ITD)</span></td><td class="py-2.5 px-3 text-slate-200">Ikram Aliskerov — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Winner Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Aleksandre Topuria vs. Santiago Luna</td><td class="py-2.5 px-3 text-sky-300">Aleksandre Topuria (69.1%) <span class="text-slate-400">(Decision (Passed ML))</span></td><td class="py-2.5 px-3 text-slate-200">Santiago Luna — S-DEC (30-27, 29-28, 28-29)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Upset (ML Passed)</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Shamil Gaziev vs. Tallison Teixeira</td><td class="py-2.5 px-3 text-sky-300">Tallison Teixeira (55.1% Pure) <span class="text-slate-400">(KO/TKO)</span></td><td class="py-2.5 px-3 text-slate-200">Tallison Teixeira — U-DEC (30-27, 29-28, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Winner Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Alessandro Costa vs. Amir Albazi</td><td class="py-2.5 px-3 text-sky-300">Alessandro Costa (50.8%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Amir Albazi — SUB R3 (4:34)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Coin-Flip Miss</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Jake Matthews vs. Tahir Abdullayev</td><td class="py-2.5 px-3 text-sky-300">Jake Matthews (72.5%) <span class="text-slate-400">(Decision (Passed ML))</span></td><td class="py-2.5 px-3 text-slate-200">Tahir Abdullayev — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Weight-Miss Upset (ML Passed)</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Dom Mar Fan vs. Nikolas Motta</td><td class="py-2.5 px-3 text-sky-300">Dom Mar Fan (63.9%) <span class="text-slate-400">(Dec / KO)</span></td><td class="py-2.5 px-3 text-slate-200">Dom Mar Fan — U-DEC (30-26, 30-26, 29-27)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Diyar Nurgozhay vs. Alik Lorenz</td><td class="py-2.5 px-3 text-sky-300">Diyar Nurgozhay (72.5%) <span class="text-slate-400">(KO/TKO)</span></td><td class="py-2.5 px-3 text-slate-200">Diyar Nurgozhay — TKO R2 (0:24)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">John Mitchell vs. Shoaib Yousaf</td><td class="py-2.5 px-3 text-sky-300">John Mitchell (58.2%) <span class="text-slate-400">(Dec / KO)</span></td><td class="py-2.5 px-3 text-slate-200">John Mitchell — KO R1 (3:50)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Method</span></td></tr></tbody>
-</table>
-</div>
-</section>
-<section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-<div class="p-4 sm:p-5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
-<div>
-<span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Event #1 • Nov 14, 2026 • Graded</span>
-<h2 class="text-lg font-extrabold text-white mt-1">UFC 334: Gane vs. Hokit (9–3–1 · 75.0% Decided)</h2>
-<p class="text-xs text-slate-400">Verified via <a class="text-sky-400 underline" href="https://www.ufc.com/news/polymarket-ufc-334-gane-vs-hokit-official-scorecards" target="_blank">UFC.com Official Scorecards</a></p>
-</div>
-<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40" onclick="window.location.href='archive.html#ufc334'">Open UFC 334 Archive →</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-slate-950 text-[11px] uppercase tracking-wider text-slate-400 border-b border-slate-800">
-<th class="py-2.5 px-3">Tier</th><th class="py-2.5 px-3">Matchup</th><th class="py-2.5 px-3">Model Pick</th><th class="py-2.5 px-3">Official Result</th><th class="py-2.5 px-3">Grade</th>
-</tr>
-</thead>
-<tbody><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Ciryl Gane vs. Josh Hokit</td><td class="py-2.5 px-3 text-sky-300">Ciryl Gane (70%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Ciryl Gane — U-DEC (48-47 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Method Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Kayla Harrison vs. Amanda Nunes</td><td class="py-2.5 px-3 text-sky-300">Kayla Harrison (60%) <span class="text-slate-400">(Dec / Sub)</span></td><td class="py-2.5 px-3 text-slate-200">Kayla Harrison — SUB R4 (1:29)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Top-2 Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Caio Borralho vs. Yousri Belgaroui</td><td class="py-2.5 px-3 text-sky-300">Caio Borralho (60%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Caio Borralho — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Method Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Uroš Medić vs. Kevin Holland</td><td class="py-2.5 px-3 text-sky-300">Uroš Medić (60%) <span class="text-slate-400">(KO/TKO)</span></td><td class="py-2.5 px-3 text-slate-200">Majority Draw (29-27, 28-28, 28-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-slate-700 text-slate-300 font-bold text-[10px]">DRAW</span> <span class="text-[11px] text-slate-400 ml-1">Push</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Main Card</td><td class="py-2.5 px-3 font-semibold text-white">Bilal Hasan vs. Luis Gurule</td><td class="py-2.5 px-3 text-sky-300">Bilal Hasan (80%) <span class="text-slate-400">(KO/TKO)</span></td><td class="py-2.5 px-3 text-slate-200">Luis Gurule — S-DEC (29-28 x2)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Upset</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Stephen Thompson vs. Charles Radtke</td><td class="py-2.5 px-3 text-sky-300">Stephen Thompson (60%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Stephen Thompson — TKO R3 (2:54)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Winner Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Drew Dober vs. Chris Duncan</td><td class="py-2.5 px-3 text-sky-300">Chris Duncan (60%) <span class="text-slate-400">(Sub / Dec)</span></td><td class="py-2.5 px-3 text-slate-200">Chris Duncan — U-DEC (30-27 x2)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Top-2 Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Jim Miller vs. Terrance McKinney</td><td class="py-2.5 px-3 text-sky-300">Terrance McKinney (60%) <span class="text-slate-400">(KO/TKO R1)</span></td><td class="py-2.5 px-3 text-slate-200">Terrance McKinney — KO R1 (1:53)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Round</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Donte Johnson vs. César Almeida</td><td class="py-2.5 px-3 text-sky-300">Donte Johnson (70%) <span class="text-slate-400">(KO/TKO)</span></td><td class="py-2.5 px-3 text-slate-200">César Almeida — TKO R1 (3:20)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Upset</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Jared Gordon vs. Melquizael Costa</td><td class="py-2.5 px-3 text-sky-300">Melquizael Costa (80%) <span class="text-slate-400">(KO / Dec)</span></td><td class="py-2.5 px-3 text-slate-200">Melquizael Costa — U-DEC (29-28 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Top-2 Method</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Macy Chiasson vs. Beatriz Mesquita</td><td class="py-2.5 px-3 text-sky-300">Beatriz Mesquita (70%) <span class="text-slate-400">(Sub R1)</span></td><td class="py-2.5 px-3 text-slate-200">Beatriz Mesquita — SUB R1 (3:23)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Exact Round</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Alateng Heili vs. Juan Díaz</td><td class="py-2.5 px-3 text-sky-300">Juan Díaz (70%) <span class="text-slate-400">(Decision)</span></td><td class="py-2.5 px-3 text-slate-200">Juan Díaz — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-slate-400 ml-1">Method Hit</span></td></tr><tr class="border-b border-slate-800/80 text-xs hover:bg-slate-900/50"><td class="py-2.5 px-3 text-slate-400">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-white">Evan Elder vs. Samuel Sanches</td><td class="py-2.5 px-3 text-sky-300">Samuel Sanches (60%) <span class="text-slate-400">(KO / Dec)</span></td><td class="py-2.5 px-3 text-slate-200">Evan Elder — U-DEC (30-26 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-slate-400 ml-1">Upset</span></td></tr></tbody>
-</table>
-</div>
-</section>
+      <div class="text-xs font-mono text-[#A78BFA]">Live Brier: 0.2122 · Log Loss: 0.6196</div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+      <div class="bg-[#100D19] p-4 rounded-md border border-[#332941]">
+        <div class="flex justify-between font-bold text-[#F5F3F8] mb-2"><span>50–59% Bucket</span><span class="font-mono text-[#A78BFA]">2/3 (66.7%)</span></div>
+        <div class="w-full bg-[#211735] h-2 rounded-full overflow-hidden mb-2"><div class="bg-[#8B5CF6] h-full" style="width:66.7%"></div></div>
+        <div class="text-[#AAA3B5]">Vallejos ✅, Mitchell ✅, Costa ❌.</div>
+      </div>
+      <div class="bg-[#100D19] p-4 rounded-md border border-[#332941]">
+        <div class="flex justify-between font-bold text-[#F5F3F8] mb-2"><span>60–69% Bucket</span><span class="font-mono text-emerald-400">10/12 (83.3%)</span></div>
+        <div class="w-full bg-[#211735] h-2 rounded-full overflow-hidden mb-2"><div class="bg-emerald-500 h-full" style="width:83.3%"></div></div>
+        <div class="text-[#AAA3B5]">Stirling ✅, Hooker ✅, Horiguchi ✅, Teixeira ✅, Mar Fan ✅, plus 5 UFC 334 wins; Topuria ❌, Sanches ❌.</div>
+      </div>
+      <div class="bg-[#100D19] p-4 rounded-md border border-[#332941]">
+        <div class="flex justify-between font-bold text-[#F5F3F8] mb-2"><span>70%+ Bucket</span><span class="font-mono text-amber-300">6/9 (66.7%)</span></div>
+        <div class="w-full bg-[#211735] h-2 rounded-full overflow-hidden mb-2"><div class="bg-amber-400 h-full" style="width:66.7%"></div></div>
+        <div class="text-[#AAA3B5]">Aliskerov ✅, Nurgozhay ✅, Gane ✅, Mesquita ✅, Díaz ✅, Costa ✅; Matthews ❌, Hasan ❌, Johnson ❌.</div>
+      </div>
+    </div>
+    <div class="p-4 rounded-md bg-[#211735] border border-[#332941] border-l-4 border-l-[#7041B8] text-xs text-[#F5F3F8] leading-relaxed">
+      <strong class="text-[#A78BFA]">Engine v2 → Engine v3 Post-Doha Upgrade:</strong> Live during UFC Doha, we upgraded to <strong>Engine v3</strong> (separating recent offensive finish rate from defensive stoppage vulnerability). That immediately corrected Hooker vs. Ortega to <strong>65.0% Decision</strong> (saving the Hooker ITD play) and lifted Sterling/Vallejos &amp; Horiguchi/Almabayev Decisions above <strong>61%</strong> — all three cashed by Unanimous Decision.
+    </div>
+  </section>
+
+  <!-- Event #2: UFC Doha -->
+  <section class="bg-[#171321] border border-[#332941] rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-[#332941] flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">Event #2 · Nov 21, 2026 · Graded</span>
+        <h2 class="text-xl font-bold text-[#F5F3F8] mt-1.5">UFC Fight Night Doha: Procházka vs. Stirling (9–3 · 5–0 Main Card)</h2>
+        <p class="text-xs text-[#AAA3B5] mt-0.5">Verified via <a class="text-[#A78BFA] underline" href="https://www.ufc.com/news/ufc-qatar-official-scorecards-prochazka-vs-stirling" target="_blank">UFC.com Official Scorecards</a> · Conservative +35.35u · High-Variance +63.20u</p>
+      </div>
+      <button class="px-3.5 py-2 rounded-md text-xs font-semibold bg-[#211735] hover:bg-[#7041B8] text-[#F5F3F8] border border-[#332941] transition" onclick="window.location.href='archive.html#doha'">View Doha Breakdown →</button>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-[#100D19] text-[11px] text-[#AAA3B5] font-semibold border-b border-[#332941]">
+            <th class="py-2.5 px-3">Tier</th><th class="py-2.5 px-3">Matchup</th><th class="py-2.5 px-3">Model Pick</th><th class="py-2.5 px-3">Official Result</th><th class="py-2.5 px-3">Grade</th>
+          </tr>
+        </thead>
+        <tbody><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Jiří Procházka vs. Navajo Stirling</td><td class="py-2.5 px-3 text-[#A78BFA]">Navajo Stirling (63.1%) <span class="text-[#AAA3B5]">(KO/TKO R2)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Navajo Stirling — KO R2 (4:58)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Round &amp; Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Aljamain Sterling vs. Kevin Vallejos</td><td class="py-2.5 px-3 text-[#A78BFA]">Kevin Vallejos (55.9%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Kevin Vallejos — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Dan Hooker vs. Brian Ortega</td><td class="py-2.5 px-3 text-[#A78BFA]">Dan Hooker (65.5%) <span class="text-[#AAA3B5]">(ITD (v3: Dec))</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Dan Hooker — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Winner Hit (v3 Method)</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Kyoji Horiguchi vs. Asu Almabayev</td><td class="py-2.5 px-3 text-[#A78BFA]">Kyoji Horiguchi (61.6%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Kyoji Horiguchi — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Ikram Aliskerov vs. Jared Cannonier</td><td class="py-2.5 px-3 text-[#A78BFA]">Ikram Aliskerov (77.0%) <span class="text-[#AAA3B5]">(ITD)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Ikram Aliskerov — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Winner Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Aleksandre Topuria vs. Santiago Luna</td><td class="py-2.5 px-3 text-[#A78BFA]">Aleksandre Topuria (69.1%) <span class="text-[#AAA3B5]">(Decision (Passed ML))</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Santiago Luna — S-DEC (30-27, 29-28, 28-29)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Upset (ML Passed)</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Shamil Gaziev vs. Tallison Teixeira</td><td class="py-2.5 px-3 text-[#A78BFA]">Tallison Teixeira (55.1% Pure) <span class="text-[#AAA3B5]">(KO/TKO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Tallison Teixeira — U-DEC (30-27, 29-28, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Winner Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Alessandro Costa vs. Amir Albazi</td><td class="py-2.5 px-3 text-[#A78BFA]">Alessandro Costa (50.8%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Amir Albazi — SUB R3 (4:34)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Coin-Flip Miss</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Jake Matthews vs. Tahir Abdullayev</td><td class="py-2.5 px-3 text-[#A78BFA]">Jake Matthews (72.5%) <span class="text-[#AAA3B5]">(Decision (Passed ML))</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Tahir Abdullayev — U-DEC (30-27, 30-27, 29-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Weight-Miss Upset (ML Passed)</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Dom Mar Fan vs. Nikolas Motta</td><td class="py-2.5 px-3 text-[#A78BFA]">Dom Mar Fan (63.9%) <span class="text-[#AAA3B5]">(Dec / KO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Dom Mar Fan — U-DEC (30-26, 30-26, 29-27)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Diyar Nurgozhay vs. Alik Lorenz</td><td class="py-2.5 px-3 text-[#A78BFA]">Diyar Nurgozhay (72.5%) <span class="text-[#AAA3B5]">(KO/TKO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Diyar Nurgozhay — TKO R2 (0:24)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">John Mitchell vs. Shoaib Yousaf</td><td class="py-2.5 px-3 text-[#A78BFA]">John Mitchell (58.2%) <span class="text-[#AAA3B5]">(Dec / KO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">John Mitchell — KO R1 (3:50)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Method</span></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Event #1: UFC 334 -->
+  <section class="bg-[#171321] border border-[#332941] rounded-lg overflow-hidden">
+    <div class="p-5 border-b border-[#332941] flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">Event #1 · Nov 14, 2026 · Graded</span>
+        <h2 class="text-xl font-bold text-[#F5F3F8] mt-1.5">UFC 334: Gane vs. Hokit (9–3–1 · 75.0% Decided)</h2>
+        <p class="text-xs text-[#AAA3B5] mt-0.5">Verified via <a class="text-[#A78BFA] underline" href="https://www.ufc.com/news/polymarket-ufc-334-gane-vs-hokit-official-scorecards" target="_blank">UFC.com Official Scorecards</a></p>
+      </div>
+      <button class="px-3.5 py-2 rounded-md text-xs font-semibold bg-[#211735] hover:bg-[#7041B8] text-[#F5F3F8] border border-[#332941] transition" onclick="window.location.href='archive.html#ufc334'">Open UFC 334 Archive →</button>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-[#100D19] text-[11px] text-[#AAA3B5] font-semibold border-b border-[#332941]">
+            <th class="py-2.5 px-3">Tier</th><th class="py-2.5 px-3">Matchup</th><th class="py-2.5 px-3">Model Pick</th><th class="py-2.5 px-3">Official Result</th><th class="py-2.5 px-3">Grade</th>
+          </tr>
+        </thead>
+        <tbody><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Ciryl Gane vs. Josh Hokit</td><td class="py-2.5 px-3 text-[#A78BFA]">Ciryl Gane (70%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Ciryl Gane — U-DEC (48-47 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Method Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Kayla Harrison vs. Amanda Nunes</td><td class="py-2.5 px-3 text-[#A78BFA]">Kayla Harrison (60%) <span class="text-[#AAA3B5]">(Dec / Sub)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Kayla Harrison — SUB R4 (1:29)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Top-2 Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Caio Borralho vs. Yousri Belgaroui</td><td class="py-2.5 px-3 text-[#A78BFA]">Caio Borralho (60%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Caio Borralho — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Method Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Uroš Medić vs. Kevin Holland</td><td class="py-2.5 px-3 text-[#A78BFA]">Uroš Medić (60%) <span class="text-[#AAA3B5]">(KO/TKO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Majority Draw (29-27, 28-28, 28-28)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-[#211735] border border-[#332941] text-[#AAA3B5] font-bold text-[10px]">DRAW</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Push</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Main Card</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Bilal Hasan vs. Luis Gurule</td><td class="py-2.5 px-3 text-[#A78BFA]">Bilal Hasan (80%) <span class="text-[#AAA3B5]">(KO/TKO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Luis Gurule — S-DEC (29-28 x2)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Upset</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Stephen Thompson vs. Charles Radtke</td><td class="py-2.5 px-3 text-[#A78BFA]">Stephen Thompson (60%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Stephen Thompson — TKO R3 (2:54)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Winner Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Drew Dober vs. Chris Duncan</td><td class="py-2.5 px-3 text-[#A78BFA]">Chris Duncan (60%) <span class="text-[#AAA3B5]">(Sub / Dec)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Chris Duncan — U-DEC (30-27 x2)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Top-2 Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Jim Miller vs. Terrance McKinney</td><td class="py-2.5 px-3 text-[#A78BFA]">Terrance McKinney (60%) <span class="text-[#AAA3B5]">(KO/TKO R1)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Terrance McKinney — KO R1 (1:53)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Round</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Donte Johnson vs. César Almeida</td><td class="py-2.5 px-3 text-[#A78BFA]">Donte Johnson (70%) <span class="text-[#AAA3B5]">(KO/TKO)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">César Almeida — TKO R1 (3:20)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Upset</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Jared Gordon vs. Melquizael Costa</td><td class="py-2.5 px-3 text-[#A78BFA]">Melquizael Costa (80%) <span class="text-[#AAA3B5]">(KO / Dec)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Melquizael Costa — U-DEC (29-28 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Top-2 Method</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Macy Chiasson vs. Beatriz Mesquita</td><td class="py-2.5 px-3 text-[#A78BFA]">Beatriz Mesquita (70%) <span class="text-[#AAA3B5]">(Sub R1)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Beatriz Mesquita — SUB R1 (3:23)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Exact Round</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Alateng Heili vs. Juan Díaz</td><td class="py-2.5 px-3 text-[#A78BFA]">Juan Díaz (70%) <span class="text-[#AAA3B5]">(Decision)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Juan Díaz — U-DEC (30-27 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">WIN</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Method Hit</span></td></tr><tr class="border-b border-[#332941]/70 text-xs hover:bg-[#211735]/55"><td class="py-2.5 px-3 text-[#AAA3B5]">Early Prelims</td><td class="py-2.5 px-3 font-semibold text-[#F5F3F8]">Evan Elder vs. Samuel Sanches</td><td class="py-2.5 px-3 text-[#A78BFA]">Samuel Sanches (60%) <span class="text-[#AAA3B5]">(KO / Dec)</span></td><td class="py-2.5 px-3 text-[#F5F3F8]">Evan Elder — U-DEC (30-26 x3)</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold text-[10px]">LOSS</span> <span class="text-[11px] text-[#AAA3B5] ml-1">Upset</span></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
 </main>
 </div>
-<footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+<footer class="mt-auto border-t border-[#332941] bg-[#0B0812] text-xs text-[#AAA3B5]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div>
-      <div class="font-black text-white text-sm">MMA Math Predictions</div>
+      <div class="font-bold text-[#F5F3F8] text-sm">MMA Math Predictions</div>
       <p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5.1 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
-      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 25, 2026 · Challenge: 25 / 100 Fights Graded</div>
-      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-sky-400 hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
+      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 26, 2026 · Challenge: 25 / 100 Fights Graded</div>
+      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-[#A78BFA] hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Platform</div>
       <ul class="space-y-1.5">
-        <li><a href="index.html" class="hover:text-white">Home Overview</a></li>
-        <li><a href="next-card.html" class="hover:text-white">Next Card: UFC Riyadh</a></li>
-        <li><a href="tools.html" class="hover:text-white">Kelly &amp; Parlay Tools</a></li>
+        <li><a href="index.html" class="hover:text-[#F5F3F8]">Home Overview</a></li>
+        <li><a href="next-card.html" class="hover:text-[#F5F3F8]">Next Card: UFC Riyadh</a></li>
+        <li><a href="tools.html" class="hover:text-[#F5F3F8]">Kelly &amp; Parlay Tools</a></li>
         <li><a href="vip.html" class="hover:text-amber-300 text-amber-300/90">VIP Early Access</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Verification</div>
       <ul class="space-y-1.5">
-        <li><a href="track-record.html" class="hover:text-white">Road to 100 Ledger (18–6–1)</a></li>
-        <li><a href="archive.html" class="hover:text-white">Past Fight Archive (25 Bouts)</a></li>
-        <li><a href="methodology.html" class="hover:text-white">Engine v5.1 Methodology</a></li>
+        <li><a href="track-record.html" class="hover:text-[#F5F3F8]">Road to 100 Ledger (18–6–1)</a></li>
+        <li><a href="archive.html" class="hover:text-[#F5F3F8]">Past Fight Archive (25 Bouts)</a></li>
+        <li><a href="methodology.html" class="hover:text-[#F5F3F8]">Engine v5.1 Methodology</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Official Data Sources</div>
       <ul class="space-y-1.5">
-        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-sky-300">UFC.com Event Hub ↗</a></li>
-        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-sky-300">UFCStats Official Data ↗</a></li>
-        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-sky-300">BestFightOdds Lines ↗</a></li>
+        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFC.com Event Hub ↗</a></li>
+        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFCStats Official Data ↗</a></li>
+        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">BestFightOdds Lines ↗</a></li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
+  <div class="border-t border-[#332941]/70 py-4 text-center text-[11px] text-[#AAA3B5]/80">
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>

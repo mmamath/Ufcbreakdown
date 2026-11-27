@@ -4,184 +4,252 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Quant Tools | MMA Math Predictions</title>
-  <meta content="Interactive Kelly Criterion, Max Playable Odds, and Parlay Fair-Odds Checker for UFC betting." name="description"/>
+  <meta content="Interactive Fractional Kelly unit sizer, Max Playable Odds, and Parlay Fair Odds checker for UFC Riyadh." name="description"/>
   <meta content="Quant Tools | MMA Math Predictions" property="og:title"/>
-  <meta content="Interactive Kelly Criterion, Max Playable Odds, and Parlay Fair-Odds Checker for UFC betting." property="og:description"/>
+  <meta content="Interactive Fractional Kelly unit sizer, Max Playable Odds, and Parlay Fair Odds checker for UFC Riyadh." property="og:description"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>.hidden { display: none !important; } 
-html { scroll-behavior: smooth; }
-body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-</style>
+  <style>
+    :root {
+      --mp-bg: #100D19;
+      --mp-bg-2: #171321;
+      --mp-surface: #211735;
+      --mp-purple: #7041B8;
+      --mp-violet: #8B5CF6;
+      --mp-soft: #A78BFA;
+      --mp-text: #F5F3F8;
+      --mp-muted: #AAA3B5;
+      --mp-border: #332941;
+    }
+    .hidden { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--mp-bg);
+      color: var(--mp-text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .odds-fmt-btn.bg-sky-500 {
+      background-color: var(--mp-purple) !important;
+      color: var(--mp-text) !important;
+    }
+    #parlay-legs-list label {
+      background-color: var(--mp-bg) !important;
+      border-color: var(--mp-border) !important;
+      border-radius: 0.375rem !important;
+    }
+    #parlay-legs-list label:hover {
+      border-color: var(--mp-purple) !important;
+    }
+    #parlay-legs-list .text-sky-300 {
+      color: var(--mp-soft) !important;
+    }
+    #parlay-legs-list input.accent-sky-500 {
+      accent-color: var(--mp-violet) !important;
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+<body class="bg-[#100D19] text-[#F5F3F8] min-h-screen flex flex-col">
 
-<div class="bg-sky-950/70 border-b border-sky-500/30 text-[11px] text-sky-200 px-4 py-1.5 text-center">
-  <span class="font-bold text-sky-300">NEXT EVENT:</span> UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh) ·
-  <span id="riyadh-countdown" class="font-mono font-bold text-white">Loading countdown...</span> ·
-  <a href="next-card.html" class="underline text-amber-300 font-semibold ml-1">View 14-Bout Forecast →</a> · <span class="text-slate-300 font-mono">Updated: Nov 25, 2026</span>
+<div class="bg-[#171321] border-b border-[#332941] text-xs text-[#AAA3B5] px-4 py-2 text-center">
+  <span class="font-semibold text-[#A78BFA]">Next Event:</span>
+  <span class="text-[#F5F3F8]">UFC Fight Night: Adesanya vs. Magomedov (Dec 5, 2026 · Riyadh)</span> ·
+  <span id="riyadh-countdown" class="font-mono font-semibold text-[#F5F3F8]">Loading countdown...</span> ·
+  <a href="next-card.html" class="underline decoration-[#7041B8] underline-offset-4 text-[#F5F3F8] hover:text-[#A78BFA] font-medium ml-1">View 14-Bout Forecast →</a> ·
+  <span class="text-[#AAA3B5] font-mono text-[11px]">Updated: Nov 26, 2026</span>
 </div>
-<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500 flex items-center justify-center font-black text-slate-950 text-sm">MM</div>
+
+<header class="sticky top-0 z-50 bg-[#100D19]/95 backdrop-blur border-b border-[#332941]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 rounded-md bg-[#211735] border border-[#7041B8] flex items-center justify-center font-black text-[#F5F3F8] text-xs tracking-wider">MM</div>
       <div>
-        <div class="font-black text-white text-sm sm:text-base leading-tight">MMA Math Predictions</div>
-        <div class="text-[10px] text-slate-400 font-mono">RIYADH v1 · ENGINE v5.1 · 18–6–1 (75.0%)</div>
+        <div class="font-bold text-[#F5F3F8] text-sm sm:text-base tracking-tight leading-tight">MMA Math Predictions</div>
+        <div class="text-[11px] text-[#AAA3B5] font-mono">Riyadh v1 · Engine v5.1 · 18–6–1 (75.0%)</div>
       </div>
     </a>
-    <nav class="hidden lg:flex items-center gap-1.5">
-      <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Home</a><a href="next-card.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Next Card: Riyadh</a><a href="tools.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-white whitespace-nowrap">Quant Tools</a><a href="track-record.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Track Record</a><a href="archive.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Fight Archive</a><a href="methodology.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 whitespace-nowrap">Engine v5.1</a><a href="vip.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 whitespace-nowrap">VIP Access</a>
-      <div class="flex items-center gap-0.5 bg-slate-900 border border-slate-700 rounded-lg p-0.5 ml-1" title="Switch Odds Format (American / European Decimal / Both)"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-slate-300 hover:text-white">Both</button></div>
+    <nav class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Home</a>
+      <a href="next-card.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Next Card: Riyadh</a>
+      <a href="tools.html" class="px-3 py-1.5 rounded-md text-xs font-semibold bg-[#7041B8] text-[#F5F3F8] whitespace-nowrap">Quant Tools</a>
+      <a href="track-record.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Track Record</a>
+      <a href="archive.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Fight Archive</a>
+      <a href="methodology.html" class="px-3 py-1.5 rounded-md text-xs font-medium text-[#AAA3B5] hover:text-[#F5F3F8] hover:bg-[#171321] whitespace-nowrap">Engine v5.1</a>
+      <a href="vip.html" class="px-3 py-1.5 rounded-md text-xs font-semibold text-amber-300 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 ml-1 whitespace-nowrap">VIP Access</a>
+      <div class="flex items-center gap-0.5 bg-[#171321] border border-[#332941] rounded-md p-0.5 ml-2" title="Switch Odds Format (American / European Decimal / Both)">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2 py-1 rounded text-[11px] font-bold text-[#AAA3B5] hover:text-[#F5F3F8]">Both</button>
+      </div>
     </nav>
-    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-200">
+    <button type="button" onclick="toggleMobileNav()" aria-label="Toggle Menu" class="lg:hidden px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-xs font-semibold text-[#F5F3F8]">
       Menu ☰
     </button>
   </div>
-  <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-1.5">
-    <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Home</a><a href="next-card.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Next Card: Riyadh</a><a href="tools.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-sky-500 text-white">Quant Tools</a><a href="track-record.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Track Record</a><a href="archive.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Fight Archive</a><a href="methodology.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">Engine v5.1</a><a href="vip.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800">VIP Access</a>
-    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 mt-1"><span class="text-xs font-semibold text-slate-400">Odds Format</span><div class="flex items-center gap-1"><button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950">US</button><button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">EU</button><button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-slate-300">Both</button></div></div>
+  <div id="mobile-nav" class="hidden lg:hidden border-t border-[#332941] bg-[#100D19] px-4 py-3 space-y-1">
+    <a href="index.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Home</a>
+    <a href="next-card.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Next Card: Riyadh</a>
+    <a href="tools.html" class="block px-3 py-2 rounded-md text-sm font-semibold bg-[#7041B8] text-[#F5F3F8]">Quant Tools</a>
+    <a href="track-record.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Track Record</a>
+    <a href="archive.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Fight Archive</a>
+    <a href="methodology.html" class="block px-3 py-2 rounded-md text-sm font-medium text-[#AAA3B5] hover:bg-[#171321] hover:text-[#F5F3F8]">Engine v5.1</a>
+    <a href="vip.html" class="block px-3 py-2 rounded-md text-sm font-semibold text-amber-300 hover:bg-[#171321]">VIP Access</a>
+    <div class="flex items-center justify-between px-3 py-2 rounded-md bg-[#171321] border border-[#332941] mt-2">
+      <span class="text-xs font-medium text-[#AAA3B5]">Odds Format</span>
+      <div class="flex items-center gap-1">
+        <button type="button" onclick="setOddsFormat('US')" data-odds-btn="US" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold bg-[#7041B8] text-[#F5F3F8]">US</button>
+        <button type="button" onclick="setOddsFormat('EU')" data-odds-btn="EU" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">EU</button>
+        <button type="button" onclick="setOddsFormat('BOTH')" data-odds-btn="BOTH" class="odds-fmt-btn px-2.5 py-1 rounded text-xs font-bold text-[#AAA3B5]">Both</button>
+      </div>
+    </div>
   </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
-  <div>
-    <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-bold uppercase tracking-wider">Client-Side Quant Suite · 100u Scale</span>
-    <h1 class="text-2xl sm:text-3xl font-black text-white mt-2">Betting Tools &amp; Bankroll Calculators</h1>
-    <p class="text-sm text-slate-400 mt-1">Size bets against your own sportsbook's lines and test parlays against true combined probabilities.</p>
-  </div>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-8 w-full">
 
+  <!-- Editorial Workbench Header -->
+  <section class="pb-6 border-b border-[#332941] space-y-2">
+    <div class="text-xs font-mono text-emerald-400">Client-Side Quant Suite · 100u Scale</div>
+    <h1 class="text-3xl sm:text-4xl font-black text-[#F5F3F8] tracking-tight">Betting Tools &amp; Bankroll Calculators</h1>
+    <p class="text-sm text-[#AAA3B5] max-w-2xl">Size bets against your own sportsbook's lines and test parlays against true combined probabilities.</p>
+  </section>
+
+  <!-- 2-Column Interactive Workbench -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
-      <div class="flex items-center justify-between gap-2">
+
+    <!-- 1. Kelly Calculator -->
+    <section class="bg-[#171321] border border-[#332941] rounded-lg p-5 sm:p-6 space-y-5">
+      <div class="flex items-start justify-between gap-2 pb-3 border-b border-[#332941]">
         <div>
-          <h2 class="text-lg font-extrabold text-white">1. Kelly &amp; Max-Playable-Odds Calculator</h2>
-          <p class="text-xs text-slate-400">Enter your book's line to see exact unit sizing and whether juice kills the edge.</p>
+          <h2 class="text-lg font-bold text-[#F5F3F8]">1. Kelly &amp; Max-Playable-Odds Calculator</h2>
+          <p class="text-xs text-[#AAA3B5] mt-0.5">Enter your book's line to see exact unit sizing and whether juice kills the edge.</p>
         </div>
-        <span id="kelly-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">+EV BET</span>
+        <span id="kelly-badge" class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">+EV BET</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <div class="sm:col-span-2">
-          <label for="kelly-bout-select" class="block text-slate-400 font-semibold mb-1">Quick-Load UFC Riyadh Bout (Dec 5)</label>
-          <select id="kelly-bout-select" onchange="loadBoutSelect()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 font-medium"></select>
+          <label for="kelly-bout-select" class="block text-[#AAA3B5] font-medium mb-1">Quick-Load UFC Riyadh Bout (Dec 5)</label>
+          <select id="kelly-bout-select" onchange="loadBoutSelect()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-medium outline-none"></select>
         </div>
         <div>
-          <label for="kelly-prob" class="block text-slate-400 font-semibold mb-1">Model Win Prob (%)</label>
-          <input id="kelly-prob" type="number" step="0.1" min="5" max="95" value="60.5" oninput="calcKelly()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono"/>
+          <label for="kelly-prob" class="block text-[#AAA3B5] font-medium mb-1">Model Win Prob (%)</label>
+          <input id="kelly-prob" type="number" step="0.1" min="5" max="95" value="60.5" oninput="calcKelly()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-mono outline-none"/>
         </div>
         <div>
-          <label for="kelly-odds" class="block text-slate-400 font-semibold mb-1">Your Book's American Odds</label>
-          <input id="kelly-odds" type="number" step="1" value="-138" oninput="calcKelly()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono"/>
+          <label for="kelly-odds" class="block text-[#AAA3B5] font-medium mb-1">Your Book's American Odds</label>
+          <input id="kelly-odds" type="number" step="1" value="-138" oninput="calcKelly()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-mono outline-none"/>
         </div>
         <div>
-          <label for="kelly-bankroll" class="block text-slate-400 font-semibold mb-1">Bankroll (Units, default 100u)</label>
-          <input id="kelly-bankroll" type="number" step="1" min="1" value="100" oninput="calcKelly()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono"/>
+          <label for="kelly-bankroll" class="block text-[#AAA3B5] font-medium mb-1">Bankroll (Units, default 100u)</label>
+          <input id="kelly-bankroll" type="number" step="1" min="1" value="100" oninput="calcKelly()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-mono outline-none"/>
         </div>
         <div>
-          <label for="kelly-frac" class="block text-slate-400 font-semibold mb-1">Kelly Multiplier</label>
-          <select id="kelly-frac" onchange="calcKelly()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 font-mono">
+          <label for="kelly-frac" class="block text-[#AAA3B5] font-medium mb-1">Kelly Multiplier</label>
+          <select id="kelly-frac" onchange="calcKelly()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-mono outline-none">
             <option value="0.25">0.25x (Low-Sample / Conservative)</option>
-            <option value="0.35" selected>0.35x (v5 Standard)</option>
+            <option value="0.35" selected>0.35x (v5.1 Standard)</option>
             <option value="0.50">0.50x (Aggressive)</option>
           </select>
         </div>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Break-Even %</div>
-          <div id="kelly-be" class="text-base font-black text-slate-200 font-mono mt-0.5">58.0%</div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Break-Even %</div>
+          <div id="kelly-be" class="text-base font-black text-[#F5F3F8] font-mono mt-0.5">58.0%</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Fair Odds</div>
-          <div id="kelly-fair" class="text-base font-black text-sky-300 font-mono mt-0.5">-153</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Fair Odds</div>
+          <div id="kelly-fair" class="text-base font-black text-[#A78BFA] font-mono mt-0.5">-153</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Max Playable (+2% EV)</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Max Playable (+2% EV)</div>
           <div id="kelly-max" class="text-base font-black text-amber-300 font-mono mt-0.5">-146</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Expected Value</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Expected Value</div>
           <div id="kelly-ev" class="text-base font-black text-emerald-400 font-mono mt-0.5">+4.3%</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 sm:col-span-2">
-          <div class="text-[10px] uppercase text-slate-400">Recommended Stake (5% Max Cap)</div>
-          <div id="kelly-stake" class="text-base font-black text-white font-mono mt-0.5">2.1u</div>
+        <div class="bg-[#211735] border border-[#7041B8] rounded-md p-3 sm:col-span-2">
+          <div class="text-[11px] text-[#A78BFA]">Recommended Stake (5% Max Cap)</div>
+          <div id="kelly-stake" class="text-base font-black text-[#F5F3F8] font-mono mt-0.5">2.1u</div>
         </div>
       </div>
     </section>
 
-    <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4">
-      <div class="flex items-center justify-between gap-2">
+    <!-- 2. Parlay Checker -->
+    <section class="bg-[#171321] border border-[#332941] rounded-lg p-5 sm:p-6 space-y-5">
+      <div class="flex items-start justify-between gap-2 pb-3 border-b border-[#332941]">
         <div>
-          <h2 class="text-lg font-extrabold text-white">2. Parlay "Fair Odds" Checker</h2>
-          <p class="text-xs text-slate-400">Select 2 to 5 UFC Riyadh picks to check if a sportsbook parlay is +EV or a trap.</p>
+          <h2 class="text-lg font-bold text-[#F5F3F8]">2. Parlay "Fair Odds" Checker</h2>
+          <p class="text-xs text-[#AAA3B5] mt-0.5">Select 2 to 5 UFC Riyadh picks to check if a sportsbook parlay is +EV or a trap.</p>
         </div>
-        <span id="parlay-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">CHECK LEGS</span>
+        <span id="parlay-badge" class="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">CHECK LEGS</span>
       </div>
       <div id="parlay-legs-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1 text-xs"></div>
       <div class="flex flex-wrap items-end gap-3 text-xs">
         <div class="flex-1 min-w-[160px]">
-          <label for="parlay-book-odds" class="block text-slate-400 font-semibold mb-1">Sportsbook Parlay Payout (American)</label>
-          <input id="parlay-book-odds" type="number" step="1" value="185" oninput="calcParlay()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono"/>
+          <label for="parlay-book-odds" class="block text-[#AAA3B5] font-medium mb-1">Sportsbook Parlay Payout (American)</label>
+          <input id="parlay-book-odds" type="number" step="1" value="185" oninput="calcParlay()" class="w-full bg-[#100D19] border border-[#332941] focus:border-[#7041B8] rounded-md px-3 py-2.5 text-[#F5F3F8] font-mono outline-none"/>
         </div>
-        <button type="button" onclick="clearParlay()" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold">Reset Legs</button>
+        <button type="button" onclick="clearParlay()" class="px-3.5 py-2.5 rounded-md bg-[#100D19] hover:bg-[#211735] border border-[#332941] text-[#F5F3F8] font-semibold">Reset Legs</button>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Selected Legs</div>
-          <div id="parlay-count" class="text-base font-black text-white font-mono mt-0.5">2</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Selected Legs</div>
+          <div id="parlay-count" class="text-base font-black text-[#F5F3F8] font-mono mt-0.5">2</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">True Hit %</div>
-          <div id="parlay-prob" class="text-base font-black text-sky-300 font-mono mt-0.5">38.7%</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">True Hit %</div>
+          <div id="parlay-prob" class="text-base font-black text-[#A78BFA] font-mono mt-0.5">38.7%</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Fair Parlay Odds</div>
-          <div id="parlay-fair" class="text-base font-black text-amber-300 font-mono mt-0.5">+159</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">True Fair Odds</div>
+          <div id="parlay-fair" class="text-base font-black text-amber-300 font-mono mt-0.5">+158</div>
         </div>
-        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
-          <div class="text-[10px] uppercase text-slate-400">Parlay EV</div>
-          <div id="parlay-ev" class="text-base font-black text-emerald-400 font-mono mt-0.5">+10.2%</div>
+        <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+          <div class="text-[11px] text-[#AAA3B5]">Parlay EV</div>
+          <div id="parlay-ev" class="text-base font-black text-emerald-400 font-mono mt-0.5">+10.3%</div>
         </div>
       </div>
     </section>
+
   </div>
 </main>
 
-<footer class="mt-auto border-t border-slate-800 bg-slate-950/90 text-xs text-slate-400">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<footer class="mt-auto border-t border-[#332941] bg-[#0B0812] text-xs text-[#AAA3B5]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div>
-      <div class="font-black text-white text-sm">MMA Math Predictions</div>
+      <div class="font-bold text-[#F5F3F8] text-sm">MMA Math Predictions</div>
       <p class="mt-2 leading-relaxed">Quantitative UFC forecasting powered by Engine v5.1 (Hybrid Logistic + GBDT + MLP) and 1,000-run Monte Carlo fight simulations.</p>
-      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 25, 2026 · Challenge: 25 / 100 Fights Graded</div>
-      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-sky-400 hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
+      <div class="mt-3 font-mono text-[11px] text-emerald-400">Release: Riyadh v1 · Updated: Nov 26, 2026 · Challenge: 25 / 100 Fights Graded</div>
+      <div class="mt-1.5 text-[11px]"><a href="mailto:MMAMATHPREDICTIONS@gmail.com" class="text-[#A78BFA] hover:underline font-mono">MMAMATHPREDICTIONS@gmail.com</a></div>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Platform</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Platform</div>
       <ul class="space-y-1.5">
-        <li><a href="index.html" class="hover:text-white">Home Overview</a></li>
-        <li><a href="next-card.html" class="hover:text-white">Next Card: UFC Riyadh</a></li>
-        <li><a href="tools.html" class="hover:text-white">Kelly &amp; Parlay Tools</a></li>
+        <li><a href="index.html" class="hover:text-[#F5F3F8]">Home Overview</a></li>
+        <li><a href="next-card.html" class="hover:text-[#F5F3F8]">Next Card: UFC Riyadh</a></li>
+        <li><a href="tools.html" class="hover:text-[#F5F3F8]">Kelly &amp; Parlay Tools</a></li>
         <li><a href="vip.html" class="hover:text-amber-300 text-amber-300/90">VIP Early Access</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Verification</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Verification</div>
       <ul class="space-y-1.5">
-        <li><a href="track-record.html" class="hover:text-white">Road to 100 Ledger (18–6–1)</a></li>
-        <li><a href="archive.html" class="hover:text-white">Past Fight Archive (25 Bouts)</a></li>
-        <li><a href="methodology.html" class="hover:text-white">Engine v5.1 Methodology</a></li>
+        <li><a href="track-record.html" class="hover:text-[#F5F3F8]">Road to 100 Ledger (18–6–1)</a></li>
+        <li><a href="archive.html" class="hover:text-[#F5F3F8]">Past Fight Archive (25 Bouts)</a></li>
+        <li><a href="methodology.html" class="hover:text-[#F5F3F8]">Engine v5.1 Methodology</a></li>
       </ul>
     </div>
     <div>
-      <div class="font-bold text-slate-200 uppercase text-[11px] tracking-wider mb-2">Official Data Sources</div>
+      <div class="font-semibold text-[#F5F3F8] text-xs mb-2.5">Official Data Sources</div>
       <ul class="space-y-1.5">
-        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-sky-300">UFC.com Event Hub ↗</a></li>
-        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-sky-300">UFCStats Official Data ↗</a></li>
-        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-sky-300">BestFightOdds Lines ↗</a></li>
+        <li><a href="https://www.ufc.com/event/ufc-fight-night-december-05-2026" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFC.com Event Hub ↗</a></li>
+        <li><a href="http://ufcstats.com/event-details/a1bf037613180253" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">UFCStats Official Data ↗</a></li>
+        <li><a href="https://www.bestfightodds.com/events/ufc-saudi-arabia-4453" target="_blank" rel="noopener" class="hover:text-[#A78BFA]">BestFightOdds Lines ↗</a></li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-slate-900 py-4 text-center text-[11px] text-slate-500">
+  <div class="border-t border-[#332941]/70 py-4 text-center text-[11px] text-[#AAA3B5]/80">
     All bankroll sizing uses a standardized 100u unit scale (1u = 1%). Past performance does not guarantee future results.
   </div>
 </footer>
