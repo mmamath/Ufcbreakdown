@@ -159,6 +159,7 @@
       <button type="button" onclick="filterRiyadhRadar('Prelim')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-[#AAA3B5] font-semibold hover:text-[#F5F3F8]" data-filter="Prelim">Prelims (8)</button>
       <button type="button" onclick="filterRiyadhRadar('POLY_EV')" class="radar-filter px-3 py-1.5 rounded-md bg-[#171321] border border-[#332941] text-emerald-300 font-semibold hover:text-[#F5F3F8]" data-filter="POLY_EV">+EV (4)</button>
       <button type="button" id="hammer-countdown-btn" onclick="toggleHammerTeaser()" class="px-3 py-1.5 rounded-md bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/35 text-amber-300 font-semibold transition inline-flex items-center gap-1.5"><span>🚀 3-Stage Rocket</span><span class="text-amber-200/90 font-mono text-[11px]" id="hammer-timer-text">· Unlocks Fri 1PM BC</span></button>
+      <button type="button" onclick="document.getElementById('high-variance-radar').scrollIntoView({behavior:'smooth'})" class="px-3 py-1.5 rounded-md bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/35 text-rose-300 font-semibold transition">🔥 High-Variance Dogs (5) ↓</button>
     </div>
     <div id="hammer-teaser" class="hidden rounded-lg bg-[#171321] border border-amber-500/35 border-l-4 border-l-amber-400 px-4 py-3 text-xs flex flex-wrap items-center justify-between gap-2">
       <div>
@@ -226,6 +227,56 @@
   </section>
 
 <!-- Individual Fight Analysis Modal (Phase 4) -->
+
+  <!-- High-Variance Underdogs & Longshot Method Radar -->
+  <section id="high-variance-radar" class="bg-[#171321] border border-[#332941] border-l-4 border-l-rose-500 rounded-lg p-5 sm:p-6 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <div class="text-xs font-mono text-rose-400">High-Variance Sleeve · Fractional Longshot Exposure (0.25u–0.75u Cap)</div>
+        <h2 class="text-xl font-bold text-[#F5F3F8] mt-0.5">Underpriced Underdogs &amp; Longshot Method Radar</h2>
+        <p class="text-xs text-[#AAA3B5] mt-1 leading-relaxed max-w-4xl">
+          Picking a favorite to win (~58%–64%) and finding betting value are two different things. When sportsbooks hang heavy chalk, the underdog side can still carry positive expected value—shown below separately from our official Confident Picks. <span class="text-amber-300 font-semibold">High-variance KO/Sub/Round longshots unlock Friday, Dec 4 at 1:00 PM BC once method props open.</span>
+        </p>
+      </div>
+      <span class="px-3 py-1.5 rounded-md bg-rose-500/15 border border-rose-500/35 text-rose-300 font-mono text-[11px] font-bold">5 +EV Dogs · Method Props Pending Fri</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5 space-y-1.5">
+        <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-[#AAA3B5]">Main · Heavyweight</span><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono font-bold text-[10px]">+29.6% EV · 0.50u</span></div>
+        <div class="text-sm font-bold text-[#F5F3F8]">Serghei Spivac <span class="text-amber-300 font-mono" data-amer="260">+260</span></div>
+        <div class="text-[11px] text-[#AAA3B5]">Model: <strong class="text-[#F5F3F8]">36.0%</strong> vs. 27.8% implied (Pinto -360). Heavyweight variance + 4.56 TD/15m makes +260 mathematically live.</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5 space-y-1.5">
+        <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-[#AAA3B5]">Main · Lightweight</span><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono font-bold text-[10px]">+23.1% EV · 0.50u</span></div>
+        <div class="text-sm font-bold text-[#F5F3F8]">Mairon Santos <span class="text-amber-300 font-mono" data-amer="240">+240</span></div>
+        <div class="text-[11px] text-[#AAA3B5]">Model: <strong class="text-[#F5F3F8]">36.2%</strong> vs. 29.4% implied (Abdullaev -330). 3–1 UFC LW with youth edge vs. 2-fight UFC sample.</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5 space-y-1.5">
+        <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-[#AAA3B5]">Prelim · Middleweight</span><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono font-bold text-[10px]">+11.9% EV · 0.75u</span></div>
+        <div class="text-sm font-bold text-[#F5F3F8]">JunYong Park <span class="text-amber-300 font-mono" data-amer="146">+146</span></div>
+        <div class="text-[11px] text-[#AAA3B5]">Model: <strong class="text-[#F5F3F8]">45.5%</strong> vs. 40.7% implied (Tulio -188). Veteran grinder testing Tulio's 0% UFC takedown defense.</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5 space-y-1.5">
+        <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-[#AAA3B5]">Main · Welterweight</span><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono font-bold text-[10px]">+6.6% EV · 0.40u</span></div>
+        <div class="text-sm font-bold text-[#F5F3F8]">Levan Chokheli <span class="text-amber-300 font-mono" data-amer="172">+172</span></div>
+        <div class="text-[11px] text-[#AAA3B5]">Model: <strong class="text-[#F5F3F8]">39.2%</strong> vs. 36.8% implied (Dulatov -225). Bellator-tested power in a volatile 170-lb striking bout.</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3.5 space-y-1.5">
+        <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-[#AAA3B5]">Co-Main · Welterweight</span><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono font-bold text-[10px]">+5.2% EV · 0.40u</span></div>
+        <div class="text-sm font-bold text-[#F5F3F8]">Yaroslav Amosov <span class="text-amber-300 font-mono" data-amer="148">+148</span></div>
+        <div class="text-[11px] text-[#AAA3B5]">Model: <strong class="text-[#F5F3F8]">42.4%</strong> vs. 40.3% implied (Garry -192). 3.20 TD/15m + back-to-back UFC chokes makes +148 live.</div>
+      </div>
+      <div class="bg-[#100D19] border border-dashed border-amber-500/40 rounded-md p-3.5 space-y-1.5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between"><span class="text-[11px] font-mono text-amber-300">Longshot Method Props</span><span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 font-mono font-bold text-[10px]">FRI 1PM BC</span></div>
+          <div class="text-sm font-bold text-[#F5F3F8] mt-1">Underpriced KO / Sub / Round Lines</div>
+          <p class="text-[11px] text-[#AAA3B5] mt-1">Method-of-victory and exact-round books aren't live yet—no invented lines. Sim targets populate automatically once props open Friday post-weigh-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <div id="fight-modal" class="hidden fixed inset-0 z-50 bg-[#100D19]/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="fm-title">
   <div class="bg-[#171321] border border-[#332941] rounded-lg max-w-3xl w-full p-5 sm:p-6 space-y-4 my-8 shadow-2xl">
     <div class="flex items-start justify-between gap-3 border-b border-[#332941] pb-3">
