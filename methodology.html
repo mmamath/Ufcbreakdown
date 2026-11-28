@@ -95,101 +95,91 @@
 
   <!-- Editorial Research Header -->
   <section class="pb-8 border-b border-[#332941] space-y-3">
-    <div class="text-xs font-mono text-[#A78BFA] border-l-2 border-[#7041B8] pl-3">Engine v5.1 · Proprietary Architecture</div>
+    <div class="text-xs font-mono text-[#A78BFA] border-l-2 border-[#7041B8] pl-3">Engine v5.1 · Methodology</div>
     <h1 class="text-3xl sm:text-4xl font-black text-[#F5F3F8] tracking-tight">How MMA Math Engine v5.1 Works</h1>
     <p class="text-base text-[#AAA3B5] max-w-3xl leading-relaxed">
-      Engine v5.1 pairs an independent quantitative fighter model with sharp market benchmarks and 1,000-run fight simulations—designed for long-term calibration and bankroll discipline without exposing proprietary weights or formulas.
+      Engine v5.1 pairs an independent fighter-level model with sharp market benchmarks and 1,000-run bout simulations—built for long-term calibration and disciplined staking without exposing proprietary weights.
     </p>
   </section>
 
   <!-- 4-Part Model Architecture Grid -->
   <section class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
     <div class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-2">
-      <div class="text-xs font-mono text-[#A78BFA]">01 · 20-Signal Fighter Evaluation</div>
+      <div class="text-xs font-mono text-[#A78BFA]">01 · Fighter Evaluation</div>
       <h2 class="text-lg font-bold text-[#F5F3F8]">Independent Fighter Model</h2>
       <p class="text-xs sm:text-sm text-[#AAA3B5] leading-relaxed">
-        Every fighter is evaluated on opponent-adjusted striking and grappling efficiency, recent form, strength of schedule, physical matchup leverage, durability, and inactivity—completely independent of betting odds.
+        Every fighter is evaluated on opponent-adjusted striking and grappling efficiency, recent form, strength of schedule, physical leverage, durability, and inactivity—completely independent of betting odds.
       </p>
     </div>
     <div class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-2">
-      <div class="text-xs font-mono text-emerald-400">02 · Sample-Aware Market Comparison</div>
-      <h2 class="text-lg font-bold text-[#F5F3F8]">Finding Value vs. Bookmakers</h2>
+      <div class="text-xs font-mono text-emerald-400">02 · Market Calibration</div>
+      <h2 class="text-lg font-bold text-[#F5F3F8]">Finding Value vs. Sportsbooks</h2>
       <p class="text-xs sm:text-sm text-[#AAA3B5] leading-relaxed">
-        Pure projections are compared against devigged prediction-market prices and sportsbook lines. Thin-sample prospects automatically lean more on sharp market consensus, while proven UFC veterans rely heavily on statistical edge.
+        Model projections are compared against devigged sharp market lines. Fighters with thin UFC samples lean more on market consensus, while proven UFC veterans rely more heavily on statistical edge.
       </p>
     </div>
     <div class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-2">
-      <div class="text-xs font-mono text-amber-300">03 · Directional Finish Simulation</div>
+      <div class="text-xs font-mono text-amber-300">03 · Round Simulation</div>
       <h2 class="text-lg font-bold text-[#F5F3F8]">1,000-Run Fight Simulations</h2>
       <p class="text-xs sm:text-sm text-[#AAA3B5] leading-relaxed">
-        Instead of generic fight finish rates, Engine v5.1 separates each fighter's offensive finishing threat from their opponent's defensive stoppage vulnerability across 1,000 round-by-round simulations to project KO/TKO, Submission, and Decision splits.
+        Each matchup runs through 1,000 round-by-round Monte Carlo simulations combining offensive finishing threat, opponent defensive vulnerability, and late-round fatigue to project KO/TKO, Submission, and Decision splits.
       </p>
     </div>
     <div class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-2">
-      <div class="text-xs font-mono text-[#A78BFA]">04 · Strict Unit Discipline</div>
-      <h2 class="text-lg font-bold text-[#F5F3F8]">Bankroll Protection (100u Scale)</h2>
+      <div class="text-xs font-mono text-[#A78BFA]">04 · Bankroll Discipline</div>
+      <h2 class="text-lg font-bold text-[#F5F3F8]">Strict Unit Sizing (100u Scale)</h2>
       <p class="text-xs sm:text-sm text-[#AAA3B5] leading-relaxed">
-        Every play is sized on a standardized 100u scale using fractional Kelly staking, strict favorite-price caps, and minimum +EV thresholds—automatically flagging overpriced favorites as <span class="font-semibold text-rose-400">AVOID</span> or <span class="font-semibold text-amber-300">PASS</span>.
+        Plays are sized on a standardized 100u scale using fractional Kelly staking, favorite-price caps, and minimum +EV thresholds—automatically flagging overpriced favorites as <span class="font-semibold text-rose-400">AVOID</span> or <span class="font-semibold text-amber-300">PASS</span>.
       </p>
     </div>
   </section>
 
-  <!-- Verified Pre-Fight Testing -->
-  <section class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-3">
-    <h2 class="text-lg font-bold text-[#F5F3F8]">Verified Pre-Fight Testing</h2>
-    <ul class="space-y-2 text-xs sm:text-sm text-[#AAA3B5] list-disc pl-5 leading-relaxed">
-      <li><strong class="text-[#F5F3F8]">Zero Future Leakage:</strong> Trained on 7,562 fights (2010–2024) and tested strictly out-of-sample on 935 unseen fights (Jan 2025 – Aug 2026) using only pre-fight stats and fight-night ages.</li>
-      <li><strong class="text-[#F5F3F8]">Prediction Accuracy Grading vs. Betting Exposure:</strong> Only <strong class="text-emerald-400">CONFIDENT PICK (56.0%+)</strong> bouts (<strong class="text-emerald-400">70.6%</strong>, 389/551 out-of-sample) are graded toward our Road to 100 accuracy benchmark. Sub-threshold <strong class="text-[#F5F3F8]">COIN-FLIP LEAN (50.0%–55.9%)</strong> bouts (54.4% historically) are excluded from Confident Pick accuracy grading—yet can still qualify for <strong class="text-emerald-400">+EV betting exposure</strong> when retail sportsbooks misprice an underdog (e.g., Shara +142, Rodrigues +122, Sosa +122).</li>
-      <li><strong class="text-[#F5F3F8]">Public Live Grading:</strong> Every pick on the Road to 100 Fights (currently <strong class="text-emerald-400">18–6–1 · 75.0%</strong>) is timestamped pre-fight and graded against official UFC results.</li>
-    </ul>
+  <!-- Grading vs. Exposure & Canonical Tiers -->
+  <section class="bg-[#171321] border border-[#332941] border-l-4 border-l-[#7041B8] rounded-lg p-6 space-y-3">
+    <h2 class="text-lg font-bold text-[#F5F3F8]">Prediction Grading vs. +EV Betting Exposure</h2>
+    <p class="text-xs sm:text-sm text-[#AAA3B5] leading-relaxed">
+      Model accuracy and betting value are tracked separately. Only <strong class="text-emerald-400">Confident Graded Picks</strong> count toward our Road to 100 accuracy benchmark (<strong class="text-emerald-400">70.6%</strong> out-of-sample across 551 fights). <strong class="text-[#F5F3F8]">Coin-Flip Leans</strong> are excluded from Confident accuracy grading because one scramble or scorecard can swing them—yet they can still qualify for <strong class="text-emerald-400">+EV stakes</strong> whenever a sportsbook misprices an underdog.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="font-bold text-[#F5F3F8]">Coin-Flip Lean</div>
+        <div class="text-[#AAA3B5] font-mono mt-0.5">50.0%–55.9% · 54.4% OOS</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="font-bold text-emerald-300">Confident Core</div>
+        <div class="text-[#AAA3B5] font-mono mt-0.5">56.0%–61.9% · 66.3% OOS</div>
+      </div>
+      <div class="bg-[#100D19] border border-[#332941] rounded-md p-3">
+        <div class="font-bold text-amber-300">High-Conviction Confident</div>
+        <div class="text-[#AAA3B5] font-mono mt-0.5">62.0%+ · 75.9% OOS</div>
+      </div>
+    </div>
   </section>
 
-  <!-- Training vs OOS, Version Comparison & Reproducibility -->
-  <section class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-5">
-    <h2 class="text-lg font-bold text-[#F5F3F8]">Training vs. Strict Out-of-Sample Testing (Zero Data Leakage)</h2>
+  <!-- Clean Out-of-Sample Benchmark -->
+  <section class="bg-[#171321] border border-[#332941] rounded-lg p-6 space-y-4">
+    <h2 class="text-lg font-bold text-[#F5F3F8]">Strict Out-of-Sample Benchmark (Zero Data Leakage)</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
       <div class="bg-[#100D19] border border-[#332941] rounded-md p-4 space-y-1">
         <div class="text-[11px] font-mono text-[#A78BFA]">Training Split</div>
         <div class="text-xl font-black font-mono text-[#F5F3F8]">7,562 Fights</div>
-        <div class="text-[#AAA3B5] leading-relaxed">2010-01-01 to 2024-12-31. Point-in-time chronological updates only—no future fight stats ever leak backward.</div>
+        <div class="text-[#AAA3B5] leading-relaxed">2010–2024 chronological updates only—zero future fight data ever leaks backward.</div>
       </div>
       <div class="bg-[#100D19] border border-emerald-500/30 rounded-md p-4 space-y-1">
-        <div class="text-[11px] font-mono text-emerald-400">Strict OOS Test (0% Market Odds)</div>
+        <div class="text-[11px] font-mono text-emerald-400">Out-of-Sample Test (0% Odds)</div>
         <div class="text-xl font-black font-mono text-[#F5F3F8]">935 Fights · 63.96%</div>
-        <div class="text-[#AAA3B5] leading-relaxed">Jan 2025 – Aug 2026. Brier: <strong class="text-[#F5F3F8]">0.2255</strong> · Log Loss: <strong class="text-[#F5F3F8]">0.6427</strong> · Confident Graded Picks: <strong class="text-emerald-400">389/551 (70.6%)</strong>.</div>
+        <div class="text-[#AAA3B5] leading-relaxed">Jan 2025 – Aug 2026 · Confident Graded Picks: <strong class="text-emerald-400">389/551 (70.6%)</strong>.</div>
       </div>
       <div class="bg-[#100D19] border border-amber-500/30 rounded-md p-4 space-y-1">
-        <div class="text-[11px] font-mono text-amber-300">19-Month Odds-Matched OOS</div>
+        <div class="text-[11px] font-mono text-amber-300">Odds-Matched OOS</div>
         <div class="text-xl font-black font-mono text-[#F5F3F8]">580 Fights · +17.25% ROI</div>
-        <div class="text-[#AAA3B5] leading-relaxed">Jan 2025 – Aug 2026 (+46.64u, 57/103 bets, -32.22u MaxDD) with &gt;=6% EV dog gate &amp; 2.0u dog cap.</div>
+        <div class="text-[#AAA3B5] leading-relaxed">Jan 2025 – Aug 2026 (<strong class="text-[#F5F3F8]">+46.64u</strong>, 57/103 bets) with disciplined EV gates.</div>
       </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-      <div class="bg-[#100D19] border border-[#332941] rounded-md p-4 space-y-2">
-        <div class="font-bold text-[#F5F3F8]">Identical-Dataset Model Comparison (25 Events · 304 OOS Bouts)</div>
-        <ul class="space-y-1.5 text-[#AAA3B5]">
-          <li><strong class="text-emerald-400">Engine v5.1 (Production):</strong> 64.47% overall (196/304) · 75.64% at &ge;58% (118/156) · 81.48% at &ge;65% (44/54).</li>
-          <li><strong class="text-[#AAA3B5]">v5.2 Candidate (Shelved):</strong> Dropped to 63.16% on the identical 304 bouts due to feature overfitting—rejected.</li>
-        </ul>
-      </div>
-      <div class="bg-[#100D19] border border-[#332941] rounded-md p-4 space-y-2">
-        <div class="font-bold text-[#F5F3F8]">Monte Carlo Simulation Limitations</div>
-        <p class="text-[#AAA3B5] leading-relaxed">Our 1,000-run round simulations estimate KO/Sub/Decision distributions from historical fighter rates. They cannot predict mid-fight freak injuries, illegal fouls, weight-miss stamina crashes not captured pre-fight, or outlier judging scorecards.</p>
-      </div>
-    </div>
-
-    <div class="bg-[#211735] border border-[#332941] border-l-4 border-l-[#7041B8] rounded-md p-4 text-xs space-y-2">
-      <div class="font-bold text-[#F5F3F8]">935-Fight Out-of-Sample Reproducibility &amp; Verification Scope</div>
-      <ul class="list-disc pl-5 space-y-1 text-[#AAA3B5]">
-        <li><strong class="text-[#F5F3F8]">Dataset &amp; Split:</strong> <code class="text-[#A78BFA]">master.csv</code> (8,497 decided UFC bouts, 2010-01-01 to 2026-08-08). Training cutoff <code class="text-[#A78BFA]">&lt; 2025-01-01</code> (n = 7,562); strict OOS evaluation <code class="text-[#A78BFA]">2025-01-01 to 2026-08-08</code> (n = 935, 0% market odds).</li>
-        <li><strong class="text-[#F5F3F8]">Evaluation Script:</strong> <code class="text-[#A78BFA]">run_10_team_tournament.py</code> (<code class="text-[#A78BFA]">rec_center=2021.5, rec_scale=0.65</code>) updating fighter state chronologically prior to each bout.</li>
-        <li><strong class="text-[#F5F3F8]">Confidence-Tier Definitions (OOS n = 935):</strong> Coin-Flip Lean (50.0%–55.9%: 209/384 = 54.4%), Confident Core (56.0%–61.9%: 203/306 = 66.3%), High-Conviction Confident (62.0%+: 186/245 = 75.9%), Combined Confident Graded Picks (389/551 = 70.6%).</li>
-        <li><strong class="text-[#F5F3F8]">Independent Verification Status:</strong> All out-of-sample metrics were computed internally; <strong class="text-amber-300">no external third-party audit has been performed yet</strong>.</li>
-      </ul>
-    </div>
+    <p class="text-xs text-[#AAA3B5] leading-relaxed">
+      Out-of-sample metrics were evaluated internally without an external third-party audit; live Road to 100 picks (currently <strong class="text-emerald-400">18–6–1 · 75.0%</strong>) are timestamped pre-fight and graded publicly. Simulations cannot foresee freak mid-fight injuries, fouls, or outlier judging.
+    </p>
   </section>
-
 
   <!-- Creator Attribution -->
   <p class="text-xs text-[#AAA3B5] text-center">Built independently for transparent, leak-free UFC modeling — <a href="index.html" class="text-[#A78BFA] hover:underline font-semibold">read the full creator story →</a></p>
